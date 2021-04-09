@@ -1,0 +1,10 @@
+<div id="total" [class.hide-triangle]="hideTriangle">
+    <div class="data-label">{{label}} <div *ngIf="showWarning" id="over-autho-warning-box" class="fade-in-up">
+            <mat-icon>warning</mat-icon>
+        </div>
+    </div>
+    <h1 class="big-data">{{symbol}}{{dollars | number: '1.0-0'}}<span id="cents">.{{cents | number: '2.0-0'}}</span>
+        <span *ngIf="suffix" class="suffix">{{suffix}}</span>
+    </h1>
+</div>
+

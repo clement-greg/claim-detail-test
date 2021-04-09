@@ -1,0 +1,41 @@
+<div aflex>
+    <div>
+        <h2 class="sub-heading">Edit Status</h2>
+    </div>
+    <div nogrow>
+        <button mat-button [mat-dialog-close]>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div mat-dialog-content>
+    <div>
+        <mat-checkbox  *ngFor="let jobItem of jobItems" [(ngModel)]="jobItem.selected">{{jobItem.itemName}}</mat-checkbox>
+    </div>
+
+    <mat-form-field appearance="outline" topmargin20>
+        <mat-label>Status</mat-label>
+        <mat-select style="min-width: 300px" [(ngModel)]="newStatus">
+            <mat-option *ngFor="let status of workOrderStatuses" [value]="status.id">{{status.name}}</mat-option>
+            <!-- <mat-option value="36406607-89CB-4760-ABB2-79095FA7E28A">Ordering Parts</mat-option>
+            <mat-option value="E0B5402C-9D34-4B15-B419-C72464E3B220">Back Ordered Parts Delay
+            </mat-option>
+            <mat-option value="C57D321C-17EF-40C1-A70C-EED534C8AC6A">Customer No Show</mat-option>
+            <mat-option value="C3E32787-4886-40BC-BE8D-DE829DB7FDF1">Authorization Requested
+            </mat-option>
+            <mat-option value="89225872-1323-41E8-85FC-50DAB7601F47">Parts Research</mat-option>
+            <mat-option value="47A5716F-DB12-4D75-997A-F62697867567">Awaiting Customer Approval
+            </mat-option> -->
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <div style="width: 100%" aflex>
+        <div></div>
+        <div nogrow>
+            <button mat-button mat-raised-button [disabled]="!canUpdate" color="primary" (click)="save()">Update</button>
+        </div>
+    </div>
+  </div>

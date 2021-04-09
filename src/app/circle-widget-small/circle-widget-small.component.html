@@ -1,0 +1,49 @@
+<style>
+    .arc-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: "Open Sans";
+    }
+
+    .arc-number {
+        font-size: 64px;
+        text-align: center;
+        color: #1C053A;
+        fill: #1C053A;
+        font-family: "Open Sans";
+        font-weight: 300;
+    }
+
+    .circle {
+        transform: rotate(-180deg);
+        transform-origin: 50% 50%;
+    }
+
+    .path {
+        stroke-dasharray: 314.1592;
+        stroke-dashoffset: 314.1592;
+        transition: stroke-dashoffset 1s ease-out;
+        transform-origin: 50% 50%;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+</style>
+<div style="position: relative;display: inline-block;" [style.width]="containerHeight">
+    <svg [style.height]="containerHeight" [style.width]="containerHeight">
+        <circle [id]="outerCircleId" class="circle" fill="none" style="stroke:#afbaca; stroke-opacity: .2" cx="52"
+            cy="52" r="50" [style.stroke-width]="strokeCircleWidth"></circle>
+        <circle [id]="innerCircleId" class="path circle" [style.stroke]="strokeColor"
+            [style.stroke-dasharray]="dashArray" [style.stroke-dashoffset]="archCircumferenceBound" cx="52" cy="52"
+            r="50" [style.stroke-width]="strokeCircleWidth" fill="none" />
+        <!-- <text sodipodi:linespacing="125%" *ngIf="showNumber" xml:space="preserve" class="arc-number" id="text4146" x="123"
+        y="120" text-anchor="middle">{{number}}</text> -->
+        <!-- <text sodipodi:linespacing="125%" xml:space="preserve" id="label" class="arc-label" x="123" y="160"
+        text-anchor="middle">{{label}}</text> -->
+    </svg>
+
+    <mat-icon *ngIf="iconClass" [style.color]="strokeColor">{{iconClass}}</mat-icon> 
+</div>
+<!-- Dash Array: {{dashArray}}<br>
+Radius: {{radius}}<br>
+archCircumferenceBound: {{archCircumferenceBound}}<br> -->

@@ -1,0 +1,744 @@
+<div flex style="padding-top: 60px;" *ngIf="workOrderSummary">
+  <div nogrow id="sidebar">
+    <my-claim-summary [workOrderSummary]="workOrderSummary" [jobItems]="jobItems"></my-claim-summary>
+
+    <mat-card topmargin20 id="additional-options">
+      <div class="sub-heading">Additional Options</div>
+      <button mat-button block (click)="back()">
+        Overview
+        <i class="material-icons" pull-right>keyboard_arrow_right</i>
+      </button>
+      <button *ngIf="!workOrderSummary.cancelledDate" mat-button block (click)="updateStatus()">
+        Update Status
+        <i class="material-icons" pull-right>keyboard_arrow_right</i>
+      </button>
+      <button *ngIf="!workOrderSummary.cancelledDate" mat-button block (click)="createAppointment()">
+        Schedule Appointment
+        <i class="material-icons" pull-right>keyboard_arrow_right</i>
+      </button>
+
+      <button *ngIf="!workOrderSummary.cancelledDate && portalEnabled" mat-button block (click)="startDispatch()">Assign
+        <i class="material-icons" pull-right>keyboard_arrow_right</i>
+      </button>
+      <!-- <button *ngIf="!workOrderSummary.cancelledDate && portalEnabled" mat-button block (click)="createAutho()">
+          Get Authorization
+          <i class="material-icons" pull-right>keyboard_arrow_right</i>
+      </button> -->
+      <button *ngIf="!workOrderSummary.cancelledDate" mat-button block (click)="startComplete()">Complete Service
+        Request
+        <i class="material-icons" pull-right>keyboard_arrow_right</i>
+      </button>
+      <button *ngIf="!workOrderSummary.cancelledDate" mat-button block (click)="startInvoicing()">Invoice
+        <i class="material-icons" pull-right>keyboard_arrow_right</i>
+      </button>
+
+      <button mat-button block (click)="showCoverageAndNotes()">Coverage &amp; Notes
+        <i class="material-icons" pull-right>keyboard_arrow_right</i>
+      </button>
+    </mat-card>
+  </div>
+  <div>
+    <mat-tab-group style="margin-top: -20px" class="hide-tabs" [selectedIndex]="selectedIndex"
+      (selectedIndexChange)="onStepChange()">
+      <mat-tab label="First">
+        <div class="padding">
+          <div class="hide-gt-sm">
+            <my-claim-summary [workOrderSummary]="workOrderSummary" [jobItems]="jobItems"></my-claim-summary>
+          </div>
+
+
+          <mat-card id="whats-next-card" style="max-width: 1200px;margin-bottom: 20px;">
+
+            <div aflex>
+              <div>
+                <h1 class="sub-heading">What's Next?</h1>
+              </div>
+              <div nogrow>
+                <button id="other-options-mobile-button" mat-button [matMenuTriggerFor]="otherOptionsMenu">
+                  <mat-icon>more_horiz</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <div style="text-align: center;" topmargin20>
+              <button mat-button mobile-block *ngIf="showScheduleAppointment" large mat-raised-button color="primary"
+                (click)="createAppointment()">
+                <i class="material-icons">event</i> Schedule Appointment</button>
+              <button mat-button mobile-block large *ngIf="showInvoicing" mat-raised-button color="primary"
+                (click)="startInvoicing()">Invoice</button>
+              <!-- <button mat-button mobile-block
+                    *ngIf="stepNumber == 2 && !workOrderSummary.cancelledDate && portalEnabled" large
+                    mat-raised-button color="primary" (click)="createAutho()">
+                    <i class="material-icons">gavel</i> Authorize</button> -->
+              <button mat-button mobile-block *ngIf="showComplete" large mat-raised-button color="primary"
+                (click)="startComplete()">Complete Service
+                Request</button>
+              <!-- <button mat-button mobile-block
+                *ngIf="showInvoicing" large mat-raised-button
+                color="primary" (click)="startInvoicing()">Invoice</button> -->
+
+              <ng-container *ngIf="!showScheduleAppointment && !showInvoicing && !showComplete">
+                <button mat-button mobile-block large mat-raised-button color="primary"
+                  (click)="startComplete()">Complete Service
+                  Request</button>
+
+                <!-- <div topmargin20 bottommargin20>-OR-</div>
+
+
+
+                <div style="max-width: 500px;text-align: center;margin: 0 auto; display: table;">
+
+
+                  <div flex>
+                    <div>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Status</mat-label>
+                        <mat-select [(ngModel)]="newStatus">
+                          <mat-option value="36406607-89CB-4760-ABB2-79095FA7E28A">Ordering Parts
+                          </mat-option>
+                          <mat-option value="E0B5402C-9D34-4B15-B419-C72464E3B220">Back Ordered
+                            Parts Delay
+                          </mat-option>
+                          <mat-option value="C57D321C-17EF-40C1-A70C-EED534C8AC6A">Customer No
+                            Show</mat-option>
+                          <mat-option value="C3E32787-4886-40BC-BE8D-DE829DB7FDF1">Authorization
+                            Requested</mat-option>
+                          <mat-option value="89225872-1323-41E8-85FC-50DAB7601F47">Parts Research
+                          </mat-option>
+                          <mat-option value="47A5716F-DB12-4D75-997A-F62697867567">Awaiting
+                            Customer Approval</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div nogrow>
+                      <button mat-button mat-raised-button style="margin-top: 5px;"
+                        [disabled]="!newStatus || updatingStatus" (click)="saveNewStatus()">
+                        <mat-spinner *ngIf="updatingStatus" class="thirty"></mat-spinner>
+                        Update Status
+                      </button>
+                    </div>
+                  </div>
+
+
+
+
+                </div> -->
+
+              </ng-container>
+
+            </div>
+
+
+            <mat-menu #otherOptionsMenu="matMenu">
+              <!-- <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button> -->
+
+              <!-- <button mat-menu-item block (click)="back()">
+                    Overview
+                </button> -->
+              <button *ngIf="!workOrderSummary.cancelledDate" mat-menu-item block (click)="updateStatus()">
+                Update Status
+              </button>
+              <button *ngIf="!workOrderSummary.cancelledDate" mat-menu-item block (click)="createAppointment()">
+                Schedule Appointment
+              </button>
+
+              <button *ngIf="!workOrderSummary.cancelledDate" mat-menu-item block (click)="startDispatch()">Dispatch
+              </button>
+              <!-- <button *ngIf="!workOrderSummary.cancelledDate && portalEnabled" mat-menu-item block
+                    (click)="createAutho()">
+                    Get Authorization
+                </button> -->
+              <button *ngIf="!workOrderSummary.cancelledDate" mat-menu-item block (click)="startComplete()">Complete
+                Service
+                Request
+              </button>
+              <button *ngIf="!workOrderSummary.cancelledDate && portalEnabled" mat-menu-item block
+                (click)="startInvoicing()">Invoice
+              </button>
+
+              <button mat-menu-item block (click)="showCoverageAndNotes()">Coverage &amp; Notes
+              </button>
+            </mat-menu>
+          </mat-card>
+
+          <mat-card style="max-width: 1200px;margin-bottom: 20px;margin-top: 20px">
+            <div class="sub-heading">
+              <i class="material-icons">timeline</i> Job Items <button mat-button (click)="updateStatus()">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+            <!-- <div flex id="workOrderStatusBar">
+              <div *ngFor="let step of steps" flex>
+                <div class="status-line-container">
+                  <div class="status-line" [class.complete]="step.complete"></div>
+                </div>
+
+                <div nogrow [class.complete]="step.complete ">
+                  <i class="material-icons step-number ">filter_{{steps.indexOf(step) + 1}}</i>
+                  <i class="material-icons ">{{step.iconClass}}</i> {{step.description}}
+                  <br>{{step.subStatus}}
+                </div>
+              </div>
+            </div>
+
+            <div clear></div> -->
+            <div class="jobs-items-container">
+              <div *ngFor="let item of jobItems" class="job-item">
+                <div>
+                  <img [src]="item.url">
+                </div>
+                <div>
+                  <h2 class="sub-heading">{{item.itemName}}</h2>
+                  <app-circle-widget-small [percent]="item.percent" [iconClass]="item.iconClass">
+                  </app-circle-widget-small>
+                  <div>
+                    <span class="badge">{{item.status}} </span>
+                  </div>
+                </div>
+                <div aflex>
+                  <div></div>
+                  <div nogrow>
+                    <button mat-button (click)="updateStatusOnItem(item)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </div>
+                </div>
+                <!-- <div>
+                  {{item.itemName}}
+
+                  <div>
+                    <div flex id="workOrderStatusBar">
+                      <div *ngFor="let step of steps" flex>
+                          <div class="status-line-container">
+                              <div class="status-line" [class.complete]="step.complete"></div>
+                          </div>
+
+                          <div nogrow [class.complete]="step.complete ">
+                              <i class="material-icons step-number ">filter_{{steps.indexOf(step) + 1}}</i>
+                              <i class="material-icons ">{{step.iconClass}}</i> {{step.description}}
+                              <br>{{step.subStatus}}
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </mat-card>
+
+          <div flex style="max-width: 1200px; margin-bottom: 20px ">
+            <mat-card flex1>
+              <div class="sub-heading">
+                <i class="material-icons ">view_list</i> Status History
+              </div>
+
+              <div class="table " id="statusHistory " ng-if="statusHistory && statusHistory.length> 0">
+                <div class="table-header">
+                  <div>
+                    Date
+                  </div>
+                  <div>Status</div>
+                  <div>Item(s)</div>
+                </div>
+                <div class="table-row" *ngFor="let item of statusHistory">
+                  <div>{{item.createdDate | date: 'shortDate'}}</div>
+                  <div>{{item.newStatus}} </div>
+                  <div>{{item.items}}</div>
+                </div>
+              </div>
+
+            </mat-card>
+            <mat-card flex1 id="authoCard">
+              <div class="sub-heading">
+                <i class="material-icons">gavel</i> Authorization Information
+              </div>
+              <h1 class="really-big">{{workOrderSummary.authorizationLimit | currency:'USD':true:'1.0-0'}}
+              </h1>
+              <div class="data-label" style="text-align: center">Authorization Limit</div>
+              <div>
+                <!-- <button mat-button pull-right *ngIf="!workOrderSummary.cancelledDate && portalEnabled"
+                        (click)="createAutho()">Get
+                        Authorization</button> -->
+              </div>
+              <div clearfix></div>
+            </mat-card>
+          </div>
+
+          <div flex style="max-width: 1200px">
+            <mat-card flex1 style="max-width: 1200px; margin-bottom: 20px " class="restrict-height">
+
+              <div aflex>
+
+                <div class="sub-heading">
+                  Pictures &amp; Notes
+                </div>
+                <div nogrow>
+
+                  <button mat-button (click)="showFileUpload()" title="Add Picture">
+                    <mat-icon>image</mat-icon>
+                  </button>
+                  <button mat-button (click)="addNote()" title="Add Note">
+                    <mat-icon>note_add</mat-icon>
+                  </button>
+                </div>
+              </div>
+
+
+              <input type="file" style="display: none" name="fileToUpload1" (change)="handleFileUpload($event)"
+                accept="image/*" id="fileToUpload1" />
+              <div topmargin20>
+                <a [href]="attachment.downloadUrl" mat-button class="attachment" *ngFor="let attachment of attachments">
+                  <img [src]="!attachment.base64 ? attachment.thumbnailUrl : attachment.base64" style="max-width: 128px"
+                    [title]="attachment.name"><br>
+                  <span class="attachment-name">
+                    {{attachment.name}}</span>
+                </a>
+                <div *ngFor="let note of notes" class="work-order-note">
+                  {{note.createdDate | date: 'shortDate'}} {{note.createdDate | date: 'shortTime'}} - <span
+                    [innerHTML]="note.noteText"></span>
+                </div>
+              </div>
+            </mat-card>
+
+            <mat-card flex1 style="max-width: 1200px; margin-bottom: 20px">
+              <div class="sub-heading">
+                Questions &amp; Answers
+              </div>
+
+              <!-- <ul topmargin20 id="qAndAList">
+                <ng-container *ngFor="let qa of workOrderSummary.questionsAndAnswers">
+                  <li *ngIf="qa.text !== 'Done'">
+                    <span class="data-label">{{qa.text}}</span>: {{qa.answer}}
+                  </li>
+                </ng-container>
+              </ul> -->
+              <!-- <mat-tab-group class="show-tabs">
+                <mat-tab *ngFor="let item of jobItems" label="{{item.itemName}}">
+
+                  <ul topmargin20 class="qAndAList">
+                    <ng-container *ngFor="let qa of item.questionsAndAnswers">
+                      <li *ngIf="qa.text !== 'Done'">
+                        <span class="data-label">{{qa.text}}</span>: {{qa.answer}}
+                      </li>
+                    </ng-container>
+                  </ul>
+                </mat-tab>
+              </mat-tab-group> -->
+
+              <div topmargin30></div>
+              <mat-accordion>
+                <mat-expansion-panel *ngFor="let item of jobItems">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <img [src]="item.url" style="height: 30px;">
+                      {{item.itemName}}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <ul topmargin20 class="qAndAList">
+                    <ng-container *ngFor="let qa of item.questionsAndAnswers">
+                      <li *ngIf="qa.text !== 'Done'">
+                        <span class="data-label">{{qa.text}}</span>: {{qa.answer}}
+                      </li>
+                    </ng-container>
+                  </ul>
+                </mat-expansion-panel>
+
+              </mat-accordion>
+            </mat-card>
+
+          </div>
+          <div flex style="max-width: 1200px">
+            <mat-card flex1 style="max-width: 1200px; margin-bottom: 20px ">
+              <div class="sub-heading">
+                <i class="material-icons">sentiment_neutral</i> Survey
+              </div>
+
+              <ng-container *ngIf="survey">
+                <div flex>
+                  <div>
+                    <div class="star-ratings-sprite">
+                      <span id="rating" [style.width]="(survey.rating / 5 * 100) + '%'"
+                        class="star-ratings-sprite-rating"></span>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div *ngIf="survey.comments">
+                  <div class="conversation-bubble incoming">{{survey.comments}}</div>
+                  <div class="said"> ~ {{survey.customerName}} {{survey.createdDate | date: 'shortDate'}}</div>
+                </div>
+              </ng-container>
+            </mat-card>
+            <mat-card style="opacity: 0;">
+
+            </mat-card>
+          </div>
+
+
+        </div>
+      </mat-tab>
+      <mat-tab label="Appointment">
+
+        <h1 class="page-title"><span class="big"> Schedule</span><br> <span class="little">Appointment</span>
+        </h1>
+        <div style="min-height: 550px;max-width: 950px">
+
+          <mat-card *ngIf="workOrderSummary.formattedAppointmentDate" bottommargin20>
+            There is an appointment scheduled for {{workOrderSummary.formattedAppointmentDate}}
+            {{workOrderSummary.scheduledStartWindow}}-{{workOrderSummary.scheduledEndWindow}}
+
+            <!-- <button mat-button [disabled]="resendingAppointmentEmail"
+                    (click)="resendAppointmentNotification()">
+                    <mat-spinner *ngIf="resendingAppointmentEmail" class="thirty"></mat-spinner>
+                    Resend Appointment Notification
+                </button> -->
+          </mat-card>
+
+          <mat-card>
+            <div flex>
+              <div nogrow>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Appointment Date</mat-label>
+                  <input matInput [matDatepicker]="picker" [(ngModel)]="apptDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div>
+                <button *ngFor="let date of preSelectDates" (click)="setDate(date)"
+                  [class.selected]="date.date.getDate() == apptDate.getDate() && date.date.getMonth() == apptDate.getMonth() && date.date.getFullYear() == apptDate.getFullYear()"
+                  mat-button class="circular-button">
+                  <i class="material-icons">event</i>
+                  <div class="button-header">{{date.heading}}</div>
+                  <div>{{date.dayOfWeek}}</div>
+                </button>
+
+              </div>
+            </div>
+
+            <div topmargin40>
+              <div class="data-label">Scheduling Window</div>
+              <div topmargin20 flex>
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Start Window</mat-label>
+                    <mat-select [(ngModel)]="startWindow">
+                      <mat-option value="5 AM">5 AM</mat-option>
+                      <mat-option value="6 AM">6 AM</mat-option>
+                      <mat-option value="7 AM">7 AM</mat-option>
+                      <mat-option value="8 AM">8 AM</mat-option>
+                      <mat-option value="9 AM">9 AM</mat-option>
+                      <mat-option value="10 AM">10 AM</mat-option>
+                      <mat-option value="11 AM">11 AM</mat-option>
+                      <mat-option value="12 PM">12 PM</mat-option>
+                      <mat-option value="1 PM">1 PM</mat-option>
+                      <mat-option value="2 PM">2 PM</mat-option>
+                      <mat-option value="3 PM">3 PM</mat-option>
+                      <mat-option value="4 PM">4 PM</mat-option>
+                      <mat-option value="5 PM">5 PM</mat-option>
+                      <mat-option value="6 PM">6 PM</mat-option>
+                      <mat-option value="7 PM">7 PM</mat-option>
+                      <mat-option value="8 PM">8 PM</mat-option>
+                      <mat-option value="9 PM">9 PM</mat-option>
+                      <mat-option value="10 PM">10 PM</mat-option>
+                      <mat-option value="11 PM">11 PM</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>End Window</mat-label>
+                    <mat-select [(ngModel)]="endWindow">
+                      <mat-option value="5 AM">5 AM</mat-option>
+                      <mat-option value="6 AM">6 AM</mat-option>
+                      <mat-option value="7 AM">7 AM</mat-option>
+                      <mat-option value="8 AM">8 AM</mat-option>
+                      <mat-option value="9 AM">9 AM</mat-option>
+                      <mat-option value="10 AM">10 AM</mat-option>
+                      <mat-option value="11 AM">11 AM</mat-option>
+                      <mat-option value="12 PM">12 PM</mat-option>
+                      <mat-option value="1 PM">1 PM</mat-option>
+                      <mat-option value="2 PM">2 PM</mat-option>
+                      <mat-option value="3 PM">3 PM</mat-option>
+                      <mat-option value="4 PM">4 PM</mat-option>
+                      <mat-option value="5 PM">5 PM</mat-option>
+                      <mat-option value="6 PM">6 PM</mat-option>
+                      <mat-option value="7 PM">7 PM</mat-option>
+                      <mat-option value="8 PM">8 PM</mat-option>
+                      <mat-option value="9 PM">9 PM</mat-option>
+                      <mat-option value="10 PM">10 PM</mat-option>
+                      <mat-option value="11 PM">11 PM</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="data-label">Job Items To Invoice</div>
+            <div *ngFor="let jobItem of jobItems">
+              <mat-checkbox [(ngModel)]="jobItem.selected">{{jobItem.itemName}}
+              </mat-checkbox>
+            </div>
+          </mat-card>
+          <div topmargin20>
+            <button mat-button (click)="back()">
+              <i class="material-icons">keyboard_arrow_left</i> Back</button>
+            <button mat-button mat-raised-button large color="primary"
+              [disabled]="savingAppointment || !canSaveAppointment" pull-right (click)="saveAppointment()">
+              <mat-spinner *ngIf="savingAppointment" class="thirty"></mat-spinner>
+              Schedule
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Complete Job">
+
+        <div class="job-complete-div">
+          <h1 class="page-title"><span class="big"> Complete</span><br> <span class="little">Service
+              Request</span></h1>
+        </div>
+        <mat-card id="completeJobCard">
+
+          <div aflex>
+            <div nogrow>
+              <i class="material-icons page-icon">done</i>
+            </div>
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Resolution</mat-label>
+                <textarea matInput rows="5" [(ngModel)]="resolution"></textarea>
+              </mat-form-field>
+              <mat-form-field appearance="outline" style="max-width: 300px;">
+                <mat-label>Completion Date</mat-label>
+                <input matInput [matDatepicker]="picker1" [max]="maxDate" [(ngModel)]="completedDate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <div>
+                <div class="data-label">Job Items To Complete</div>
+                <div *ngFor="let jobItem of jobItems">
+                  <mat-checkbox [(ngModel)]="jobItem.selected">{{jobItem.itemName}}
+                  </mat-checkbox>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+
+
+        </mat-card>
+
+        <div aflex topmargin20 class="job-complete-div">
+          <div>
+            <button mat-button (click)="back()">
+              <i class="material-icons">keyboard_arrow_left</i> Back</button>
+          </div>
+          <div nogrow>
+            <button mat-button mat-raised-button large pull-right color="primary" (click)="completeWorkOrder()"
+              [disabled]="!canCompleteWorkOrder || completingWorkOrder">Complete</button>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Second">
+
+        <ng-container>
+          <h1 class="page-title"><span class="big"> Create</span><br> <span class="little">Invoice</span></h1>
+          <div style="max-width: 800px">
+            <mat-card>
+              <div class="data-label">Payable To</div>
+              <div style="font-size: 24px; color: rgb(200,200,200)">{{workOrderSummary.contractorName}}
+              </div>
+              <div flex topmargin30>
+                <div>
+                  <div class="data-label">Received Date</div>
+                  {{invoice.receivedDate | date: 'shortDate'}}
+                </div>
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Job Completion Date</mat-label>
+                    <input matInput [matDatepicker]="completionDatePicker" [(ngModel)]="completedDate">
+                    <mat-datepicker-toggle matSuffix [for]="completionDatePicker">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #completionDatePicker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Invoice #</mat-label>
+                    <input matInput [(ngModel)]="invoice.contractorInvoiceNumber">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div flex topmargin30>
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Work Performed</mat-label>
+                    <textarea rows="6" matInput [(ngModel)]="invoice.workPerformed"></textarea>
+                  </mat-form-field>
+                </div>
+                <div nogrow style="width: 200px;">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Parts Cost</mat-label>
+                    <input matInput type="number" [(ngModel)]="invoice.partsCost">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Labor Cost</mat-label>
+                    <input matInput type="number" [(ngModel)]="invoice.laborCost">
+                  </mat-form-field>
+
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Tax</mat-label>
+                    <input matInput type="number" [(ngModel)]="invoice.tax">
+                  </mat-form-field>
+
+                  <!-- <div id="invoice-total">
+                              <div class="data-label">Total</div>
+                              <h1>
+                                  {{invoice.totalAmount | currency}}
+                              </h1>
+                          </div> -->
+                </div>
+              </div>
+              <div aflex>
+                <div>
+                  <div class="data-label">Job Items To Invoice</div>
+                  <div *ngFor="let jobItem of jobItems">
+                    <mat-checkbox [(ngModel)]="jobItem.selected">{{jobItem.itemName}}
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <div nogrow>
+                  <app-display-total [total]="invoice.totalAmount" label="Invoice Total">
+                  </app-display-total>
+                </div>
+              </div>
+
+            </mat-card>
+
+            <div aflex topmargin20>
+              <div>
+                <button mat-button (click)="back()">
+                  <i class="material-icons">keyboard_arrow_left</i> Back</button>
+              </div>
+              <div nogrow>
+                <button mat-button large mat-raised-button color="primary" (click)="saveInvoice()"
+                  [disabled]="!invoice.canSave || savingInvoice || !completedDate">
+                  <mat-spinner *ngIf="savingInvoice" class="thirty"></mat-spinner>
+                  Save Invoice
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </mat-tab>
+      <mat-tab>
+        <div style="max-width: 900px;">
+          <mat-card _ngcontent-hdf-c391="" class="mat-card mat-focus-indicator ng-star-inserted">
+            <h1 _ngcontent-hdf-c391="" class="page-title ng-star-inserted"><span _ngcontent-hdf-c391="" class="big">
+                Coverage</span><br _ngcontent-hdf-c391=""><span _ngcontent-hdf-c391="" class="little">Language</span>
+            </h1>
+            <mat-accordion>
+              <mat-expansion-panel *ngFor="let item of jobItems">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <img [src]="item.url" style="height: 30px;">
+                    {{item.itemName}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div _ngcontent-hdf-c391="" class="data-label">Covered</div>
+                <div _ngcontent-hdf-c391="">Drain line stoppages, leaks and breaks of interior waste, gas, water, vent
+                  lines
+                  and drains, circulating hot water pump, permanent sump pump located within the perimeter of the
+                  foundation(ground water only); shower/tub valve, diverter valve, ball valve, gate valve, Whirlpool
+                  bath
+                  pump, and motor. Toilet bowls, tanks, and mechanisms (replaced with white builders standard if
+                  necessary),
+                  toilet wax ring seals, gas or electric water heater (up to 50 gal).</div>
+                <div _ngcontent-hdf-c391="" topmargin30="" class="data-label">Not Covered</div>
+                <div _ngcontent-hdf-c391="">Fixtures (including faucets, bathtub, shower base pans and enclosures),
+                  sprinkler systems, filters, shower head, shower arm, corrosion, tile, grouting, caulking, toilet-lids,
+                  toilet seats, stop and waste valves, bidets, internal and external hose bibs, saunas and/or steam
+                  rooms,
+                  whirlpool jets, septic tanks, fire suppressions systems, pressure regulators, conditions that are due
+                  to
+                  calcium, sediment, or chemical build-up, mineral deposits, tankless water heaters, water heater drip
+                  pans,
+                  heat pump/water heater combo units, desuperheater, basket strainers, pop-up assemblies, flues and
+                  vents,
+                  energy conservation units, noise, water softeners, water filters, problems associated with water
+                  purification (including taste, odor and color) flow restrictions in fresh water lines, inadequate or
+                  excessive water pressure, sewage ejector pump, solar equipment, stoppages due to roots, hydrojetting,
+                  expansion tanks, earthquake straps, and/or any items added after the effective date of this Service
+                  Contract.</div>
+                <div _ngcontent-hdf-c391="" topmargin30="" class="data-label">Limits</div>
+                <div _ngcontent-hdf-c391="">
+                  <p>1. EHW will only be responsible for covered plumbing repairs through unobstructed ceilings, walls
+                    and
+                    floors and will provide a cash in lieu of returning access point to a rough finish. Cash in lieu
+                    amounts
+                    will be based on size of access point. Under 5 square feet: $40; 5-10 square feet: $60.</p>
+
+                  <p>2. EHW will pay $500 maximum for diagnosis, repair, or replacement of items located in or below
+                    concrete slab and items encased or covered by concrete.</p>
+
+                  <p>3. EHW shall only be responsible for one sewer stoppage clearing for each main sewer line,
+                    secondary
+                    waste line, and/or toilet. EHW will clear stoppages which can be cleared with a standard sewer cable
+                    through an existing clean-out located in the home not requiring excavation. EHW will not clear a
+                    drain
+                    or sewer line by accessing a vent or removing toilets.</p>
+
+                  <p>4. EHW is not responsible for any damages due to back flow, stoppages that are caused, in whole or
+                    in
+                    part, by damaged, broken, or collapsed lines that exist beyond the home’s foundation, stoppages that
+                    cannot be cleared with cable, stoppages caused by, or related to roots or the infiltration of other
+                    outside foreign objects, costs related to diagnosis of the stoppage, or the access or installation
+                    of a
+                    ground level clean out.</p>
+
+                  <p>5. Toilets replaced with white standard builders grade toilet if necessary.</p>
+
+                  <p>6. Limit of $800 maximum for the diagnosis and repair of Oil, Tankless, or Power Vent Water
+                    Heaters.
+                  </p>
+                </div>
+              </mat-expansion-panel>
+
+            </mat-accordion>
+
+
+          </mat-card>
+          <!--bindings={
+  "ng-reflect-ng-if": "[object Object]"
+}-->
+          <mat-card topmargin30 _ngcontent-hdf-c391="" class="mat-card mat-focus-indicator ng-star-inserted">
+            <h1 _ngcontent-hdf-c391="" class="page-title ng-star-inserted"><span _ngcontent-hdf-c391="" class="big">
+                Job</span><br _ngcontent-hdf-c391=""><span _ngcontent-hdf-c391="" class="little">Notes</span></h1>
+          </mat-card>
+          <div _ngcontent-hdf-c391="" aflex="" topmargin20="" class="ng-star-inserted">
+            <div _ngcontent-hdf-c391=""><button _ngcontent-hdf-c391="" mat-button=""
+                class="mat-focus-indicator mat-button mat-button-base"><span class="mat-button-wrapper"><i
+                    _ngcontent-hdf-c391="" class="material-icons">keyboard_arrow_left</i> Back</span><span matripple=""
+                  class="mat-ripple mat-button-ripple" ng-reflect-disabled="false" ng-reflect-centered="false"
+                  ng-reflect-trigger="[object HTMLButtonElement]"></span><span
+                  class="mat-button-focus-overlay"></span></button></div>
+            <div _ngcontent-hdf-c391="" nogrow=""></div>
+          </div>
+          <!--container-->
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+</div>

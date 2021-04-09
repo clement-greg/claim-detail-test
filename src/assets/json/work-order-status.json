@@ -1,0 +1,38 @@
+[
+    {
+        "id": "C57D321C-17EF-40C1-A70C-EED534C8AC6A",
+        "name": "Customer No Show",
+        "iconClass": "report",
+        "number": 3
+    },
+    {
+        "id": "C3E32787-4886-40BC-BE8D-DE829DB7FDF1",
+        "name": "Authorization Requested",
+        "iconClass": "gavel",
+        "number": 3
+    },
+    {
+        "id": "47A5716F-DB12-4D75-997A-F62697867567",
+        "name": "Awaiting Customer Approval",
+        "iconClass": "download_done",
+        "number": 3
+    },
+    {
+        "id": "89225872-1323-41E8-85FC-50DAB7601F47",
+        "name": "Parts Research",
+        "iconClass": "science",
+        "number": 3
+    },
+    {
+        "id": "36406607-89CB-4760-ABB2-79095FA7E28A",
+        "name": "Parts Ordered",
+        "iconClass": "shopping_cart",
+        "number": 3
+    },
+    {
+        "id": "E0B5402C-9D34-4B15-B419-C72464E3B220",
+        "name": "Parts Backordered",
+        "iconClass": "hourglass_empty",
+        "number": 3
+    }
+]

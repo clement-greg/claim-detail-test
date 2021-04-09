@@ -1,0 +1,71 @@
+
+<mat-card *ngIf="workOrderSummary">
+    <mat-card-content>
+      <div aflex>
+        <div>
+          <div class="data-label">Request #:</div>
+          <h1>{{workOrderSummary.number}}</h1>
+        </div>
+        <div nogrow>
+          <button id="toggle-more-claim-summary-detail" mat-button (click)="claimSummaryExpanded = !claimSummaryExpanded">
+            <mat-icon class="rotate-icon" [class.rotated]="claimSummaryExpanded">chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div id="more-claim-summary-detail" [class.expanded]="claimSummaryExpanded">
+        <div topmargin20>
+          <div class="data-label">Contact Information</div>
+          <div>{{workOrderSummary.contactName}}</div>
+          <div *ngIf="workOrderSummary.contactPhone">{{workOrderSummary.contactPhone}}</div>
+          <div *ngIf="workOrderSummary.contactEmail">{{workOrderSummary.contactEmail}}</div>
+        </div>
+  
+        <div topmargin20>
+          <div class="data-label">Property Information</div>
+          <a id="google-maps-button" mat-button target="_blank" mat-button
+            href="https://maps.google.com/?q={{workOrderSummary.propertyAddress}} {{workOrderSummary.propertyCity}} {{workOrderSummary.propertyState}} {{workOrderSummary.propertyPostalCode}}">
+            <div aflex>
+              <div>
+                <div>{{workOrderSummary.propertyAddress}}</div>
+                <div *ngIf="workOrderSummary.propertyAddress2">{{workOrderSummary.propertyAddress2}}</div>
+                <div>{{workOrderSummary.propertyCity}}, {{workOrderSummary.propertyState}}
+                  {{workOrderSummary.propertyPostalCode}}</div>
+              </div>
+              <div nogrow>
+                <i class="material-icons">navigation</i>
+              </div>
+            </div>
+          </a>
+        </div>
+  
+        <div topmargin20>
+          <div class="data-label">Service Provider</div>
+          <div aflex>
+            <div nogrow>
+  
+              <img [src]="getEntityThumbnailUrl(workOrderSummary.contractorId)" style="width: 60px">
+            </div>
+            <div>
+              {{workOrderSummary.contractorName}}<br> {{workOrderSummary.contractorEmail}}
+              <br> {{workOrderSummary.contractorPhone}}
+            </div>
+          </div>
+        </div>
+  
+        <div topmargin20>
+          <div class="data-label">Service Item</div>
+          <div aflex>
+            <div nogrow>
+              <img [src]="getItemThumbnailUrl(workOrderSummary.itemId)" style=" width: 60px">
+              <span class="badge" *ngIf="hasPlusCount" style="margin-bottom: -23px;margin-left: -15px;background-color: rgb(88, 191, 116);">+{{plusCount}}</span>
+            </div>
+            <div>
+              {{workOrderSummary.itemName}}
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

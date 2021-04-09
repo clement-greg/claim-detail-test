@@ -1,0 +1,15 @@
+.path {
+    stroke-dasharray: 603.185;
+    stroke-dashoffset: 603.185;
+    transition: stroke-dashoffset 1s ease-out;
+    transform-origin: 50% 50%;
+}
+
+mat-icon {
+    height: 44px;
+    width: 44px;
+    position: absolute;
+    font-size: 44px;
+    left: calc(50% - 21px);
+    top: calc(50% - 22px);
+}

@@ -1,0 +1,339 @@
+.example-sidenav {}
+
+#companyLogo {
+    max-height: 40px;
+    margin-top: 5px;
+}
+
+.mat-sidenav {
+    min-width: 250px;
+    padding-top: 50px;
+}
+
+#appHeader.scrolled {
+    background-color: #637283;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.45);
+    border-bottom: 1px solid transparent;
+    /* background: linear-gradient(to top right, #fff, #ccc); */
+    background: #fff;
+}
+
+/* #appHeader.scrolled button {
+  color: #fff;
+} */
+
+.app-menu-items {
+    list-style: none;
+    display: inline-block;
+}
+
+.app-menu-items li {
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+}
+
+.app-menu-items li a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f44336;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.app-menu-items li a {
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.app-menu-items li a:hover, .app-menu-items li a:focus {
+    color: #f44336 !important;
+}
+
+.app-menu-items li a:hover::before, .app-menu-items li.active a::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* div.scrolled .app-menu-items li a {
+  color: #fff !important;
+} */
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%)
+    }
+    to {
+        transform: translateX(0)
+    }
+}
+
+#app-content {
+    padding-top: 50px;
+}
+
+#side-nav {
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    z-index: 20;
+    top: 0;
+    background-color: rgb(24, 24, 24);
+    animation-name: slide-in;
+    animation-duration: .5s;
+    box-shadow: 10px 0px 10px -2px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    background: linear-gradient(to right, #36454F, #363D4F);
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-5%) scale(.85);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+#app-content.entering {
+    animation: slide-down .5s ease-out;
+}
+
+#side-nav a {
+    display: block;
+    color: #fff !important;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#side-nav h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: lowercase;
+    margin-top: 20px;
+    font-size: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted #fff;
+}
+
+#back-drop {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 19;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+#person-icons-container {
+    margin: 0 auto;
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+    background-color: #fff;
+    text-align: center;
+    padding-top: 5px;
+}
+
+#person-icons-container i {
+    color: rgba(0, 0, 0, .5);
+    font-size: 50px;
+}
+
+.navbar-default {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: #fff;
+    padding-top: 0;
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+li.active {
+    background-color: transparent !important;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus, .menu-item.active>a {
+    color: #f44336 !important;
+    background-color: transparent !important;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    color: #f44336 !important;
+    background-color: transparent !important;
+}
+
+.navbar-brand {
+    padding: 0;
+    float: none;
+}
+
+.navbar-brand img {
+    margin-top: 8px;
+    margin-left: 8px;
+    height: 48px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: none;
+}
+
+.main-menu {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+}
+
+.main-menu li a {
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+.main-menu li a:hover {
+    color: #f44336 !important;
+}
+
+.main-menu li a span {
+    position: relative;
+    display: block;
+    padding-bottom: 5px;
+    white-space: nowrap;
+}
+
+.main-menu li a span:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f44336;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.main-menu li.active a span:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.main-menu li a:hover span:before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.nav.navbar-nav.navbar-right {
+    flex-direction: row;
+}
+
+.navbar-toggle {
+    background-color: transparent !important;
+}
+
+#nav-toggle-button {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar-default .navbar-nav>li>a {
+        margin-top: 10px;
+        padding: 8px;
+    }
+    .nav.navbar-nav.navbar-right {
+        flex-direction: column;
+    }
+    .collapse {
+        background-color: rgba(0, 0, 0, .7);
+        margin-top: 10px;
+        display: none !important;
+    }
+    .menu-animation .collapse {
+        background-color: transparent;
+    }
+    #nav-toggle-button {
+        display: inline;
+    }
+}
+
+.navbar-default.menu-animation {
+    background-color: #333;
+    padding: 5px 0;
+    width: 100%;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+    /* background: linear-gradient(to top right, #fff, #ccc); */
+    background: #fff;
+}
+
+.nav.navbar-nav.navbar-right {
+    /* background-color: rgba(0, 0, 0, .5); */
+    transition: all .5s ease-out;
+}
+
+.navbar-default.menu-animation .nav.navbar-nav.navbar-right {
+    background-color: transparent;
+}
+
+.header-search-container {
+    display: inline-block;
+    width: 350px;
+}
+
+@media only screen and (max-width: 480px) {
+    .main-menu {
+        color: #fff !important;
+        margin-left: 0px;
+    }
+}
+
+@media only screen and (max-width: 667px) {
+    .app-menu-items, .header-search-container {
+        display: none;
+    }
+}
+
+.navbar-default.menu-animation li a {
+    color: rgba(0, 0, 0, .7) !important;
+    text-shadow: none;
+}
+
+.navbar-default.menu-animation li a:hover {
+    color: #f44336 !important;
+}
+
+.navbar-default .navbar-toggle {
+    background: #fff none repeat scroll 0 0;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #f44336;
+}

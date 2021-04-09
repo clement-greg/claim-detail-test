@@ -1,0 +1,41 @@
+#google-maps-button {
+    text-align: left;
+    text-transform: none;
+    line-height: 22px;
+    display: block;
+    padding-top: 5px;
+    padding-left: 0;
+    padding-bottom: 5px;
+}
+
+#toggle-more-claim-summary-detail {
+    display: none;
+}
+
+.rotate-icon {
+    transition: all .5s;
+}
+
+.rotate-icon.rotated {
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    /* mat-card {
+        box-shadow: none  !important;
+        background-color: transparent;
+    } */
+
+    #more-claim-summary-detail {
+        display: none;
+    }
+
+    #more-claim-summary-detail.expanded {
+        display: block;
+    }
+
+    #toggle-more-claim-summary-detail {
+        display: inline;
+    }
+
+}

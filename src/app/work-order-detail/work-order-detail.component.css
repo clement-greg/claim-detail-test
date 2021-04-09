@@ -1,0 +1,421 @@
+#workOrderStatusBar {
+    margin-top: 30px;
+    align-items: center;
+}
+
+#time-slot-acceptance-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 2;
+    /* margin-top: 60px; */
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow-y: auto;
+    max-height: 100vh;
+    padding-top: 60px;
+}
+
+.invoice-item {
+    border-bottom: 1px dotted rgb(200, 200, 200);
+}
+
+#time-slot-acceptance {
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    display: table;
+    margin: 0 auto;
+    margin-top: 40px;
+    box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+}
+
+#time-slot-buttons-container {}
+
+#time-slot-buttons-container button {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.work-order-note {
+    border-bottom: 1px dotted rgb(200, 200, 200);
+    padding: 10px;
+}
+
+#workOrderStatusBar div[nogrow] {
+    text-align: center;
+    color: rgba(0, 0, 0, .2);
+    transition: color 1s ease-out;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+#workOrderStatusBar div[nogrow] i {
+    display: block;
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 10px;
+    text-transform: none;
+}
+
+#workOrderStatusBar div[nogrow].complete {
+    color: #1d773d;
+}
+
+/* #workOrderStatusBar div.status-line {
+    height: 3px;
+    background-color: rgba(0, 0, 0, .2);
+    transition: background-color 1s ease-out;
+} */
+
+#workOrderStatusBar div.status-line.complete {
+    background-color: #1d773d;
+}
+
+.step-number {
+    font-size: 18px !important;
+    text-align: left;
+    margin-left: -60px;
+}
+
+.schedule-view-container {
+    max-width: calc(100vw - 410px);
+}
+
+#sidebar {
+    width: 360px;
+    overflow-x: hidden;
+    transition: width 1s;
+    padding: 5px;
+    white-space: nowrap;
+}
+
+#sidebar.collapsed {
+    width: 0;
+    padding: 0;
+}
+
+#sidebar button {
+    text-align: left;
+}
+
+#sidebarToggle {
+    width: 55px;
+    margin-left: 0;
+    cursor: pointer;
+    border-right: 1px solid rgba(0, 0, 0, 0);
+    transition: all 1s;
+    min-height: 100%;
+}
+
+#sidebarToggle.collapsed {
+    border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+#sidebarToggle i {
+    transition: all 1s;
+}
+
+#sidebarToggle.collapsed i {
+    transform: rotate(-90deg);
+}
+
+#quickSummary {
+    transform: rotate(90deg);
+    transform-origin: 0 100;
+    transition: all 1s;
+    opacity: 0;
+    white-space: nowrap;
+    margin-top: 20px;
+}
+
+#sidebarToggle.collapsed #quickSummary {
+    opacity: 1;
+    font-size: 16px;
+}
+
+.attachment-name {
+    display: inline-block;
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#sidebar policy-summary-viewer {
+    display: block;
+    width: 350px;
+}
+
+.job-complete-div {
+    width: 100%;
+    max-width: 700px;
+    /* display: table;
+    margin: 0 auto; */
+}
+
+#sidebarToggle button {
+    min-width: auto;
+}
+
+.button-header {
+    font-weight: bold;
+}
+
+.selected {
+    background-color: #58ad5e;
+    color: #fff;
+}
+
+.status-line-container {
+    margin-top: 35%;
+}
+
+.really-big {
+    margin-top: 30px;
+    color: rgba(0, 0, 0, .6);
+    font-size: 84px !important;
+    text-align: center;
+    display: block;
+    line-height: 84px !important;
+}
+
+.restrict-height {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#invoice-total {
+    background-image: url(https://upkeeplabs.blob.core.windows.net/doc-public/cdn/images/three-triangles.png);
+    background-repeat: no-repeat;
+    margin-top: 20px;
+    min-height: 80px;
+    min-width: 173px;
+}
+
+#invoice-total>div:first-child {
+    padding-top: 30px;
+    padding-left: 100px;
+}
+
+#invoice-total h1 {
+    padding-left: 70px;
+}
+
+#completeJobCard {
+    width: 100%;
+    max-width: 700px;
+    /* display: table;
+    margin: 0 auto; */
+    margin-bottom: 3px;
+}
+
+.attachment {}
+
+#statusHistory {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+#mobile-menu-button {
+    display: none;
+}
+
+.circular-button {
+    margin-bottom: 10px !important;
+}
+
+#canceledStamp {
+    position: absolute;
+    z-index: 2;
+    left: calc(50% - 75px);
+    top: 200px;
+    border: 10px solid red;
+    color: red;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    transform: rotate(-20deg);
+}
+
+#canceledStamp h1 {
+    color: red;
+    font-size: 32px;
+}
+
+#other-options-mobile-button {
+    display: none;
+}
+
+.qAndAList {
+    list-style: none;
+}
+
+.qAndAList li {
+    margin-bottom: 10px;
+}
+
+.star-ratings-sprite {
+    background: url("../../assets/images/star-rating-sprite.png") repeat-x;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -999em;
+    height: 65px;
+    width: 330px;
+    display: table;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.star-ratings-sprite-rating {
+    background: url("../../assets/images/star-rating-sprite.png") repeat-x;
+    background-position: 0 100%;
+    float: left;
+    height: 65px;
+    display: block;
+    transition: width ease-out .5s;
+    margin-top: -1px;
+}
+
+.incoming.conversation-bubble {
+    color: #000;
+}
+
+.incoming {
+    background: rgba(0, 0, 0, .1);
+}
+
+.conversation-bubble {
+    position: relative;
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 5px;
+    white-space: normal;
+    line-height: 24px;
+    text-transform: none;
+}
+
+.incoming:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50px;
+    border-width: 20px 0 0 20px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, .1) transparent;
+    display: block;
+    width: 0;
+}
+
+.said {
+    margin-left: 80px;
+}
+
+@media(max-width: 768px) {
+    #workOrderStatusBar>div {
+        display: inline-block !important;
+        width: 115px;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        vertical-align: top;
+        margin-bottom: 20px;
+    }
+    #workOrderStatusBar>div .status-line-container {
+        display: none;
+    }
+    #sidebar {
+        width: 100%;
+        max-width: 100%;
+        transition: all .5s ease-out;
+    }
+    #authoCard {
+        margin-top: 20px;
+    }
+    #statusHistory {
+        max-height: none;
+    }
+    #sidebar.collapsed-it {
+        height: 0;
+        opacity: 0;
+    }
+    #mobile-menu-button {
+        position: absolute;
+        right: 20px;
+        display: initial;
+        z-index: 10;
+        top: 50px;
+    }
+    #additional-options {
+        display: none;
+    }
+    #whats-next-card {
+        margin-top: 20px;
+    }
+    #other-options-mobile-button {
+        display: inline-block;
+    }
+    .page-icon {
+        font-size: 32px;
+    }
+    .schedule-view-container {
+        max-width: 100vw;
+    }
+}
+
+/* @media (max-width: 600px) {
+    mat-card {
+        box-shadow: none  !important;
+        background-color: transparent;
+    }
+} */
+
+.job-item {
+    border-left: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+    text-align: center;
+}
+
+.job-item:first-child {
+    /* margin-top: 20px; */
+    border-left: none;
+}
+
+.job-item img {
+    width: 60px;
+}
+
+.jobs-items-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px 0px;
+}
+
+@media (max-width: 960px) {
+    .jobs-items-container {
+        display: block;
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+    .job-item {
+        border-left: none;
+        border-bottom: 1px dotted rgb(200, 200, 200);
+    }
+
+    .job-item:last-child {
+        border-bottom: none;
+    }
+    .restrict-height {
+        max-height: unset;
+    }
+}
