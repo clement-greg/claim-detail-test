@@ -64,6 +64,12 @@ button.mat-button {
     border-bottom: 2px solid #666;
 }
 
+.property-container .badge {
+    position: absolute;
+    right: 10px;
+
+}
+
 a:hover {
     color: unset !important;
 }

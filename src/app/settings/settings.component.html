@@ -44,9 +44,8 @@
                                     <img style="height: 80px;cursor: pointer;" id="headshot-image"
                                         (click)="showFileUpload('headshot')" class="headshot-image"
                                         src="https://dev-api.upkeeplabs.com/api/entity/photo/cdd32d8d-ddaa-44cd-9375-6e21218336b9?v=1619637889227">
-                                        <br>
-                                        <button mat-button
-                                        (click)="showFileUpload('headshot')">Change</button>
+                                    <br>
+                                    <button mat-button (click)="showFileUpload('headshot')">Change</button>
                                 </div>
                                 <div>
                                     <mat-form-field appearance="outline">
@@ -93,8 +92,7 @@
                                             src="https://dynamic.brandcrowd.com/asset/logo/ee31630d-cdd3-4a2f-8bcb-ac2ed72b1df5/logo?v=4"
                                             style="height: 80px;cursor: pointer;"
                                             (click)="showFileUpload('company-logo')"><br>
-                                            <button mat-button
-                                            (click)="showFileUpload('company-logo')">Change</button>
+                                        <button mat-button (click)="showFileUpload('company-logo')">Change</button>
                                     </div>
                                     <div>
                                         <h2>Clement Realty</h2>
@@ -112,88 +110,138 @@
                         <mat-tab label="Marketing">
 
 
-                            <mat-slide-toggle>Send postcards to my clients from me</mat-slide-toggle>
                             <mat-slide-toggle>Send me service request status updates</mat-slide-toggle>
+                            <mat-slide-toggle>Send postcards to my clients from me</mat-slide-toggle>
 
-                            <div id="postcard-container">
+                            <div aflex>
+                                <div>
+                                    <div id="postcard-container">
 
-                                <div id="upload-labels">
-                                    Upload your company logo and headshot
-                                </div>
-                                <div class="dotted" id="logo-left"></div>
-                                <div class="dotted" id="logo-down"></div>
-                                <div class="dotted" id="headshot-right"></div>
-                                <div class="dotted" id="headshot-down"></div>
 
-                                <div style="height: 40px;"></div>
-                                <div class="postcard ">
-                                    <h1
-                                        style="text-align: center;color:#999;font-size: 36px;line-height: 48px;margin: 0;margin-bottom: 10px;">
-                                        <img src="https://variety.com/wp-content/uploads/2015/03/redbox-logo.jpg"
-                                            style="height: 48px;">
-                                        Postcard
-                                    </h1>
-                                    <div aflex>
-                                        <div flex1
-                                            style="border-right: 1px dotted rgb(150,150,150);min-height: 290px;padding-right: 20px;">
-                                            <div aflex>
-                                                <div nogrow>
-                                                    <img id="company-logo-image" class="company-logo-image"
-                                                        src="https://dynamic.brandcrowd.com/asset/logo/ee31630d-cdd3-4a2f-8bcb-ac2ed72b1df5/logo?v=4"
-                                                        style="height: 80px;cursor: pointer;"
-                                                        (click)="showFileUpload('company-logo')">
-                                                    <br>
-                                                    <button mat-button
-                                                        (click)="showFileUpload('company-logo')">Change</button>
-                                                </div>
-                                                <div>
-                                                    <h2>Clement Realty</h2>
-                                                </div>
+                                        <ng-container *ngIf="!flipped">
+                                            <div id="upload-labels">
+                                                Upload your headshot and company logo
                                             </div>
-                                            <div aflex>
-                                                <div>
-                                                    <p topmargin30>Here is information about what is contained on this
-                                                        postcard. I'm putting it here as a placeholder and will Get
-                                                        the actual text in a later meeting.
-                                                    </p>
-                                                </div>
-                                                <div nogrow>
-                                                    <div
-                                                        style="width: 80px;height: 80px;border-radius: 100%;overflow: hidden;">
-                                                        <img style="height: 80px;cursor: pointer;" id="headshot-image"
-                                                            (click)="showFileUpload('headshot')" class="headshot-image"
-                                                            src="https://dev-api.upkeeplabs.com/api/entity/photo/cdd32d8d-ddaa-44cd-9375-6e21218336b9?v=1619637889227">
+                                            <div class="dotted" id="logo-left"></div>
+                                            <div class="dotted" id="logo-down"></div>
+                                            <div class="dotted" id="headshot-right"></div>
+                                            <div class="dotted" id="headshot-down"></div>
+                                        </ng-container>
+
+                                        <div style="height: 40px;"></div>
+
+                                        <div class="flip-container" [class.flip-it]="flipped">
+                                            <div class="flipper">
+                                                <div class="front">
+                                                    <div class="postcard ">
+
+                                                        <div aflex>
+                                                            <div flex1
+                                                                style="border-right: 1px dotted rgb(150,150,150);min-height: 290px;padding-right: 20px;">
+                                                                <div>
+                                                                    <h1 class="fancy-title"
+                                                                        style="color: #ef7b00 !important; text-align: left;">HELLO!</h1>
+
+                                                                    <p>We know buying a new home can be stressful, so we
+                                                                        wanted to treat you to a free Redbox movie
+                                                                        rental. Take this card to any Redbox kiosk,
+                                                                        enter the code below, and enjoy a move night on
+                                                                        us!
+                                                                    </p>
+                                                                    <p>
+                                                                        Code:<br>
+                                                                        <span style="color: #ef7b00;">4512d2</span>
+                                                                    </p>
+                                                                    <!-- <p>Code:
+                                                                        <div style="color: #ef7b00;">4512d2</div>
+                                                                    </p> -->
+                                                                </div>
+
+                                                                <div aflex style="margin-top: 107px;">
+                                                                    <div nogrow>
+                                                                        <div
+                                                                            style="width: 70px;height: 70px;border-radius: 100%;overflow: hidden;">
+                                                                            <img style="height: 70px;cursor: pointer;"
+                                                                                id="headshot-image"
+                                                                                (click)="showFileUpload('headshot')"
+                                                                                class="headshot-image"
+                                                                                src="https://dev-api.upkeeplabs.com/api/entity/photo/cdd32d8d-ddaa-44cd-9375-6e21218336b9?v=1619637889227">
+                                                                        </div>
+                                                                        <!-- <button mat-button
+                                                                            (click)="showFileUpload('headshot')">Change</button> -->
+                                                                    </div>
+                                                                    <div nogrow>
+                                                                        <img id="company-logo-image"
+                                                                        class="company-logo-image"
+                                                                        src="../../assets/images/real-estate-company.jpg"
+                                                                        style="height: 40px;cursor: pointer;"
+                                                                        (click)="showFileUpload('company-logo')">
+                                                                    <br>
+                                                                    <!-- <button mat-button
+                                                                        (click)="showFileUpload('company-logo')">Change</button> -->
+                                                                    </div>
+                                                                    <div>
+                                                                        <div style="font-weight: bold;">Joe Agent</div>
+                                                                        <div>Clement Realty</div>
+                                                                        <div>000-000-0000</div>
+                                                                        <div>joe@agent.com</div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div nogrow style="width:300px">
+                                                                <div aflex>
+                                                                    <div>
+
+                                                                    </div>
+                                                                    <div nogrow>
+                                                                        <img style="height: 70px;"
+                                                                            src="../../assets/images/stamp.svg">
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div style="margin-left: 60px;margin-top: 100px;">
+                                                                    <img style="height: 21px;"
+                                                                        src="../../assets/images/meter.png">
+                                                                    <h2 style="color: #333;text-transform: none;">Your
+                                                                        Client
+                                                                    </h2>
+                                                                    <address style="line-height: 14px;">
+                                                                        384 W Anystreet<br>
+                                                                        Apt 102<br>
+                                                                        My Town, UT 84111
+                                                                    </address>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <button mat-button
-                                                        (click)="showFileUpload('headshot')">Change</button>
+                                                </div>
+                                                <div class="back">
+                                                    <div class="postcard postcard-back">
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div nogrow style="width:300px">
-                                            <div aflex>
-                                                <div>
 
-                                                </div>
-                                                <div nogrow>
-                                                    <img style="height: 70px;margin-top: -54px"
-                                                        src="../../assets/images/stamp.svg">
-                                                </div>
-                                            </div>
-
-
-                                            <div style="margin-left: 60px;margin-top: 100px;">
-                                                <img style="height: 21px;" src="../../assets/images/meter.png">
-                                                <h2 style="color: #333;text-transform: none;">Your Client</h2>
-                                                <address style="line-height: 14px;">
-                                                    384 W Anystreet<br>
-                                                    Apt 102<br>
-                                                    My Town, UT 84111
-                                                </address> 
-                                            </div> 
-                                        </div>
                                     </div>
                                 </div>
+                                <div nogrow>
+                                    <button mat-button class="toggle-button" [class.selected]="!flipped"
+                                        (click)="flipped = false">
+                                        <mat-icon>topic</mat-icon><br>
+                                        Front
+                                    </button>
+                                    <br>
+                                    <button mat-button class="toggle-button" [class.selected]="flipped"
+                                        (click)="flipped = true">
+                                        <mat-icon>panorama</mat-icon><br>
+                                        Back
+                                    </button>
+                                </div>
                             </div>
+
                         </mat-tab>
                     </mat-tab-group>
                 </div>

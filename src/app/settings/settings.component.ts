@@ -9,6 +9,8 @@ export class SettingsComponent implements OnInit {
 
   headshotUrl = '';
   isScrolled = false;
+  flipped = false;
+  
   constructor() { }
 
   ngOnInit(): void {

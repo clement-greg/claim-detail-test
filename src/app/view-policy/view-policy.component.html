@@ -102,13 +102,13 @@
                             <div class="overview-box">
                                 <div>
                                     <h1>2</h1>
-                                    <div class="data-label">My Quotes</div>
+                                    <div class="data-label">Open Service Requests</div>
                                 </div>
 
                                 <div aflex>
                                     <div></div>
                                     <div nogrow>
-                                        <button mat-button>
+                                        <button mat-button  (click)="detailVisible = !detailVisible">
                                             See More <mat-icon>chevron_right</mat-icon>
                                         </button>
                                     </div>
@@ -155,9 +155,16 @@
                         </div>
                     </div>
                     <div>
-                        Service Request # 10726<br>
-                        Cooktop, Kitchen Refrigerator, Dryer<br>
-                        Opened: 4/1/20201
+                        <div aflex>
+                            <div nogrow>
+                                <img src="../../assets/images/in-progress-icon.svg" class="progress-icon">
+                            </div>
+                            <div>
+                                Service Request # 10726<br>
+                                Cooktop, Kitchen Refrigerator, Dryer<br>
+                                Opened: 4/1/20201
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="request-container">
@@ -173,9 +180,16 @@
                         </div>
                     </div>
                     <div>
-                        Service Request # 10726<br>
-                        Cooktop, Kitchen Refrigerator, Dryer<br>
-                        Opened: 4/1/20201
+                        <div aflex>
+                            <div nogrow>
+                                <img src="../../assets/images/complete-icon.svg" class="progress-icon">
+                            </div>
+                            <div>
+                                Service Request # 10726<br>
+                                Cooktop, Kitchen Refrigerator, Dryer<br>
+                                Opened: 4/1/20201
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="request-container">
@@ -191,9 +205,17 @@
                         </div>
                     </div>
                     <div>
-                        Service Request # 10726<br>
-                        Cooktop, Kitchen Refrigerator, Dryer<br>
-                        Opened: 4/1/20201
+                        <div aflex>
+                            <div nogrow>
+                                <img src="../../assets/images/in-progress-icon.svg" class="progress-icon">
+                            </div>
+                            <div>
+                                Service Request # 10726<br>
+                                Cooktop, Kitchen Refrigerator, Dryer<br>
+                                Opened: 4/1/20201
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -258,36 +258,34 @@ button.mat-button {
 }
 
 #logo-left {
-    width: 46px;
-    left: 99px;
+    width: 55px;
+    left: 89px;
     top: 9px;
 }
 
 input[type=file] {display: none;}
 
 #logo-down {
-    width: 104px;
+    width: 371px;
     transform: rotate(90deg);
-    left: 48px;
-    top: 62px;
+    left: -96px;
+    top: 193px;
     z-index: 1;
 }
 
 #headshot-right {
-
-    width: 53px;
+    width: 186px;
     z-index: 1;
-    left: 363px;
-    top: 291px;
+    left: 181px;
+    top: 407px;
 }
 
 #headshot-down {
-
-    width: 273px;
+    width: 384px;
     transform: rotate(90deg);
-    top: 155px;
+    top: 214px;
     z-index: 1;
-    left: 281px;
+    left: 174px;
 }
 
 
@@ -392,6 +390,7 @@ input[type=file] {display: none;}
     transform: perspective(133px) rotateY(1deg) scale(.9);
     box-shadow: 10px 10px 21px 0px rgb(0 0 0 / 75%);
     margin-bottom: 20px;
+    height: 493px;
 }
 
 mat-slide-toggle {
@@ -409,6 +408,77 @@ mat-slide-toggle {
     color :#444 !important;
 }
 
-.postcard>div:first-child {
+/* .postcard>div:first-child {
     border-right: 1px solid rgba(0, 0, 0, .35);
+} */
+
+
+
+
+
+
+.flip-container {
+    perspective: 1000px;
+}
+
+/* flip the pane when hovered */
+
+.flip-container.flip-it .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    height: 100%;
+}
+
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 6px;
+    min-height: 300px;
+}
+
+/* front pane, placed above back */
+
+.front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+    background-position: bottom;
+    position: relative;
+}
+
+/* back, initially hidden pane */
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.postcard-back {
+    background-image: url(../../assets/images/postcard-bg.jpg);
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.toggle-button mat-icon {
+    height: 36px;
+    width: 36px;
+    font-size: 36px;
+}
+
+.toggle-button {
+    padding: 10px;
+    width: 115px;
 }
