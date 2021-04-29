@@ -102,7 +102,7 @@
     }
 }
 
-#app-content.entering {
+#app-content2.entering {
     animation: slide-down .5s ease-out;
 }
 
@@ -315,6 +315,21 @@ li.active {
     .app-menu-items, .header-search-container {
         display: none;
     }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-5%) scale(.85);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+#app-content.entering {
+    animation: slide-down .5s ease-out;
 }
 
 .navbar-default.menu-animation li a {

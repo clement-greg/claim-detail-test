@@ -1,0 +1,253 @@
+<div aflex id="main-menu" [class.is-scrolled]="isScrolled">
+    <div nogrow>
+        <div id="logo-container">
+            <img src="https://dev-api.upkeeplabs.com/api/entity/company/logo">
+        </div>
+    </div>
+    <div nogrow>
+        <a class="top-link selected" routerLink="/test-real-estate-portal">Home</a>
+
+        <a class="top-link" routerLink="/ratings">Ratings</a>
+
+        <!-- <a class="top-link" routerLink="/test">Make Payment</a> -->
+
+        <a class="top-link" routerLink="/settings">Settings</a>
+        <a class="top-link" routerLink="/test">Log out</a>
+
+
+    </div>
+    <div></div>
+</div>
+
+<div id="above-the-fold">
+    <div id="background">
+
+    </div>
+
+    <div flex id="content-container">
+        <div>
+
+            <div style="display: flex;flex-direction: column;height: 100%">
+                <div style="flex: auto;">
+
+
+                </div>
+                <div style="flex: none" id="main-content">
+                    <div aflex>
+                        <div nogrow style="max-width: 500px;">
+
+                            <h1><span class="small"> Welcome</span><br>
+                                Bill Jones</h1>
+
+                        </div>
+                        <div></div>
+                        <div nogrow style="padding-right: 60px;">
+                            <app-doughnut [label]="expensesLabel" [metrics]="mappedExpenses"></app-doughnut>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="center">
+
+                    <a routerLink="/new-order" mat-button mat-raised-button id="get-a-quote" color="primary"
+                        style="color: #fff;">
+                        Order Coverage</a>
+                </div>
+                <div style="flex: auto;padding-top: 40px">
+                    <div class="container">
+                        <div aflex>
+                            <div class="overview-box">
+                                <div>
+                                    <h1>3</h1>
+                                    <div class="data-label">Covered Properties</div>
+                                </div>
+                                <div aflex>
+                                    <div></div>
+                                    <div nogrow>
+                                        <a mat-button (click)="scrollToAnchor('policy-detail', 10)">
+                                            See More <mat-icon>chevron_right</mat-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="overview-box">
+                                <div>
+                                    <h1 style="font-size: 24px; margin-top: 0;margin-bottom: 0;">Account Executive</h1>
+                                    <img src="https://dev-api.upkeeplabs.com/api/entity/thumbnail/75ed0ab0-e887-4243-a924-0e35574555cc"
+                                        style="border-radius: 100%;">
+
+                                    <h2>Scott Smith</h2>
+                                    <p>scottcsmitty@gmail.com</p>
+                                    <p>(602) 388-4884</p>
+                                </div>
+
+                                <div aflex>
+                                    <div></div>
+                                    <div nogrow>
+                                        <button mat-button>
+                                            See More <mat-icon>chevron_right</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="overview-box">
+                                <div>
+                                    <div style="margin-top: 100px"></div>
+                                    <div class="star-ratings-sprite">
+                                        <span id="rating" [style.width]="'90%'"
+                                            class="star-ratings-sprite-rating"></span>
+                                    </div>
+                                    <div class="data-label">Average Customer Rating</div>
+                                </div>
+
+                                <div aflex>
+                                    <div></div>
+                                    <div nogrow>
+                                        <a mat-button  routerLink="/ratings">
+                                            See More <mat-icon>chevron_right</mat-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: table;margin: 0 auto; margin-top: 40px;">
+                            <button mat-button (click)="scrollToAnchor('resources-documents', 10)">Resources &amp;
+                                Documents</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="policy-detail">
+    <div _ngcontent-hdi-c199="" class="container text-center">
+        <h1 style="text-align: left;margin-bottom: 40px;">Client Subscriptions</h1>
+        <div _ngcontent-hdi-c199="" class="row" style="flex-direction: column;">
+
+            <div _ngcontent-hdi-c199="" class="row" style="padding-right: 20px; flex-direction: row;">
+                <div _ngcontent-hdi-c199="" class="property-container col-md-4 col-sm-12 soft-dark">
+                    <div _ngcontent-hdi-c199="" style="display: flex; flex-direction: column; height: 100%;">
+                        <div _ngcontent-hdi-c199="" style="flex: 1;"><span _ngcontent-hdi-c199=""
+                                class="badge">Pending</span><img _ngcontent-hdi-c199=""
+                                src="https://dev-api.upkeeplabs.com/api/policy/32973457-a0c7-4d1b-910f-0c666c262bd0/StreetView?width=150&amp;height=150">
+                            <h2 _ngcontent-hdi-c199="" topmargin30="">12237 West Ashby Drive</h2>
+                            <p _ngcontent-hdi-c199="">Awesome Plan</p>
+                        </div>
+                        <div _ngcontent-hdi-c199="" flex="" style="flex: none;">
+                            <div _ngcontent-hdi-c199=""></div>
+                            <div _ngcontent-hdi-c199="" nogrow=""><a _ngcontent-hdi-c199="" mat-button=""
+                                    class="mat-focus-indicator mat-button mat-button-base" tabindex="0"
+                                    aria-disabled="false"
+                                    routerLink="/view-subscription/32973457-a0c7-4d1b-910f-0c666c262bd0"><span
+                                        class="mat-button-wrapper">Manage <mat-icon _ngcontent-hdi-c199="" role="img"
+                                            class="mat-icon notranslate material-icons mat-icon-no-color"
+                                            aria-hidden="true" data-mat-icon-type="font">chevron_right</mat-icon>
+                                    </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
+                                        class="mat-button-focus-overlay"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div _ngcontent-hdi-c199="" class="property-container col-md-4 col-sm-12 soft-dark">
+                    <div _ngcontent-hdi-c199="" style="display: flex; flex-direction: column; height: 100%;">
+                        <div _ngcontent-hdi-c199="" style="flex: 1;"><span _ngcontent-hdi-c199=""
+                                class="badge">Pending</span><img _ngcontent-hdi-c199=""
+                                src="https://dev-api.upkeeplabs.com/api/policy/036fa039-ee0f-4b5e-9078-57f054da0247/StreetView?width=150&amp;height=150">
+                            <h2 _ngcontent-hdi-c199="" topmargin30="">12237 West Ashby Drive</h2>
+                            <p _ngcontent-hdi-c199="">Awesome Plan</p>
+                        </div>
+                        <div _ngcontent-hdi-c199="" flex="" style="flex: none;">
+                            <div _ngcontent-hdi-c199=""></div>
+                            <div _ngcontent-hdi-c199="" nogrow=""><a _ngcontent-hdi-c199="" mat-button=""
+                                    class="mat-focus-indicator mat-button mat-button-base" tabindex="0"
+                                    aria-disabled="false"
+                                    routerLink="/view-subscription/036fa039-ee0f-4b5e-9078-57f054da0247"><span
+                                        class="mat-button-wrapper">Manage <mat-icon _ngcontent-hdi-c199="" role="img"
+                                            class="mat-icon notranslate material-icons mat-icon-no-color"
+                                            aria-hidden="true" data-mat-icon-type="font">chevron_right</mat-icon>
+                                    </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
+                                        class="mat-button-focus-overlay"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div _ngcontent-hdi-c199="" class="property-container col-md-4 col-sm-12 soft-dark">
+                    <div _ngcontent-hdi-c199="" style="display: flex; flex-direction: column; height: 100%;">
+                        <div _ngcontent-hdi-c199="" style="flex: 1;"><span _ngcontent-hdi-c199=""
+                                class="badge">Active</span><img _ngcontent-hdi-c199=""
+                                src="https://dev-api.upkeeplabs.com/api/policy/a81a0ea1-3c66-44bb-bc2f-5c3a6549a18f/StreetView?width=150&amp;height=150">
+                            <h2 _ngcontent-hdi-c199="" topmargin30="">12237 West Ashby Drive</h2>
+                            <p _ngcontent-hdi-c199="">Awesome Plan</p>
+                        </div>
+                        <div _ngcontent-hdi-c199="" flex="" style="flex: none;">
+                            <div _ngcontent-hdi-c199=""></div>
+                            <div _ngcontent-hdi-c199="" nogrow=""><a _ngcontent-hdi-c199="" mat-button=""
+                                    class="mat-focus-indicator mat-button mat-button-base" tabindex="0"
+                                    aria-disabled="false"
+                                    routerLink="/view-subscription/a81a0ea1-3c66-44bb-bc2f-5c3a6549a18f"><span
+                                        class="mat-button-wrapper">Manage <mat-icon _ngcontent-hdi-c199="" role="img"
+                                            class="mat-icon notranslate material-icons mat-icon-no-color"
+                                            aria-hidden="true" data-mat-icon-type="font">chevron_right</mat-icon>
+                                    </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
+                                        class="mat-button-focus-overlay"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+            </div>
+            <div _ngcontent-hdi-c199="" style="margin-top: 30px;">
+                <p _ngcontent-hdi-c199="">Do you need to add coverage to a new property?</p><a _ngcontent-hdi-c199=""
+                    mat-button="" mat-raised-button="" color="primary" data-wow-delay="0.5s" data-wow-duration="1s"
+                    routerlink="/new-order"
+                    class="mat-focus-indicator page-scroll wow fadeInUp mat-button mat-raised-button mat-button-base mat-primary"
+                    style="visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: fadeInUp;"
+                    tabindex="0" aria-disabled="false" routerLink="/new-order"><span class="mat-button-wrapper">Add
+                        Covered Property</span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
+                        class="mat-button-focus-overlay"></span></a>
+            </div>
+            <!---->
+            <!---->
+        </div>
+    </div>
+</div>
+
+<div id="resources-documents" class="soft-light-bg">
+    <div class="container">
+        <h1 _ngcontent-tdw-c199="" class="small-heading">Resources &amp; Documents</h1>
+        <div _ngcontent-tdw-c199="" class="soft-light padding">
+            <div _ngcontent-tdw-c199="" topmargin30="" style="text-align: center;"><a _ngcontent-tdw-c199=""
+                    mat-button="" target="_blank"
+                    class="mat-focus-indicator document-button mat-button mat-button-base ng-star-inserted"
+                    href="https://dev-api.upkeeplabs.com/api/RealEstatePortalResource/3dfb33fc-2aff-4fd2-aed9-3f9f7de00abf/file"
+                    tabindex="0" aria-disabled="false"><span class="mat-button-wrapper"><img _ngcontent-tdw-c199=""
+                            src="https://dev-api.upkeeplabs.com/api/RealEstatePortalResource/3dfb33fc-2aff-4fd2-aed9-3f9f7de00abf/thumbnail"><br
+                            _ngcontent-tdw-c199=""> Brochure </span><span matripple=""
+                        class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></a><a
+                    _ngcontent-tdw-c199="" mat-button="" target="_blank"
+                    class="mat-focus-indicator document-button mat-button mat-button-base ng-star-inserted"
+                    href="https://dev-api.upkeeplabs.com/api/RealEstatePortalResource/4a39cf32-b3a6-4fb0-a84f-2898df2e6b7f/file"
+                    tabindex="0" aria-disabled="false"><span class="mat-button-wrapper"><img _ngcontent-tdw-c199=""
+                            src="https://dev-api.upkeeplabs.com/api/RealEstatePortalResource/4a39cf32-b3a6-4fb0-a84f-2898df2e6b7f/thumbnail"><br
+                            _ngcontent-tdw-c199=""> Certificate </span><span matripple=""
+                        class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></a><a
+                    _ngcontent-tdw-c199="" mat-button="" target="_blank"
+                    class="mat-focus-indicator document-button mat-button mat-button-base ng-star-inserted"
+                    href="https://dev-api.upkeeplabs.com/api/RealEstatePortalResource/3ea9a05f-5d73-41e9-ab1c-1d969b69fa47/file"
+                    tabindex="0" aria-disabled="false"><span class="mat-button-wrapper"><img _ngcontent-tdw-c199=""
+                            src="https://dev-api.upkeeplabs.com/api/RealEstatePortalResource/3ea9a05f-5d73-41e9-ab1c-1d969b69fa47/thumbnail"><br
+                            _ngcontent-tdw-c199=""> Welcome Packet </span><span matripple=""
+                        class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></a>
+                <!---->
+            </div>
+        </div>
+    </div>
+</div>

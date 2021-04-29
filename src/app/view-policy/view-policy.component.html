@@ -1,0 +1,202 @@
+<div aflex id="main-menu" [class.is-scrolled]="isScrolled">
+    <div nogrow>
+        <div id="logo-container">
+            <img src="https://dev-api.upkeeplabs.com/api/entity/company/logo">
+        </div>
+    </div>
+    <div nogrow>
+        <a class="top-link" routerLink="/test-real-estate-portal">Home</a>
+
+        <a class="top-link" routerLink="/ratings">Ratings</a>
+
+        <!-- <a class="top-link" routerLink="/test">Make Payment</a> -->
+
+        <a class="top-link" routerLink="/settings">Settings</a>
+        <a class="top-link" routerLink="/test">Log out</a>
+
+
+    </div>
+    <div></div>
+</div>
+
+<div id="above-the-fold">
+    <div id="background">
+
+    </div>
+
+    <div flex id="content-container">
+        <div>
+
+            <div style="display: flex;flex-direction: column;height: 100%">
+                <div style="flex: auto;">
+                    <div class="overview-box-1" aflex>
+                        <img nogrow
+                            src="https://dev-api.upkeeplabs.com/api/policy/32973457-a0c7-4d1b-910f-0c666c262bd0/StreetView">
+                        <div>
+                            <h1>Subscription # 2063</h1>
+                            <div>12237 West Ashby Drive<br>
+                                Peoria, AZ 85383</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div style="flex: none" id="main-content">
+
+
+                    <div class="center">
+                        <button mat-button mat-raised-button style="color: #fff;" color="primary">New Service
+                            Request</button>
+                    </div>
+
+                </div>
+                <div style="flex: auto;padding-top: 40px">
+                    <div class="container">
+                        <div aflex>
+                            <div class="overview-box">
+                                <div>
+                                    <h1>3</h1>
+                                    <div class="data-label">Service Requests</div>
+                                </div>
+                                <div aflex>
+                                    <div></div>
+                                    <div nogrow>
+                                        <a mat-button (click)="detailVisible = !detailVisible">
+                                            See More <mat-icon>chevron_right</mat-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="overview-box">
+                                <div>
+                                    <h1 style="font-size: 24px; margin-top: 0;margin-bottom: 0;">Coverage</h1>
+
+
+                                    <h2>Awesome Plan</h2>
+                                    <p>
+                                        <span class="data-label">Effective: </span> 5/16/2021 - 5/16/2022
+                                    </p>
+                                </div>
+
+                                <div>
+
+
+                                    <div class="center">
+                                        <button mat-button>
+                                            <mat-icon>description</mat-icon> View Contract
+                                        </button>
+                                        <button mat-button>
+                                            <mat-icon>receipt</mat-icon> Invoice
+                                        </button>
+
+                                    </div>
+                                    <div class="center">
+
+                                        <button mat-button>
+                                            <mat-icon>verified</mat-icon> Certificate
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="overview-box">
+                                <div>
+                                    <h1>2</h1>
+                                    <div class="data-label">My Quotes</div>
+                                </div>
+
+                                <div aflex>
+                                    <div></div>
+                                    <div nogrow>
+                                        <button mat-button>
+                                            See More <mat-icon>chevron_right</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="side-bar-detail" *ngIf="detailVisible">
+    <div aflex>
+        <div nogrow>
+            <button mat-button (click)="detailVisible = false;" class="close-detail-button">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div style="overflow-x: hidden; overflow-y: auto; height: calc(100vh - 79px);">
+
+
+            <h1 style="margin-bottom: 40px;">Service Requests</h1>
+
+            <div>
+                <div class="request-container">
+                    <div>
+                        <div style="position: relative;height: 60px;width: calc(100% - 100px); margin-bottom: 10px;"
+                            class="center">
+                            <img
+                                src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/8439385f-75b1-492b-b3ce-be9d88cb9914/Photo">
+                            <img
+                                src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/06fb3feb-dc0d-42f5-b121-d47e9d6a1533/Photo">
+                            <img
+                                src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/49744578-7b99-40cd-940d-03cd534ef7a1/Photo">
+                        </div>
+                    </div>
+                    <div>
+                        Service Request # 10726<br>
+                        Cooktop, Kitchen Refrigerator, Dryer<br>
+                        Opened: 4/1/20201
+                    </div>
+                </div>
+                <div class="request-container">
+                    <div>
+                        <div style="position: relative;height: 60px;width: calc(100% - 100px); margin-bottom: 10px;"
+                            class="center">
+                            <img
+                                src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/8439385f-75b1-492b-b3ce-be9d88cb9914/Photo">
+                            <img
+                                src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/06fb3feb-dc0d-42f5-b121-d47e9d6a1533/Photo">
+                            <img
+                                src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/49744578-7b99-40cd-940d-03cd534ef7a1/Photo">
+                        </div>
+                    </div>
+                    <div>
+                        Service Request # 10726<br>
+                        Cooktop, Kitchen Refrigerator, Dryer<br>
+                        Opened: 4/1/20201
+                    </div>
+                </div>
+                <div class="request-container">
+                    <div>
+                        <div style="position: relative;height: 60px;width: calc(100% - 100px); margin-bottom: 10px;"
+                            class="center">
+                            <img
+                                src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/8439385f-75b1-492b-b3ce-be9d88cb9914/Photo">
+                            <img
+                                src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/06fb3feb-dc0d-42f5-b121-d47e9d6a1533/Photo">
+                            <img
+                                src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/49744578-7b99-40cd-940d-03cd534ef7a1/Photo">
+                        </div>
+                    </div>
+                    <div>
+                        Service Request # 10726<br>
+                        Cooktop, Kitchen Refrigerator, Dryer<br>
+                        Opened: 4/1/20201
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

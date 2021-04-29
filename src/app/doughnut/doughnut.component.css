@@ -1,0 +1,65 @@
+#doughnut-container {
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+
+    margin-top: 14px;
+    margin-left: 14px;
+    padding-top: 53px;
+    text-align: center;
+}
+
+/* canvas {
+    width: 210px;
+    height: 210px;
+    position: absolute;
+    top: 0;
+} */
+
+.big-data {
+    font-size: 50px;
+    font-family: bebas-neue;
+    color: #fff !important;
+}
+
+.legend-color {
+    height: 8px;
+    width: 23px;
+    margin-top: 5px;
+}
+
+.path {
+    stroke-dasharray: 603.185;
+    stroke-dashoffset: 603.185;
+    transition: stroke-dashoffset 1s ease-out;
+    transform-origin: 50% 50%;
+}
+
+svg#circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.05);
+}
+
+@keyframes rotate-spinner {
+    0% {
+        transform: rotate(0deg);
+        stroke-dashoffset: 300;
+    }
+    50% {
+        stroke-dashoffset: 450;
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(359deg);
+        stroke-dashoffset: 300;
+    }
+}
+
+.initial {
+    animation-name: rotate-spinner;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+}

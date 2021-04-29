@@ -1,0 +1,300 @@
+h1, h2, h3 {
+    font-weight: 100;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: lowercase;
+    color: var(--color);
+}
+
+.request-container {
+    border-bottom: 1px dotted #fff;
+    color: var(--color);
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.request-container img {
+    max-height: 60px;
+    position: absolute;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 100%;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.request-container img:nth-child(2) {
+    margin-left: 20px;
+}
+
+.request-container img:nth-child(3) {
+    margin-left: 40px;
+}
+
+.request-container:last-child {
+    border-bottom: none;
+}
+
+#background {
+    /* background-image: url(https://www.ftpaint.com/wp-content/uploads/2020/01/Dark-Room.jpg); */
+    /* background-image: url(https://adorable-home.com/wp-content/uploads/2016/06/Modern-dark-interiors-5.jpg); */
+    background-image: url(https://www.tilemountain.co.uk/blog/wp-content/uploads/2018/11/Dark_Kitchens_Feat.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: calc(100%);
+    position: absolute;
+    z-index: -1;
+    /* background-image: url(http://cdn.home-designing.com/wp-content/uploads/2016/06/dark-and-sophisticated-interior-ideas.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: calc(100vh);
+    position: absolute;
+    z-index: -1;
+    filter: brightness(0.7); */
+    grid-column: 0;
+    grid-row: 0;
+    background-attachment: fixed;
+}
+
+#content-container {
+    height: 100%;
+    grid-column: 0;
+    grid-row: 0;
+}
+
+#main-menu a {
+    color: var(--color);
+}
+
+#above-the-fold {
+    min-height: 100vh;
+    display: grid;
+    color: var(--color);
+}
+
+#above-the-fold h1, #above-the-fold h2, #above-the-fold h3, #above-the-fold .data-label {
+    color: var(--color);
+}
+
+button.mat-button {
+    color: var(--color);
+}
+
+#main-menu {
+    position: fixed;
+    z-index: 2;
+    transition: .5s ease-out;
+    width: 100%;
+}
+
+#main-menu.is-scrolled {
+    background-color: rgb(24, 25, 36);
+    border-bottom: 2px solid #666;
+}
+
+#right-pane {
+    width: 500px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(150, 150, 150, .5);
+}
+
+#main-content {
+    padding-left: 100px;
+}
+
+#main-content button[mat-button] {
+    color: #444;
+    border-radius: 76px;
+    border: none;
+    padding: 5px 20px;
+}
+
+.small {
+    font-size: 24px;
+}
+
+#get-a-quote {
+    color: #444;
+    border-radius: 76px;
+    border: none;
+    padding: 5px 20px;
+}
+
+#main-content h1 {
+    font-size: 64px;
+    line-height: 64px;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+#logo-container {
+    padding: 15px;
+}
+
+#logo-container img {
+    filter: brightness(0) invert(1);
+    opacity: .8;
+    height: 50px;
+}
+
+.divider {
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#inner-image {
+    padding: 40px;
+    background-image: url(https://www.ftpaint.com/wp-content/uploads/2020/01/Dark-Room.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+:host /deep/ #appHeader {
+    display: none;
+}
+
+.overview-box {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(150, 150, 150, .5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    margin-top: 30px;
+    flex: 1;
+}
+
+.overview-box-1 {
+    margin-top: 100px;
+    margin-left: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(150, 150, 150, .5);
+    padding: 30px;
+    max-width: 500px;
+}
+
+.top-link {
+    text-transform: uppercase;
+    margin-top: 30px;
+    margin-left: 20px;
+    display: inline-block;
+    position: relative;
+    transition: .5s;
+}
+
+.top-link:hover {
+    color: rgba(150, 150, 150, .5);
+}
+
+.top-link:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #f44336;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all .3s ease-in-out 0s;
+}
+
+.top-link:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.overview-box>div:first-child {
+    text-align: center;
+}
+
+.overview-box>div {
+    flex: 1;
+}
+
+.overview-box>div:last-child {
+    flex: none;
+}
+
+.overview-box h1 {
+    font-size: 72px;
+    line-height: 72px;
+    margin-top: 87px;
+    margin-bottom: 40px;
+}
+
+#policy-detail {
+    min-height: 600px;
+    background-color: #f0f0f0;
+    padding-top: 30px;
+}
+
+.section-title span:after, .section-title span:before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 1px solid #ef7b00;
+    border-top: 1px solid #ef7b00;
+    top: 15px;
+    width: 100px;
+}
+
+.property-container {
+    flex: 1!important;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.soft-dark {
+    border-radius: 6px;
+    background: #f0f0f0;
+    box-shadow: 5px 5px 3px #dfdfdf, -5px -5px 3px #fff;
+}
+
+@keyframes stretch-in {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.close-detail-button {
+    margin-left: -50px;
+    border: none;
+    min-width: unset;
+    background-color: rgba(150, 150, 150, .5);
+    backdrop-filter: blur(10px);
+    padding: 0 3px;
+    border-right: unset;
+    border-radius: 3px 0 0 3px;
+    box-shadow: -3px 0 3px 0 rgba(0, 0, 0, .35);
+}
+
+#side-bar-detail {
+    transition: all;
+    height: 100vh;
+    background-color: rgba(150, 150, 150, .5);
+    backdrop-filter: blur(10px);
+    animation-name: stretch-in;
+    width: 100%;
+    max-width: 400px;
+    transform-origin: 100% 0;
+    animation-duration: .25s;
+    position: fixed;
+    right: 0;
+    padding: 20px;
+    box-shadow: -5px 0 5px 0 rgb(0 0 0 / 35%);
+    top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    z-index: 2;
+}

@@ -1,0 +1,25 @@
+<div style="position: relative;">
+    <svg width="200" id="circles" height="200">
+        <circle *ngFor="let metric of transformedMetrics" class="path" [style.transform]="metric.rotate"
+            [style.stroke-dashoffset]="metric.archCircumferenceBound" cx="100" cy="100" r="96"
+            [attr.stroke]="metric.color" stroke-width="4" fill="none" />
+
+            <circle *ngIf="!transformedMetrics" class="path initial"  cx="100" cy="100" r="96" stroke="red" stroke-width="4" fill="none"   />
+    </svg>
+    <div aflex style="min-height: 220px;">
+        <div nogrow>
+            <div id="doughnut-container">
+
+                <h1 class="big-data">{{totalDisplay |  currency : 'USD': 'symbol-narrow' : '1.0-0'}}</h1>
+                <div>{{label}}</div>
+            </div>
+        </div>
+        <div nogrow style="margin-left: 40px;">
+            <div *ngFor="let metric of transformedMetrics" aflex>
+                <div class="legend-color" nogrow [style.background-color]="metric.color"></div>
+                <div style="text-align: left;margin-left: 5px;font-size: 11px;">{{metric.name}} {{metric.value | currency : 'USD': 'symbol-narrow' : '1.0-0'}} </div>
+            </div>
+        </div>
+        <div></div>
+    </div>
+</div>

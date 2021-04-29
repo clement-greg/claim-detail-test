@@ -1,0 +1,207 @@
+<div aflex id="main-menu" [class.is-scrolled]="isScrolled">
+    <div nogrow>
+        <div id="logo-container">
+            <img src="https://dev-api.upkeeplabs.com/api/entity/company/logo">
+        </div>
+    </div>
+    <div nogrow>
+        <a class="top-link" routerLink="/test-real-estate-portal">Home</a>
+
+        <a class="top-link" routerLink="/ratings">Ratings</a>
+
+        <!-- <a class="top-link" routerLink="/test">Make Payment</a> -->
+
+        <a class="top-link selected" routerLink="/settings">Settings</a>
+        <a class="top-link" routerLink="/test">Log out</a>
+
+
+    </div>
+    <div></div>
+</div>
+
+<div id="above-the-fold">
+    <div id="background">
+
+    </div>
+
+    <div flex id="content-container">
+        <div>
+            <div style=" max-width: 1000px; display: table; margin: 0 auto;margin-top: 100px;width: 100%"
+                class="overview-box">
+
+                <div>
+                    <div aflex>
+                        <div></div>
+                        <div nogrow>
+                            <button mat-button mat-raised-button color="primary" large>Save</button>
+                        </div>
+                    </div>
+                    <mat-tab-group>
+                        <mat-tab label="Basic Information">
+
+                            <div aflex>
+                                <div nogrow>
+                                    <img style="height: 80px;cursor: pointer;" id="headshot-image"
+                                        (click)="showFileUpload('headshot')" class="headshot-image"
+                                        src="https://dev-api.upkeeplabs.com/api/entity/photo/cdd32d8d-ddaa-44cd-9375-6e21218336b9?v=1619637889227">
+                                        <br>
+                                        <button mat-button
+                                        (click)="showFileUpload('headshot')">Change</button>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Name</mat-label>
+                                        <input matInput value="Joe Agent">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Address 1</mat-label>
+                                        <input matInput value="123 W Street">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Address 2</mat-label>
+                                        <input matInput value="Ste 100">
+                                    </mat-form-field>
+
+                                    <div flex>
+
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Postal Code</mat-label>
+                                            <input matInput value="85475">
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>City</mat-label>
+                                            <input matInput value="Anytown">
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>State</mat-label>
+                                            <input matInput value="FK">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </mat-tab>
+                        <mat-tab label="Organization">
+
+                            <div class="data-label">My Organization</div>
+                            <div style="display: table; margin: 0 auto;margin-top: 20px;margin-bottom: 20px;">
+                                <div aflex>
+                                    <div nogrow>
+                                        <img id="company-logo-image" class="company-logo-image"
+                                            src="https://dynamic.brandcrowd.com/asset/logo/ee31630d-cdd3-4a2f-8bcb-ac2ed72b1df5/logo?v=4"
+                                            style="height: 80px;cursor: pointer;"
+                                            (click)="showFileUpload('company-logo')"><br>
+                                            <button mat-button
+                                            (click)="showFileUpload('company-logo')">Change</button>
+                                    </div>
+                                    <div>
+                                        <h2>Clement Realty</h2>
+                                        <address>
+                                            12253 W Asbhy Dr<br>
+                                            Peoria, AZ 85383
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <button mat-button mat-raised-button color="primary">Change My Organization</button>
+                        </mat-tab>
+                        <mat-tab label="Marketing">
+
+
+                            <mat-slide-toggle>Send postcards to my clients from me</mat-slide-toggle>
+                            <mat-slide-toggle>Send me service request status updates</mat-slide-toggle>
+
+                            <div id="postcard-container">
+
+                                <div id="upload-labels">
+                                    Upload your company logo and headshot
+                                </div>
+                                <div class="dotted" id="logo-left"></div>
+                                <div class="dotted" id="logo-down"></div>
+                                <div class="dotted" id="headshot-right"></div>
+                                <div class="dotted" id="headshot-down"></div>
+
+                                <div style="height: 40px;"></div>
+                                <div class="postcard ">
+                                    <h1
+                                        style="text-align: center;color:#999;font-size: 36px;line-height: 48px;margin: 0;margin-bottom: 10px;">
+                                        <img src="https://variety.com/wp-content/uploads/2015/03/redbox-logo.jpg"
+                                            style="height: 48px;">
+                                        Postcard
+                                    </h1>
+                                    <div aflex>
+                                        <div flex1
+                                            style="border-right: 1px dotted rgb(150,150,150);min-height: 290px;padding-right: 20px;">
+                                            <div aflex>
+                                                <div nogrow>
+                                                    <img id="company-logo-image" class="company-logo-image"
+                                                        src="https://dynamic.brandcrowd.com/asset/logo/ee31630d-cdd3-4a2f-8bcb-ac2ed72b1df5/logo?v=4"
+                                                        style="height: 80px;cursor: pointer;"
+                                                        (click)="showFileUpload('company-logo')">
+                                                    <br>
+                                                    <button mat-button
+                                                        (click)="showFileUpload('company-logo')">Change</button>
+                                                </div>
+                                                <div>
+                                                    <h2>Clement Realty</h2>
+                                                </div>
+                                            </div>
+                                            <div aflex>
+                                                <div>
+                                                    <p topmargin30>Here is information about what is contained on this
+                                                        postcard. I'm putting it here as a placeholder and will Get
+                                                        the actual text in a later meeting.
+                                                    </p>
+                                                </div>
+                                                <div nogrow>
+                                                    <div
+                                                        style="width: 80px;height: 80px;border-radius: 100%;overflow: hidden;">
+                                                        <img style="height: 80px;cursor: pointer;" id="headshot-image"
+                                                            (click)="showFileUpload('headshot')" class="headshot-image"
+                                                            src="https://dev-api.upkeeplabs.com/api/entity/photo/cdd32d8d-ddaa-44cd-9375-6e21218336b9?v=1619637889227">
+                                                    </div>
+                                                    <button mat-button
+                                                        (click)="showFileUpload('headshot')">Change</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div nogrow style="width:300px">
+                                            <div aflex>
+                                                <div>
+
+                                                </div>
+                                                <div nogrow>
+                                                    <img style="height: 70px;margin-top: -54px"
+                                                        src="../../assets/images/stamp.svg">
+                                                </div>
+                                            </div>
+
+
+                                            <div style="margin-left: 60px;margin-top: 100px;">
+                                                <img style="height: 21px;" src="../../assets/images/meter.png">
+                                                <h2 style="color: #333;text-transform: none;">Your Client</h2>
+                                                <address style="line-height: 14px;">
+                                                    384 W Anystreet<br>
+                                                    Apt 102<br>
+                                                    My Town, UT 84111
+                                                </address>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<input type="file" id="company-logo" multiple accept="image/*" (change)="handleFiles($event, 'company-logo')">
+<input type="file" id="headshot" multiple accept="image/*" (change)="handleFiles($event, 'headshot')">

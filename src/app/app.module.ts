@@ -44,6 +44,12 @@ import { ClaimSummaryComponent } from './claim-summary/claim-summary.component';
 import { CircleWidgetSmallComponent } from './circle-widget-small/circle-widget-small.component';
 import { EditJobItemsStatusComponent } from './edit-job-items-status/edit-job-items-status.component';
 import { DisplayTotalComponent } from './display-total/display-total.component';
+import { TestPageComponent } from './test-page/test-page.component';
+import { DoughnutComponent } from './doughnut/doughnut.component';
+import { ViewPolicyComponent } from './view-policy/view-policy.component';
+import { NewOrderFrameComponent } from './new-order-frame/new-order-frame.component';
+import { SettingsComponent } from './settings/settings.component';
+import { RatingsComponent } from './ratings/ratings.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +58,13 @@ import { DisplayTotalComponent } from './display-total/display-total.component';
     ClaimSummaryComponent,
     CircleWidgetSmallComponent,
     EditJobItemsStatusComponent,
-    DisplayTotalComponent
+    DisplayTotalComponent,
+    TestPageComponent,
+    DoughnutComponent,
+    ViewPolicyComponent,
+    NewOrderFrameComponent,
+    SettingsComponent,
+    RatingsComponent
   ],
   imports: [
     FormsModule,

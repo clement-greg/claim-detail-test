@@ -112,26 +112,22 @@ export class WorkOrderDetailComponent implements OnInit {
 
   async onStepChange() {
     window.location.hash = 'step' + this.selectedIndex.toString();
-
-    // if (this.selectedIndex === 2 && !this.daysSchedule && this.workOrderSummary.scheduledDate) {
-    //     this.serviceApi.getAssignedAppointmentsForDayNoAuth(this.workOrderSummary.scheduledDate, this.workOrderSummary.contractorId).then(today => {
-    //         this.daysSchedule = today.sort((a, b) => a.appointmentStartHour < b.appointmentStartHour ? 1 : -1);
-
-    //         this.setCurrentAppointment();
-    //     });
-    // }
-    // if (this.selectedIndex === 5 && !this.contractorInvoices) {
-    //     this.contractorInvoices = await this.serviceApi.getWorkOrderContractorInvoicesNoAuth(this.workOrderId);
-    // }
   }
 
   updateStatusOnItem(item: WorkOrderJobItem) {
-    this.dialog.open(EditJobItemsStatusComponent, { data: { workOrderSummary: this.workOrderSummary, allItems: this.jobItems, item } });
+    const result = this.dialog.open(EditJobItemsStatusComponent, { data: { workOrderSummary: this.workOrderSummary, allItems: this.jobItems, item } });
+    result.afterClosed().subscribe(results => {
+      console.log({results});
+      if (results) {
+        this.addNewStatus(results.status, results.jobItems);
+      }
+    });
   }
 
   updateStatus() {
     const result = this.dialog.open(EditJobItemsStatusComponent, { data: { workOrderSummary: this.workOrderSummary, allItems: this.jobItems, item: null } });
     result.afterClosed().subscribe(results => {
+      console.log({results});
       if (results) {
 
         this.addNewStatus(results.status, results.jobItems);
@@ -197,12 +193,6 @@ export class WorkOrderDetailComponent implements OnInit {
   }
 
   saveAppointment() {
-    // this.savingAppointment = true;
-    // this.serviceApi.setWorkOrderAppointmentDateNoAuth(this.workOrderId, this.apptDate, this.startWindow, this.endWindow).then(() => {
-    //     this.back();
-    //     this.refreshScreen();
-    //     this.savingAppointment = false;
-    // });
     this.selectedIndex = 0;
 
     setTimeout(() => {
