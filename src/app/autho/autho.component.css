@@ -1,0 +1,135 @@
+#autho-container {
+    padding-top: 61px;
+    padding-bottom: 100px;
+}
+
+#progress-bar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: rgb(240, 240, 250);
+    z-index: 2;
+}
+
+#progress-bar>div {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: ". . .";
+    height: 100%;
+}
+
+.repair-item-container {
+    padding-bottom: 20px;
+    /* margin-bottom: 10px; */
+    border-bottom: 1px dotted rgb(200, 200, 200);
+    padding-top: 10px;
+}
+
+.repair-item-container:nth-child(even) {
+    background-color: rgb(245, 245, 245);
+}
+
+.repair-item-container:last-child {
+    border-bottom: none;
+}
+
+.attribute-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px 5px;
+}
+
+.three-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px 5px;
+}
+
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 5px;
+}
+.three-column>button {
+    overflow: hidden;
+    font-size: 12px;
+    white-space: normal;
+    line-height: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-height: 36px;
+}
+
+.repair-item-container mat-form-field {
+    display: inline-block !important;
+}
+
+.repair-item-checkboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 5px;
+}
+
+.toggle-button {
+    text-transform: none;
+    border: 1px solid #89AAE6;
+}
+
+#header {
+    position: fixed;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px solid rgb(220, 220, 220);
+    z-index: 2;
+    background-color: #fff;
+}
+
+#header img {
+    height: 40px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+#next-button {
+    margin-top: 13px;
+    margin-right: 10px;
+}
+
+.current-step {
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.step-numbers {
+    text-align: center;
+    font-size: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 18px;
+    width: 100%;
+}
+
+.footer-container {}
+
+.repair-item-group {
+    margin-bottom: 20px;
+}
+
+.repair-item-group mat-checkbox {
+    overflow: hidden;
+}
+
+.cause-container {
+    padding-left: 30px;
+}
+
+.cause-container>button {
+    text-align: left;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}

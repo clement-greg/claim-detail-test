@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthoComponent } from './autho/autho.component';
 import { NewOrderFrameComponent } from './new-order-frame/new-order-frame.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -10,7 +11,7 @@ import { WorkOrderDetailComponent } from './work-order-detail/work-order-detail.
 const routes: Routes = [
   {
     path: '',
-    component: TestPageComponent,
+    component: AuthoComponent,
   },
   {
     path: 'test-real-estate-portal',

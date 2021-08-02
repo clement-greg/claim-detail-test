@@ -20,6 +20,12 @@ body {
     overflow-x: hidden;
 }
 
+h1,h2,h3,h4,h5 {
+    font-family: "Open Sans" !important;
+    font-weight: 100 !important;
+    margin: 0 !important;
+}
+
 .xoggs  {
     width: calc(100% - 30px) !important;
     height: calc(100vh - 40px) !important;

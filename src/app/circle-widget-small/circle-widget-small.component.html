@@ -31,18 +31,32 @@
 </style>
 <div style="position: relative;display: inline-block;" [style.width]="containerHeight">
     <svg [style.height]="containerHeight" [style.width]="containerHeight">
+        <defs>
+            <filter id="glow">
+                <feGaussianBlur [attr.stdDeviation]="glowAmount" result="coloredBlur" />
+                <feMerge>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+            <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" [attr.stop-color]="strokeColor"  />
+                <stop offset="100%" [attr.stop-color]="strokeEndColor"  />
+            </linearGradient>
+        </defs>
         <circle [id]="outerCircleId" class="circle" fill="none" style="stroke:#afbaca; stroke-opacity: .2" cx="52"
             cy="52" r="50" [style.stroke-width]="strokeCircleWidth"></circle>
-        <circle [id]="innerCircleId" class="path circle" [style.stroke]="strokeColor"
+        <circle [id]="innerCircleId" class="path circle" stroke="url(#linear)"  filter="url(#glow)"
             [style.stroke-dasharray]="dashArray" [style.stroke-dashoffset]="archCircumferenceBound" cx="52" cy="52"
             r="50" [style.stroke-width]="strokeCircleWidth" fill="none" />
-        <!-- <text sodipodi:linespacing="125%" *ngIf="showNumber" xml:space="preserve" class="arc-number" id="text4146" x="123"
-        y="120" text-anchor="middle">{{number}}</text> -->
-        <!-- <text sodipodi:linespacing="125%" xml:space="preserve" id="label" class="arc-label" x="123" y="160"
-        text-anchor="middle">{{label}}</text> -->
+
+        <text sodipodi:linespacing="125%" [style.fill]="textColor" *ngIf="showNumber" xml:space="preserve" class="arc-number" id="text4146" x="50%"
+        y="130" text-anchor="middle">{{number}}</text> 
+        <text sodipodi:linespacing="125%" [style.fill]="textColor" xml:space="preserve" id="label" class="arc-label" x="50%" y="155"
+        text-anchor="middle">{{label}}</text>
     </svg>
 
-    <mat-icon *ngIf="iconClass" [style.color]="strokeColor">{{iconClass}}</mat-icon> 
+    <mat-icon *ngIf="iconClass" [style.color]="strokeColor">{{iconClass}}</mat-icon>
 </div>
 <!-- Dash Array: {{dashArray}}<br>
 Radius: {{radius}}<br>

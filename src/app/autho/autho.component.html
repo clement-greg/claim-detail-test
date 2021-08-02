@@ -1,0 +1,271 @@
+<div id="header">
+    <mat-icon>menu</mat-icon>
+    <img src="https://www.elevatehw.com/wp-content/uploads/2016/12/logo.png">
+</div>
+<div id="progress-bar">
+    <div>
+        <div nogrow style="position: relative;">
+            <app-circle-widget-small [height]="40" [percent]="pct" [glowAmount]="0"></app-circle-widget-small>
+            <div class="step-numbers data-label">
+                {{index + 1}} of {{steps.length}}
+            </div>
+        </div>
+        <div style="overflow: hidden;">
+            <h2 class="current-step">{{currentStep}}</h2>
+            <div style="margin-left: 20px;white-space: nowrap;" class="data-label">Next: {{nextStep}}</div>
+        </div>
+        <div nogrow>
+            <button mat-button (click)="back()" *ngIf="index > 0">
+                <mat-icon>chevron_left</mat-icon>
+            </button>
+            <button mat-button mat-raised-button id="next-button" color="primary" (click)="next()"
+                [disabled]="!canGoNext">
+                Next <mat-icon>chevron_right</mat-icon>
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<div id="autho-container">
+
+    <mat-tab-group class="hide-tabs" [(selectedIndex)]="index">
+        <mat-tab label="First">
+            <div class="padding">
+                <h2>Item Type</h2>
+
+                <div class="three-column">
+                    <button mat-button *ngFor="let type of types" class="toggle-button"
+                        [class.selected]="type === selectedType" (click)="selectedType = type">
+                        {{type}}
+                    </button>
+                </div>
+                <h2 topmargin40>Location</h2>
+                <div class="three-column">
+                    <button mat-button *ngFor="let location of locations" class="toggle-button"
+                        [class.selected]="location === selectedLocation" (click)="selectedLocation = location">
+                        {{location}}
+                    </button>
+                </div>
+
+
+                <h2 topmargin40>Images</h2>
+                <app-swapable-image iconClass="image" prompt="" [blockStyle]="true"></app-swapable-image>
+            </div>
+        </mat-tab>
+        <mat-tab label="Second">
+            <div class="padding">
+                <h2>Problem</h2>
+
+                <div class="three-column">
+                    <button mat-button *ngFor="let problem of problems" class="toggle-button"
+                        [class.selected]="problem === selectedProblem" (click)="selectedProblem = problem">
+                        {{problem}}
+                    </button>
+                </div>
+
+                <h2 topmargin40>Failed Component(s)</h2>
+
+                <div class="repair-item-group" *ngFor="let group of groupedRepairItems">
+                    <div class="data-label">{{group.name}}</div>
+                    <div>
+                        <div class="repair-item-checkboxes">
+                            <mat-checkbox *ngFor="let repairItem of group.items" [(ngModel)]="repairItem.selected">
+                                {{repairItem.name}}
+                            </mat-checkbox>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </mat-tab>
+        <mat-tab label="Third">
+            <div class="padding">
+
+                <h2>Cause of Problem</h2>
+
+                <div *ngFor="let cause of causes" class="cause-container">
+                    <button mat-button (click)="selectedCause = cause" [class.selected]="selectedCause === cause"
+                        class="toggle-button">
+                        {{cause.name}}
+                    </button>
+                </div>
+
+                <ng-container
+                    *ngIf="selectedCause && (selectedCause.coveredType === 'NotCovered' || selectedCause.coveredType === 'PossibleCovered')">
+                    <div class="data-label" topmargin40>Please provide photo(s) of the condition</div>
+                    <app-swapable-image iconClass="image" prompt="" [blockStyle]="true"></app-swapable-image>
+                </ng-container>
+
+            </div>
+        </mat-tab>
+        <mat-tab label="Third">
+            <div class="padding">
+                <h2>Did this problem predate 5/1/2021?</h2>
+                <div class="three-column">
+                    <button mat-button class="toggle-button" (click)="predate = true"
+                        [class.selected]="predate === true">Yes</button>
+                    <button mat-button class="toggle-button" (click)="predate = false"
+                        [class.selected]="predate === false">No</button>
+                </div>
+
+                <div topmargin40 *ngIf="predate">
+                    <div class="data-label" topmargin40>Please provide photo(s) of the condition</div>
+                    <app-swapable-image iconClass="image" prompt="" [blockStyle]="true"></app-swapable-image>
+                </div>
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Third">
+            <div class="padding">
+                <h2>Is This Covered By Manufacturer's Warranty?</h2>
+                <div class="three-column">
+                    <button mat-button class="toggle-button" (click)="mfWarranty = 'true'"
+                        [class.selected]="mfWarranty === 'true'">Yes</button>
+                    <button mat-button class="toggle-button" (click)="mfWarranty = 'false'"
+                        [class.selected]="mfWarranty === 'false'">No</button>
+                    <button mat-button class="toggle-button" (click)="mfWarranty = 'notsure'"
+                        [class.selected]="mfWarranty === 'notsure'">Not Sure</button>
+                </div>
+
+                <div topmargin40 *ngIf="mfWarranty === 'false' || mfWarranty === 'notsure'">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Manufacturer</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Age Of Unit</mat-label>
+                        <input matInput type="number">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Model Number</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Serial Number</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Third">
+            <div class="padding">
+                <h2>In your professional judgment, can this item be repaired or does it need to be replaced?</h2>
+                <div class="three-column">
+                    <button mat-button class="toggle-button" (click)="repairReplace = 'repair'"
+                        [class.selected]="repairReplace === 'repair'">Repair</button>
+                    <button mat-button class="toggle-button" (click)="repairReplace = 'replace'"
+                        [class.selected]="repairReplace === 'replace'">Replace</button>
+                </div>
+
+                <div topmargin40 *ngIf="repairReplace === 'repair'">
+                    <h2>Can the repair be completed today?</h2>
+                    <div class="three-column">
+                        <button mat-button class="toggle-button" (click)="repairToday = true"
+                            [class.selected]="repairToday === true">Yes</button>
+                        <button mat-button class="toggle-button" (click)="repairToday = false"
+                            [class.selected]="repairToday === false">No</button>
+                    </div>
+
+                    <div *ngIf="repairToday === false" topmargin40>
+                        <h2>What is the estimated completion date?</h2>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div topmargin40 *ngIf="repairReplace === 'replace'">
+
+                    <h2>What is the reason for the replacement?</h2>
+
+                    <div *ngFor="let reason of reasonsForReplace" class="cause-container">
+                        <button mat-button (click)="selectedReasonForReplace = reason"
+                            [class.selected]="selectedReasonForReplace === reason" class="toggle-button">
+                            {{reason}}
+                        </button>
+                    </div>
+                    <mat-form-field appearance="outline" topmargin30>
+                        <mat-label>Age Of Unit</mat-label>
+                        <input matInput type="number">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Model Number</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <div class="data-label" topmargin40>Please provide photo(s) of the condition</div>
+                    <app-swapable-image iconClass="image" prompt="" [blockStyle]="true"></app-swapable-image>
+                </div>
+            </div>
+
+
+        </mat-tab>
+        <mat-tab label="Third">
+            <div class="padding">
+                <div class="repair-item-container" *ngFor="let item of selectedRepairItems">
+                    <div>
+                        <div aflex>
+                            <h3>{{item.name}}</h3>
+
+                            <button mat-button nogrow>
+                                <mat-icon>delete</mat-icon>
+                            </button>
+
+                        </div>
+
+
+                        <div class="attribute-container">
+                            <mat-form-field appearance="outline" *ngFor="let attribute of item.attributes">
+                                <mat-label>{{attribute.name}}</mat-label>
+                                <mat-select [(ngModel)]="attribute.value">
+                                    <mat-option *ngFor="let value of attribute.values" [value]="value.id">
+                                        {{value.value}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="data-label">Who will provide the part?</div>
+                        <div class="two-column">
+                            <button mat-button class="toggle-button" (click)="item.providedBy = 'contractor'"
+                                [class.selected]="item.providedBy === 'contractor'">My Company</button>
+                            <button mat-button class="toggle-button" (click)="item.providedBy = 'company'"
+                                [class.selected]="item.providedBy === 'company'">Elevate</button>
+                        </div>
+
+                        <div topmargin20 *ngIf="item.providedBy === 'company'">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Quantity</mat-label>
+                                <input matInput type="number">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Labor</mat-label>
+                                <input matInput type="number">
+                            </mat-form-field>
+                        </div>
+                        <div topmargin20 *ngIf="item.providedBy === 'contractor'">
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Quantity</mat-label>
+                                <input matInput type="number">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Cost</mat-label>
+                                <input matInput type="number">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Labor</mat-label>
+                                <input matInput type="number">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Third"> Content 3 </mat-tab>
+    </mat-tab-group>
+
+</div>

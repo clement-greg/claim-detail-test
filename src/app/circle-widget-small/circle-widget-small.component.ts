@@ -16,8 +16,11 @@ export class CircleWidgetSmallComponent implements AfterViewInit {
     @Input() strokeWidth = 7;
     @Input() strokeCircleWidth = 5;
     @Input() strokeColor = '#58bf74';
+    @Input() strokeEndColor = '#58bf74';
+    @Input() glowAmount = 4;
     @Input() height = 100;
     @Input() iconClass: string;
+    @Input() textColor = '#1C053A';
     outerCircleId = UtilitiesService.newid();
     innerCircleId = UtilitiesService.newid();
 
@@ -42,7 +45,7 @@ export class CircleWidgetSmallComponent implements AfterViewInit {
     }
 
     get containerHeight() {
-        return `${this.height + (this.strokeWidth * 2)}px`;
+        return `${this.height + (this.strokeWidth * 2) + (this.glowAmount * 2)}px`;
     }
 
     get containerMid() {

@@ -50,6 +50,8 @@ import { ViewPolicyComponent } from './view-policy/view-policy.component';
 import { NewOrderFrameComponent } from './new-order-frame/new-order-frame.component';
 import { SettingsComponent } from './settings/settings.component';
 import { RatingsComponent } from './ratings/ratings.component';
+import { AuthoComponent } from './autho/autho.component';
+import { SwapableImageComponent } from './swapable-image/swapable-image.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { RatingsComponent } from './ratings/ratings.component';
     ViewPolicyComponent,
     NewOrderFrameComponent,
     SettingsComponent,
-    RatingsComponent
+    RatingsComponent,
+    AuthoComponent,
+    SwapableImageComponent,
   ],
   imports: [
     FormsModule,

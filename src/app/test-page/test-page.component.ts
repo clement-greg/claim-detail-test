@@ -10,6 +10,7 @@ export class TestPageComponent implements OnInit {
 
   mappedExpenses: any[];
   isScrolled = false;
+  pct  = 0;
   constructor(private zone: NgZone) { }
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class TestPageComponent implements OnInit {
       this.mappedExpenses = [];
       this.mappedExpenses.push(new Metric('HVAC', 450, '#9600FF'));
       this.mappedExpenses.push(new Metric('Plumbing', 980, '#AEBAF8'));
+      this.pct = 75;
     }, 500);
   }
 

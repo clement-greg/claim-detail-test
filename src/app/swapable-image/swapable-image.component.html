@@ -1,0 +1,17 @@
+<input type="file" id="{{fileElemId}}" multiple accept="image/*" (change)="handleFiles($event)">
+
+<label [class.block-style]="blockStyle" id="{{fileElemId}}-label" (drop)="drop($event)" (dragenter)="dragEnter($event)"
+    (dragover)="dragover($event)" (dragleave)="dragleave($event)" for="{{fileElemId}}" class="file-selector"
+    [class.hover]="dragTargetActive">
+    <img [style.width]="width + 'px'" [src]="url" id="userImage" />
+    <br>
+
+    <mat-icon *ngIf="iconClass && !url">{{iconClass}}</mat-icon>
+    <br *ngIf="iconClass && !url">
+    {{prompt}}
+
+    <button *ngIf="showClear && url" style="border: none; background-color: transparent;" class="clear-button"
+        mat-button (click)="clear($event)">
+        <mat-icon style="height: 30px;width: 30px;font-size: 30px;">delete</mat-icon>
+    </button>
+</label>
