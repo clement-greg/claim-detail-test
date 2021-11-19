@@ -1,0 +1,185 @@
+<div id="background">
+    <div aflex class="top-menu" [class.scrolled]="isScrolled">
+        <div nogrow>
+            <button mat-button style="color: #fff;">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <div>
+            <img src="https://api.upkeeplabs.com/api/entity/company/logo"
+                style="filter: brightness(0) invert(1);height: 40px">
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="padding-right: 20px;padding-left: 20px;">
+            <h1 id="welcome-message" class="white-text">
+                <span class="small">
+                    Welcome</span><br> Joe Blow
+            </h1>
+
+            <a mat-button mat-raised-button topmargin30 routerLink="/request-service" color="primary" class="mobile-block rounded-button">Request
+                Service</a>
+        </div>
+
+        <div class="fuzzy-container fuzzy" topmargin40>
+            <app-doughnut [label]="expensesLabel" [metrics]="mappedExpenses"></app-doughnut>
+            <div>* Your potential estimated savings based on average customer savings.</div>
+        </div>
+
+        <div class="mobile-container">
+            <div aflex>
+                <div flex1 class="fuzzy-container fuzzy full-round">
+                    <h1 class="big-data">1</h1>
+                    <div class="data-label">Covered Properties</div>
+
+                    <div aflex topmargin20>
+                        <div></div>
+                        <div nogrow>
+                            <button mat-button>See More</button>
+                        </div>
+                    </div>
+                </div>
+                <div flex1 class="fuzzy-container fuzzy full-round">
+                    <h1 class="big-data">1</h1>
+                    <div class="data-label">Open Requests</div>
+                    <div aflex topmargin20>
+                        <div></div>
+                        <div nogrow>
+                            <button mat-button>See More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div flex1 class="fuzzy-container fuzzy full-round">
+                <h1 class="big-data">$0</h1>
+                <div class="data-label">Unpaid Invoices</div>
+                <div aflex topmargin20>
+                    <div></div>
+                    <div nogrow>
+                        <button mat-button>See More</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<div id="background2">
+    <div class="container">
+        <div class="mobile-container">
+            <div topmargin40>
+                <!-- <h1>My Covered Properties</h1> -->
+                <h1 id="welcome-message" class="white-text">
+                    <span class="small">
+                        My Covered</span><br> Properties
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="fuzzy-container fuzzy" topmargin40 style="min-height: unset;">
+        <div aflex class="property-info">
+            <div nogrow>
+                <img
+                    src="https://dev-api.upkeeplabs.com/api/policy/3f501c6e-f2f1-402b-89cf-7af8358a7cbe/StreetView?width=150&height=150">
+            </div>
+            <div>
+                <h2>6343 W Garfield Street</h2>
+                <p>Awesome Plan</p>
+                <button mat-button>Manage <mat-icon>chevron_right</mat-icon></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="fuzzy-container fuzzy" topmargin40 style="min-height: unset;">
+            <div aflex class="property-info">
+
+                <div>
+                    <h2>6343 W Garfield Street</h2>
+                    <p>Awesome Plan</p>
+                    <button mat-button>Manage <mat-icon>chevron_right</mat-icon></button>
+                </div>
+                <div nogrow>
+                    <img
+                        src="https://dev-api.upkeeplabs.com/api/policy/3f501c6e-f2f1-402b-89cf-7af8358a7cbe/StreetView?width=150&height=150">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button mat-button mat-raised-button topmargin30 color="primary" class="mobile-block rounded-button"
+        (click)="handleClick()">Add Covered Property</button>
+</div>
+
+<div id="background3">
+    <div class="container">
+        <div class="mobile-container">
+            <div topmargin20>
+                <!-- <h1>My Covered Properties</h1> -->
+                <h1 id="welcome-message" class="white-text">
+                    <span class="small">
+                        Service</span><br> Requests
+                </h1>
+            </div>
+            <button mat-button mat-raised-button topmargin30 color="primary" class="mobile-block rounded-button"
+                (click)="handleClick()">New Service Request</button>
+        </div>
+    </div>
+
+    <div aflex class="fuzzy-container fuzzy" topmargin40 style="min-height: unset;">
+        <div nogrow>
+            <img src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/ca7b6e7a-8810-4fbd-8b81-7e6d14b8e9d1/photo"
+                style="height: 48px;border-radius: 100%;">
+        </div>
+        <div>
+            <h3>10872 - Air Conditioning System</h3>
+            <p>Opened 11/12/21 6343 W Garfield Street</p>
+            <span class="badge">Authorized</span>
+        </div>
+    </div>
+    <div class="right">
+        <div class="fuzzy-container fuzzy" topmargin20 style="min-height: unset;">
+            <div aflex>
+                <div nogrow>
+                    <img src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/ca7b6e7a-8810-4fbd-8b81-7e6d14b8e9d1/photo"
+                        style="height: 48px;border-radius: 100%;">
+                </div>
+                <div>
+                    <h3>10872 - Air Conditioning System</h3>
+                    <p>Opened 11/12/21 6343 W Garfield Street</p>
+                    <span class="badge">Authorized</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div aflex class="fuzzy-container fuzzy" topmargin20 style="min-height: unset;">
+        <div nogrow>
+            <img src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/ca7b6e7a-8810-4fbd-8b81-7e6d14b8e9d1/photo"
+                style="height: 48px;border-radius: 100%;">
+        </div>
+        <div>
+            <h3>10872 - Air Conditioning System</h3>
+            <p>Opened 11/12/21 6343 W Garfield Street</p>
+            <span class="badge">Authorized</span>
+        </div>
+    </div>
+    <div class="right">
+        <div class="fuzzy-container fuzzy" topmargin20 style="min-height: unset;">
+            <div aflex>
+                <div nogrow>
+                    <img src="https://dev-api.upkeeplabs.com/api/WorkOrderItem/ca7b6e7a-8810-4fbd-8b81-7e6d14b8e9d1/photo"
+                        style="height: 48px;border-radius: 100%;">
+                </div>
+                <div>
+                    <h3>10872 - Air Conditioning System</h3>
+                    <p>Opened 11/12/21 6343 W Garfield Street</p>
+                    <span class="badge">Authorized</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

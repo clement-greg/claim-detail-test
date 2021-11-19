@@ -1,0 +1,20 @@
+<div style="padding: 40px" (window:mouseup)="stop($event)">
+  <button mat-button mat-raised-button class="record-button" [class.recording]="recording"
+    (mousedown)="doRecord($event)" (touchstart)="doRecord($event)" (touchend)="stop($event)" (mouseup)="stop($event)">
+    <mat-icon style="font-size: 40px;height: 40px;width: 40px;">mic</mat-icon>
+  </button>
+
+
+  <div class="sound-clips" style="margin-top: 40px;"></div>
+
+
+  <h2>Recordings</h2>
+  <div *ngFor="let recording of recordings">
+    <audio controls [src]="recording"></audio>
+
+    <button mat-button (click)="removeRecording(recording)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
+

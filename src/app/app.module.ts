@@ -52,6 +52,13 @@ import { SettingsComponent } from './settings/settings.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { AuthoComponent } from './autho/autho.component';
 import { SwapableImageComponent } from './swapable-image/swapable-image.component';
+import { RecordComponent } from './record/record.component';
+import { TestCustomerPortalComponent } from './test-customer-portal/test-customer-portal.component';
+import { TestRequestServiceComponent } from './test-request-service/test-request-service.component';
+import { ItemSelectionComponent } from './item-selection/item-selection.component';
+import { ServiceRequestSummaryComponent } from './service-request-summary/service-request-summary.component';
+import { QuestionWizardComponent } from './question-wizard/question-wizard.component';
+import { PaymentMethodEntryComponent } from './payment-method-entry/payment-method-entry.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +76,13 @@ import { SwapableImageComponent } from './swapable-image/swapable-image.componen
     RatingsComponent,
     AuthoComponent,
     SwapableImageComponent,
+    RecordComponent,
+    TestCustomerPortalComponent,
+    TestRequestServiceComponent,
+    ItemSelectionComponent,
+    ServiceRequestSummaryComponent,
+    QuestionWizardComponent,
+    PaymentMethodEntryComponent,
   ],
   imports: [
     FormsModule,

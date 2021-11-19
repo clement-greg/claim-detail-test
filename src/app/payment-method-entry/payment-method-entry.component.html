@@ -1,0 +1,57 @@
+<div style="position: relative;">
+
+    <button mat-button id="left-mobile-card-button" (click)="prevMobileCard()">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-button (click)="nextMobileCard()" id="right-mobile-card-button">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+    <div id="mobile-card-container" [style.transform]="mobileCardContainerTransform"
+        (swipeleft)="nextMobileCard()" (swiperight)="prevMobileCard()">
+        <div *ngFor="let card of existingCards; index as i" class="button-div button-div-mobile"
+            [class.slideOutRight]="card.removingDeleted">
+
+            <button [class.current-index]="i == mobileCardIndex" class="list-item-button" mat-button
+                (click)="selectCard(card)">
+                <div class="card-layout" [class.mc]="card.brand == 'MasterCard'"
+                    [class.amex]="card.brand == 'American Express'" [class.discover]="card.brand == 'Discover'">
+
+                    <div flex>
+                        <div style="max-width: 80px">
+                            <img *ngIf="card.brand == 'Visa'" src="assets/images/visa.png" mat-list-icon
+                                class="card-icon">
+                            <img *ngIf="card.brand == 'Discover'" src="assets/images/discover.png" mat-list-icon
+                                class="card-icon">
+                            <img *ngIf="card.brand == 'American Express'"
+                                src="assets/images/americanexpress.png" mat-list-icon class="card-icon">
+                            <img *ngIf="card.brand == 'MasterCard'" src="assets/images/mastercard.png"
+                                mat-list-icon class="card-icon">
+
+                        </div>
+                    </div>
+
+                    <div class="card-brand">
+                        <h1>{{card.brand}}</h1>
+                    </div>
+                    <h4 class="card-number" topmargin10>•••• &nbsp;&nbsp;•••• &nbsp;&nbsp;•••• &nbsp;&nbsp;{{card.last4}}
+                    </h4>
+
+                    <div flex>
+                        <div class="credit-card-name">
+                            {{card.customerName}}
+                        </div>
+                        <div>
+                            <p matLine class="expiration-date-field">{{card.exp_month}}/{{card.exp_year}}</p>
+                        </div>
+                    </div>
+                </div>
+            </button>
+
+        </div>
+
+    </div>
+    <button mat-button block id="add-new-card-mobile" style="white-space: normal;line-height: 12px;" *ngIf="!addingNewCard && !refreshingCards"
+        (click)="showAddNewCard()">
+        <mat-icon>add_circle_outline</mat-icon>Add a payment method to the wallet
+    </button>
+</div>

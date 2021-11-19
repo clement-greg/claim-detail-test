@@ -1,0 +1,116 @@
+<div id="background">
+    <div aflex class="top-menu" [class.scrolled]="isScrolled">
+        <div nogrow>
+            <button mat-button style="color: #fff;">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <div>
+            <img src="https://api.upkeeplabs.com/api/entity/company/logo"
+                style="filter: brightness(0) invert(1);height: 40px">
+        </div>
+    </div>
+
+    <mat-tab-group class="hide-tabs" [(selectedIndex)]="selectedIndex">
+        <mat-tab label="First">
+            <div class="container" style="padding-left: 10px;padding-right: 10px;">
+                <div class="">
+                    <item-selection [workOrderItems]="workOrderItems"></item-selection>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Second">
+            <div class="container" style="padding-left: 10px;padding-right: 10px;">
+                <h1 class="sub-heading">Item Questions</h1>
+            </div>
+            <div class="fuzzy fuzzy-container" topmargin30>
+                <p>Please answer these brief questions to prepare the service provider.</p>
+
+                <app-question-wizard [showGenericProfilePic]="true" [xml]="xml"></app-question-wizard>
+            </div>
+        </mat-tab>
+        <mat-tab label="Third">
+            <div class="container" style="padding-left: 10px;padding-right: 10px;">
+                <h1 class="sub-heading">Pictures</h1>
+            </div>
+
+            <div class="fuzzy fuzzy-container">
+                Upload any photos that may help our service pro diagnose your item.
+            </div>
+
+            <div class="center">
+                <img style="height: 125px;"
+                    src="https://dev-customers.upkeeplabs.com/assets/images/circle-icons-camera.png">
+                <div topmargin40></div>
+                <button mat-button mat-raised-button color="primary" class="mobile-block rounded-button">
+                    <mat-icon>add_photo_alternate</mat-icon> Add Photo
+                </button>
+
+
+                <button class="mobile-block" topmargin30 mat-button mat-raised-button
+                    (click)="selectedIndex = selectedIndex + 1">
+                    I Dont' Have Any
+                </button>
+            </div>
+
+
+        </mat-tab>
+        <mat-tab>
+            <div class="container" style="padding-left: 10px;padding-right: 10px;">
+                <h1 class="sub-heading">Service Fee</h1>
+            </div>
+
+            <div class="fuzzy fuzzy-container">
+                A service fee payment of $64 is due now. You can pay with Visa, Mastercard, Discover and American
+                Express.
+            </div>
+
+            <div _ngcontent-jug-c228="" class="service-fee-messages center" style="display: table;margin: 0 auto;margin-top: 60px">
+                <div _ngcontent-jug-c228="" class="ng-star-inserted" style="background-color: rgb(8, 153, 148);">
+                    <mat-icon class="savings-icon">savings</mat-icon> 
+                    Congratulations, since you are submitting your job online, we are giving you
+                    $5 off your service fee today!
+                </div>
+            </div>
+
+            <app-payment-method-entry [existingCards]="existingCards"></app-payment-method-entry>
+        </mat-tab>
+        <mat-tab>
+            <div class="container" style="padding-left: 10px;padding-right: 10px;">
+                <h1 class="sub-heading">Contact Information</h1>
+            </div>
+
+        </mat-tab>
+        <mat-tab>
+            <div class="container" style="padding-left: 10px;padding-right: 10px;">
+                <h1 class="sub-heading">Appointment Selection</h1>
+            </div>
+
+        </mat-tab>
+        <mat-tab>
+            <div class="container" style="padding-left: 10px;padding-right: 10px;">
+                <h1 class="sub-heading">Review &amp; Submit</h1>
+            </div>
+
+        </mat-tab>
+    </mat-tab-group>
+
+
+
+</div>
+
+<div id="navigation-toolbar" class="fuzzy">
+    <div aflex>
+        <div></div>
+        <div nogrow>
+            <button mat-button mat-raised-button (click)="selectedIndex = selectedIndex - 1">
+                <mat-icon>chevron_left</mat-icon>
+            </button>&nbsp;&nbsp;
+            <button mat-button mat-raised-button color="primary" (click)="selectedIndex = selectedIndex + 1">
+                Next <mat-icon>chevron_right</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<app-service-request-summary [totalSteps]="6" [selectedIndex]="selectedIndex" [policySummary]="policySummary"></app-service-request-summary>

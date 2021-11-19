@@ -1,0 +1,69 @@
+<div id="request-summary-container" *ngIf="policySummary" style="background-image: linear-gradient(135deg, rgb(237, 118, 94) 0px, rgb(254, 168, 88) 50%);">
+    <mat-progress-bar mode="determinate" [value]="pctComplete"></mat-progress-bar>
+    <div class="container">
+        <div class="grid-container">
+            <div class="small-box">
+                <div class="big-data">{{serviceFee }}</div>
+
+                <div class="small">Service Fee</div>
+            </div>
+            <div class="small-box" (click)="goToPropertySelection()">
+                <div class="icon-container">
+                    <img [src]="propertyUrl" class="icon">
+                </div>
+                <br><span class="small">
+                    {{policySummary.propertyAddress1}}</span>
+            </div>
+
+            <div nogrow *ngIf="lineItems && lineItems.length" class="small-box" (click)="goToStep(0)">
+                    <div class="icon-container" *ngFor="let line of lineItems">
+
+                        <img [src]="getItemUrl(line)" class="icon item-icon" [style.margin-left]="getLeftMargin(line)">
+                    </div>
+                    <br>
+                    <span class="small">
+                        {{itemNames}}</span> 
+            </div>
+            <div nogrow class="small-box disabled" *ngIf="!lineItems || !lineItems.length">
+                <div class="icon-container disabled">
+                    <mat-icon>local_laundry_service</mat-icon>
+                </div><br>
+                <span class="small">Item(s)</span>
+            </div>
+            <div class="small-box" *ngIf="selectedCard && selectedIndex > 3" (click)="goToStep(4)">
+                <div class="icon-container">
+                    <img [src]="cardImage" class="icon">
+                </div><br>
+                <span class="small">
+                    {{selectedCard.last4}} {{selectedCard.exp_month}}/{{selectedCard.exp_year}}
+                </span>
+            </div>
+            <div class="small-box disabled" *ngIf="!selectedCard || selectedIndex <= 3" >
+                <div class="icon-container">
+                    <mat-icon>credit_card</mat-icon>
+                </div><br>
+                <span class="small">
+                    Payment
+                </span>
+            </div>
+            <div class="small-box" *ngIf="selectedTimeSlots && selectedTimeSlots.length > 0" (click)="goToStep(5)">
+                <div class="icon-container">
+                    <mat-icon class="icon">event</mat-icon>
+                </div>
+                <div *ngFor="let timeSlot of selectedTimeSlots" class="small">
+                    <ng-container *ngIf="timeSlot"> {{timeSlot.summary}}</ng-container>
+                </div>
+            </div>
+
+            <div class="small-box disabled" [class.disabled]="selectedIndex < 6">
+                <div class="icon-container">
+                    <mat-icon [class.icon]="selectedIndex === 6">done_outline</mat-icon>
+                </div>
+                <div class="small">
+                    Review
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

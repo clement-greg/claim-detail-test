@@ -1,0 +1,126 @@
+<div aflex topmargin40 [id]="formId">
+    <div nogrow *ngIf="!hideItemPicture" class="item-picture-container">
+        <div id="itemPictureContainer">
+            <img src="{{getItemThumbnailUrl(workOrderItemId)}}">
+        </div>
+    </div>
+    <div id="questionsList">
+
+        <div *ngIf="noQuestions" style="text-align: center">
+            <mat-icon style="font-size: 64px; height: 64px; width: 64px; color: #77cb50;">help</mat-icon>
+            <h3>No Questions have been setup for this item</h3>
+        </div>
+
+        <div *ngIf="loadingQuestions">
+            <mat-spinner thirty></mat-spinner> Loading Questions...
+        </div>
+
+        <div *ngIf="commandWorking">
+            <mat-spinner thirty></mat-spinner> {{commandMessage}}
+        </div>
+        <div class="question-container">
+            <ng-container *ngFor="let question of questionStack.slice().reverse()">
+                <div class="expand-in" [class.extraPadding]="question.type == 'MESSAGE'" *ngIf="!question.hidden">
+                    <div *ngIf="question.type == 'MULTICHOICE'" class="question-container extraPadding">
+                        <div class="data-label" [innerHTML]="question.text"></div>
+
+                        <ul>
+                            <li *ngFor="let answer of getAnswerList(question)" style="list-style: none">
+                                <mat-checkbox [(ngModel)]="answer.selected"
+                                    [tabIndex]="questionStack.indexOf(question) + 100"
+                                    (ngModelChange)="showNextQuestion(answer.selected, question)">
+                                    <span [innerHTML]="answer.text"></span>
+                                </mat-checkbox>
+                            </li>
+                        </ul>
+                    </div>
+                    <div *ngIf="question.type == 'COMBO'" class="question-container">
+                        <div class="data-label" [innerHtml]="question.text"></div>
+                        <mat-form-field [appearance]="appearance"
+                            *ngIf="question.answers && question.answers.length > 8">
+                            <mat-select [(ngModel)]="question.answer" [tabIndex]="questionStack.indexOf(question) + 100"
+                                (ngModelChange)="showNextQuestion(question.answer, question)">
+                                <ng-container *ngFor="let answer of getAnswerList(question)">
+                                    <mat-option *ngIf="!answer.hidden" [value]="answer.text">{{answer.text}}
+                                    </mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="question.answers && question.answers.length <= 8" bottommargin20 topmargin10>
+                            <button mat-button class="answer-button"
+                                *ngFor="let answer of getAnswerList(question, true)"
+                                (click)="answerQuestion(question, answer)"
+                                [class.selected]="question.answer === answer.text">
+                                {{answer.text}}
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="question.type == 'DATE'" class="question-container">
+                        <div class="data-label" [innerHtml]="question.text"></div>
+                        <app-date-picker [(date)]="question.answer"
+                            (dateChange)="showNextQuestion(question.answer, question)"></app-date-picker>
+                    </div>
+                    <div *ngIf="question.type == 'NUMBER'" class="question-container">
+                        <div class="data-label" [innerHtml]="question.text"></div>
+                        <mat-form-field [appearance]="appearance">
+                            <input matInput type="number" [(ngModel)]="question.answer"
+                                [tabIndex]="questionStack.indexOf(question) + 100"
+                                (ngModelChange)="showNextQuestion(question.answer, question)">
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="question.type == 'TEXTBOX'" class="question-container">
+                        <div class="data-label" [innerHtml]="question.text"></div>
+                        <mat-form-field [appearance]="appearance">
+                            <input matInput type="text" [(ngModel)]="question.answer"
+                                [tabIndex]="questionStack.indexOf(question) + 100"
+                                (ngModelChange)="showNextQuestion(question.answer, question)">
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="question.type == 'MULTILINE'" class="question-container">
+                        <div class="data-label" [innerHtml]="question.text"></div>
+                        <mat-form-field [appearance]="appearance">
+                            <textarea rows="4" matInput [(ngModel)]="question.answer"
+                                [tabIndex]="questionStack.indexOf(question) + 100"
+                                (ngModelChange)="showNextQuestion(question.answer, question)"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="question.type == 'MESSAGE' " class="question-container">
+                        <div aflex style="text-align: center;">
+                            <div nogrow *ngIf="showGenericProfilePic">
+                                <div class="generic-face">
+                                    <img
+                                        src="https://uklprodstorage.blob.core.windows.net/doc-public/cdn/images/female-business-face.jpg">
+                        
+                                </div>
+                                <br>
+                                <span style="font-size: 11px;">
+                                    Elevate says</span>
+                            </div>
+                            <div>
+                                <p class="triangle-border">
+                                    <span [innerHTML]="question.text"></span>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="question.type === 'VIDEO'" class="question-container">
+                        <iframe style="width: 100%;min-height: 300px;" frameBorder="0" allowfullscreen="allowfullscreen"
+                            mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen"
+                            oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"
+                            [src]="question.safeUrl">
+                        </iframe>
+                    </div>
+                    <div *ngIf="question.type === 'SHOW_IMAGE'" class="question-container">
+                        <img [src]="question.safeUrl" style="max-width: 100%;">
+                    </div>
+
+                    <div *ngIf="question.type === 'UPLOAD_IMAGE'" class="question-container">
+                        
+                        <app-swapable-image [pasteTargetId]="formId" [showClear]="true" [blockStyle]="true" [prompt]="question.text" [(url)]="question.answer" iconClass="image" (urlChange)="showNextQuestion(question.answer, question)"></app-swapable-image>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

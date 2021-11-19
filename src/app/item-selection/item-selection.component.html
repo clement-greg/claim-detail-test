@@ -1,0 +1,143 @@
+<div id="item-selection-container">
+    <div bottommargin20 id="filter-form-field-container">
+
+        <mat-form-field id="filter-form-field" appearance="outline">
+            <mat-label>Filter</mat-label>
+            <input matInput (ngModelChange)="updateFilteredItems($event)" [(ngModel)]="filter">
+        </mat-form-field>
+
+    </div>
+    <div class="" *ngIf="!filter">
+        <div class="grouped-item-container">
+            <h1 *ngIf="!hideHeader" class="sub-heading" bottommargin30>Item Selection</h1>
+
+            <div id="grouped-items-container">
+                <div id="grouped-items-inner-container" [class.group-container-collapsed]="detailShown">
+                    <ng-container *ngFor="let groupedItem of groupedItems;let i = index">
+                        <button id="header_{{groupedItem.category}}" [class.group-collapsed]="detailShown"
+                            (click)="setSelectedGroupItem(groupedItem)"
+                            [class.selected]="selectedGroupItem === groupedItem" class="grouped-item fuzzy">
+                            <h2>{{groupedItem.category}} </h2>
+                            <img loading="lazy" *ngIf="groupedItem.iconUrl" class="" [src]="groupedItem.iconUrl" />
+                            <div class="data-label">{{groupedItem.workOrderItems.length}} Items</div>
+                            <div class="sample-list">{{groupedItem.sampleList}}</div>
+                        </button>
+                        <div class="group-item-container fuzzy" [class.selected]="groupSelected"
+                            *ngIf="(i % 2 !== 0 || (groupedItems.length % 2 === 1 && groupedItems.indexOf(groupedItem) === groupedItems.length - 1)) && selectedGroupItem && (selectedGroupItem === groupedItem || selectedGroupItem === groupedItems[i - 1])">
+                            <ul class="low-padding work-order-item-list" style="margin-bottom: 0;padding: 10px">
+                                <li class="work-order-item" *ngFor="let item of selectedGroupItem.workOrderItems">
+                                    <div aflex>
+                                        <a mat-button (click)="selectWorkOrderItem(item)" >
+                                            <div aflex>
+                                            <div nogrow>
+                                                <div class="thumbnail-wrapper">
+                                                    <img loading="lazy" class="item-thumbnail" [src]="getItemUrl(item)">
+                                                </div>
+                                            </div>
+                                            <div style="padding-top: 15px">
+                                                {{item.name}}
+                                            </div>
+                                        </div>
+                                        </a>
+
+                                        <div nogrow>
+                                            <a mat-button (click)="showContractLanguage(item)"
+                                                style="text-align: center; opacity: .3; max-width: 50px">
+                                                <i class="material-icons">more_horiz</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <mat-tab-group *ngIf="detailShown" id="tab-group" class="hide-tabs" [(selectedIndex)]="selectedGroupIndex"
+                (selectedIndexChange)="groupIndexChange($event)">
+                <mat-tab label="First" *ngFor="let selectedGroup of groupedItems">
+                    <div *ngIf="selectedGroup" class="soft-light">
+                        <ul class="low-padding" style="margin-bottom: 0;padding: 10px">
+                            <li class="work-order-item" *ngFor="let item of selectedGroup.workOrderItems">
+                                <div aflex>
+                                    <a mat-button (click)="selectWorkOrderItem(item)">
+                                        <img loading="lazy" class="item-thumbnail" [src]="getItemUrl(item)">
+                                        {{item.name}}
+                                    </a>
+                                    <div nogrow>
+                                        <a mat-button (click)="showContractLanguage(item)"
+                                            style="text-align: center; opacity: .3; max-width: 50px">
+                                            <i class="material-icons">more_horiz</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+
+            <div id="grouped-items-container-desktop" *ngIf="!detailShown">
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let groupedItem of groupedItems">
+                        <mat-expansion-panel-header collapsedHeight="90px" expandedHeight="90px">
+                            <mat-panel-description>
+                                <div aflex>
+                                    <div nogrow>
+                                        <img loading="lazy" *ngIf="groupedItem.iconUrl" style="margin-top: 5px"
+                                            class="group-icon" [src]="groupedItem.iconUrl" />
+                                    </div>
+                                    <div style="overflow: hidden;">
+                                        <h2>{{groupedItem.category}} </h2>
+                                        <div class="data-label">{{groupedItem.workOrderItems.length}} Items</div>
+                                        <div class="sample-list">{{groupedItem.sampleList}}</div>
+                                    </div>
+                                </div>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <ul class="low-padding" style="margin-bottom: 0;padding: 10px">
+                            <li class="work-order-item" *ngFor="let item of groupedItem.workOrderItems">
+                                <div aflex>
+                                    <a mat-button (click)="selectWorkOrderItem(item)">
+                                        <img loading="lazy" class="item-thumbnail" [src]="getItemUrl(item)">
+                                        {{item.name}}
+                                    </a>
+                                    <div nogrow>
+                                        <a mat-button (click)="showContractLanguage(item)"
+                                            style="text-align: center; opacity: .3; max-width: 50px">
+                                            <i class="material-icons">more_horiz</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+            </div>
+        </div>
+
+    </div>
+    <div *ngIf="filter">
+        <div>
+            <div>
+                <div *ngFor="let item of filteredItems" aflex>
+                    <div>
+                        <a mat-button style="text-align: left; min-width: 350px" (click)="selectWorkOrderItem(item)">
+                            <i class="material-icons">keyboard_arrow_right</i> {{item.name}}
+                        </a>
+                    </div>
+                    <div nogrow>
+                        <a mat-button (click)="showContractLanguage(item)" style="text-align: center">
+                            <i class="material-icons">search</i>
+                        </a>
+                    </div>
+                </div>
+
+                <button mat-button mat-raised-button (click)="clearFilter()">Clear</button>
+            </div>
+        </div>
+    </div>
+</div>

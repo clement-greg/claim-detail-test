@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
         }
 
         setTimeout(() => this.enteringAnimation = false, 750);
+        console.log('here')
+        setTimeout(() => window.scrollTo(0, 0),185);
       }
     });
   }

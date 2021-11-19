@@ -1,0 +1,189 @@
+#background {
+    background-image: url(https://adorable-home.com/wp-content/uploads/2016/06/Modern-dark-interiors-5.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    /* position: absolute; */
+    z-index: -1;
+    grid-column: 0;
+    grid-row: 0;
+    background-attachment: fixed;
+    padding-top: 60px;
+    padding-bottom: 160px;
+}
+
+
+.sub-heading {
+    color: var(--white-color);
+}
+
+
+.top-menu {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 10px;
+    z-index: 1;
+}
+
+.big-data {
+    color: #fff;
+
+}
+
+#navigation-toolbar {
+    position: fixed;
+    bottom: 75px;
+    /* background-color: yellow; */
+    width: 100%;
+    padding: 10px;
+    z-index: 1;
+}
+
+.data-label {
+    color: var(--white-color);
+
+}
+
+.fuzzy-container .property-info {
+    min-height: unset;
+}
+
+.property-info img {
+    height: 70px;
+}
+
+.fuzzy {
+    background-color: hsla(0, 0%, 59%, .5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.fuzzy-container button[mat-button] {
+    color: var(--white-color);
+}
+
+.service-fee-messages[_ngcontent-jug-c228]>div[_ngcontent-jug-c228] {
+    animation: slide-in-right .25s ease-out;
+    background: #fafafa;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    text-align: left;
+    max-width: 350px;
+    position: relative;
+    padding: 20px 20px 20px 41px;
+    overflow: visible;
+    color: #fff;
+}
+
+.savings-icon {
+    font-size: 56px;
+    height: 75px;
+    width: 75px;
+    border-radius: 100%;
+    background-color: #fff;
+    color: rgb(8, 153, 148);
+    padding: 10px;
+    border: 2px solid rgb(8, 153, 148);
+    position: absolute;
+    top: -45px;
+    left: -21px;
+}
+
+.fuzzy-container {
+    padding: 30px 20px;
+    color: var(--white-color);
+    margin-bottom: 20px;
+    border-radius: 0 20px 20px 0;
+    max-width: calc(100% - 30px);
+}
+
+.right {}
+
+.right .fuzzy-container {
+    display: table;
+    margin-left: auto;
+    border-radius: 20px 0 0 20px;
+}
+
+.fuzzy-container.full-round {
+    border-radius: 20px;
+    max-width: unset;
+    text-align: center;
+    min-height: unset;
+}
+
+.full-round h1.big-data {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+.fuzzy-container h1 {
+    color: var(--white-color);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: table;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#welcome-message {
+    font-size: 64px;
+    line-height: 37px;
+    color: #fff;
+    margin-bottom: 40px;
+    text-transform: lowercase;
+}
+
+#welcome-message span.small {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.rounded-button {
+    border-radius: 30px !important;
+    padding: 10px 30px !important;
+}
+
+.mobile-block {
+    display: table;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.mobile-container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.top-menu.scrolled {
+    box-shadow: 0px 0px 15px 5px rgb(255 255 255 / 50%);
+}
+
+.top-menu::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    background-color: #89AAE6;
+    background-image: linear-gradient(135deg, rgb(237, 118, 94) 0px, rgb(254, 168, 88) 50%);
+    visibility: hidden;
+    transform: scaleX(0) scaleY(1);
+    transition: all .3s ease-in-out 0s;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+}
+
+.top-menu.scrolled::before {
+    transform: scaleX(1) scaleY(1);
+    visibility: visible;
+}
