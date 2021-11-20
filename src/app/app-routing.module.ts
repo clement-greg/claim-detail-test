@@ -14,7 +14,7 @@ import { WorkOrderDetailComponent } from './work-order-detail/work-order-detail.
 const routes: Routes = [
   {
     path: '',
-    component: RecordComponent,
+    component: TestCustomerPortalComponent,
   },
   {
     path: 'test-real-estate-portal',

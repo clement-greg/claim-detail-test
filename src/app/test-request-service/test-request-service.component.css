@@ -99,7 +99,57 @@
     max-width: calc(100% - 30px);
 }
 
-.right {}
+:host ::ng-deep input, :host ::ng-deep mat-select, :host ::ng-deep mat-checkbox {
+    color: var(--white-color);
+}
+
+:host ::ng-deep div[role=tab] {
+    color: #fff;
+}
+
+:host ::ng-deep .mat-form-field-outline {
+    color: rgba(255, 255, 255, .1);
+}
+
+:host ::ng-deep .mat-form-field-label {
+    color: rgba(255, 255, 255, .5);
+}
+
+:host ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: rgba(255, 255, 255, .8);
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: rgba(255, 56, 169, .3);
+}
+
+:host ::ng-deep .mat-tab-body-content {
+    overflow: hidden;
+}
+
+:host ::ng-deep mat-tab-body {
+    overflow: hidden !important;
+}
+
+:host ::ng-deep mat-hint {
+    color: #fff;
+}
+
+
+input[type=file] {display: none;}
+
+:host ::ng-deep mat-ink-bar.mat-ink-bar {
+    background-color: rgba(255, 56, 169, .3) !important;
+}
+
+:host ::ng-deep .mat-slide-toggle-content {
+    font-weight: 100;
+}
+
+:host ::ng-deep label.file-selector {
+    color: #fff;
+}
+
 
 .right .fuzzy-container {
     display: table;
