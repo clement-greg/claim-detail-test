@@ -11,6 +11,7 @@
     background-attachment: fixed;
     padding-top: 60px;
     padding-bottom: 160px;
+    transition: height 1000s steps(1);
 }
 
 
@@ -215,6 +216,7 @@ input[type=file] {display: none;}
 
 .top-menu.scrolled {
     box-shadow: 0px 0px 15px 5px rgb(255 255 255 / 50%);
+    z-index: 2;
 }
 
 .top-menu::before {
