@@ -59,6 +59,7 @@ import { ItemSelectionComponent } from './item-selection/item-selection.componen
 import { ServiceRequestSummaryComponent } from './service-request-summary/service-request-summary.component';
 import { QuestionWizardComponent } from './question-wizard/question-wizard.component';
 import { PaymentMethodEntryComponent } from './payment-method-entry/payment-method-entry.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { PaymentMethodEntryComponent } from './payment-method-entry/payment-meth
     ServiceRequestSummaryComponent,
     QuestionWizardComponent,
     PaymentMethodEntryComponent,
+    HomeComponent,
   ],
   imports: [
     FormsModule,

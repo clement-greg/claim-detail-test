@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthoComponent } from './autho/autho.component';
+import { HomeComponent } from './home/home.component';
 import { NewOrderFrameComponent } from './new-order-frame/new-order-frame.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { RecordComponent } from './record/record.component';
@@ -14,7 +15,7 @@ import { WorkOrderDetailComponent } from './work-order-detail/work-order-detail.
 const routes: Routes = [
   {
     path: '',
-    component: TestCustomerPortalComponent,
+    component: HomeComponent,
   },
   {
     path: 'test-real-estate-portal',
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'test-customer-portal',
     component: TestCustomerPortalComponent,
+  },
+  {
+    path: 'record',
+    component: RecordComponent
   },
   {
     path: 'view-subscription/:id',

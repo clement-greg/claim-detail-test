@@ -4,6 +4,7 @@
     background-repeat: no-repeat;
     width: 100%;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     /* position: absolute; */
     z-index: -1;
     grid-column: 0;
