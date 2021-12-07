@@ -60,6 +60,7 @@ import { ServiceRequestSummaryComponent } from './service-request-summary/servic
 import { QuestionWizardComponent } from './question-wizard/question-wizard.component';
 import { PaymentMethodEntryComponent } from './payment-method-entry/payment-method-entry.component';
 import { HomeComponent } from './home/home.component';
+import { CommunicationHubComponent } from './communication-hub/communication-hub.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { HomeComponent } from './home/home.component';
     QuestionWizardComponent,
     PaymentMethodEntryComponent,
     HomeComponent,
+    CommunicationHubComponent,
   ],
   imports: [
     FormsModule,

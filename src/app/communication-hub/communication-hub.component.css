@@ -1,0 +1,121 @@
+#open-coms {
+    z-index: 1;
+
+}
+
+#bg-image {
+    position: absolute;
+}
+
+.avatar {
+    height: 30px !important;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.from-box {
+    width: 60px;
+}
+
+.small {
+    font-size: 11px;
+}
+
+.communication-text {
+    width: 340px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.new-communication-button {
+    border-radius: 50%;
+    height: 44px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 44px;
+    min-width: 0;
+    padding-left: 10px;
+}
+
+.communication-type-container {
+    height: 20px;
+    width: 20px;
+    background-color: #aaa;
+    border-radius: 50%;
+    margin-left: -18px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.communication-type-container.no-avatar {
+    height: 30px;
+    width: 30px;
+    margin-left: 0;
+}
+
+
+.communication-type {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+    color: #fff;
+}
+
+.communication-type.no-avatar {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.communication-item {
+    text-align: left;
+    text-transform: none;
+    border-bottom: 1px dotted rgb(200, 200, 200);
+    display: block;
+    width: 100%;
+    line-height: 17px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 0;
+}
+
+.communication-item.bold {
+    font-weight: bold;
+}
+
+.communication-item.toggle-button::before {
+    border-radius: 0;
+}
+
+.date {
+    width: 50px;
+}
+
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+#communication-panel {
+    animation: fade-in .5s ease-in-out;
+    position: fixed;
+    top: 60px;
+    width: 450px;
+    background-color: #fff;
+    height: calc(100vh - 60px);
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0px 0px 15px 5px #000000;
+    transform-origin: 100% 0%;
+}
