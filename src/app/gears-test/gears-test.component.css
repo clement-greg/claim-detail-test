@@ -11,9 +11,9 @@
     fill: url(#linear-gradient);
     transform-box: fill-box;
     transform-origin: center;
-    animation-duration: 4s;
+    animation-duration: 3s;
     animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation-timing-function: ease-in-out;
     animation-name: rotating;
 }
 
