@@ -1,0 +1,433 @@
+<div id="appHeader" class="">
+    <button mat-button="" class="mat-focus-indicator mat-button mat-button-base"><span class="mat-button-wrapper"><i
+                class="material-icons">menu</i></span><span matripple=""
+            class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></button><a
+        routerLink="/"><img id="companyLogo" src="https://dev-api.upkeeplabs.com/api/entity/company/logo"
+            class="ng-star-inserted">
+
+
+    </a><button aria-haspopup="true" mat-button=""
+        class="mat-focus-indicator mat-menu-trigger mat-button mat-button-base ng-star-inserted"
+        style="min-width: 0;"><span class="mat-button-wrapper">
+            <i class="material-icons ng-star-inserted">notifications_none</i>
+
+
+        </span><span matripple="" class="mat-ripple mat-button-ripple"></span><span
+            class="mat-button-focus-overlay"></span></button>
+
+    <mat-menu class="ng-star-inserted">
+
+    </mat-menu>
+    <ul class="app-menu-items ng-star-inserted">
+        <li class="menu-item ng-star-inserted">
+            <a class="page-scroll1 ng-star-inserted" href="/"><span _ngcontent-nmu-c213="">Overview</span></a>
+
+
+        </li>
+        <li class="menu-item ng-star-inserted">
+            <a class="page-scroll1 ng-star-inserted" href="/jobs/report"><span _ngcontent-nmu-c213="">Jobs
+                    Report</span></a>
+
+
+        </li>
+        <li class="menu-item ng-star-inserted">
+            <a class="page-scroll1 ng-star-inserted" href="/jobs"><span _ngcontent-nmu-c213="">Jobs Board</span></a>
+
+
+        </li>
+        <li class="menu-item ng-star-inserted">
+            <a class="page-scroll1 ng-star-inserted" href="/billing"><span _ngcontent-nmu-c213="">Billing</span></a>
+
+
+        </li>
+        <li class="menu-item ng-star-inserted">
+            <a class="page-scroll1 ng-star-inserted" href="/reports"><span _ngcontent-nmu-c213="">Statistics</span></a>
+
+
+        </li>
+        <li class="menu-item ng-star-inserted">
+            <a class="page-scroll1 ng-star-inserted" href="/calendar"><span _ngcontent-nmu-c213="">Calendar</span></a>
+
+
+        </li>
+        <li class="menu-item ng-star-inserted">
+            <a class="page-scroll1 ng-star-inserted" href="/settings"><span _ngcontent-nmu-c213="">Settings</span></a>
+
+
+        </li>
+        <li class="menu-item ng-star-inserted">
+            <a class="page-scroll1 ng-star-inserted" href="/auth/log-out"><span _ngcontent-nmu-c213="">Log
+                    Out</span></a>
+
+
+        </li>
+
+    </ul>
+
+
+
+
+</div>
+
+<div style="height: 60px;">
+
+</div>
+<div class="container fancy-container" style="padding-bottom: 60px;">
+
+    <mat-tab-group class="hide-tabs" [(selectedIndex)]="selectedIndex" (selectedIndexChange)="selectedIndexChange()">
+        <mat-tab label="First">
+            <div *ngIf="!applianceParts || applianceParts.length === 0">
+
+                <div style="max-width: 600px;display: table;margin:0 auto;" class="center">
+
+                    <h1 bottommargin30>Add Appliance Parts</h1>
+                    <svg id="Layer_1" style="" class="main-icon" [class.icon-removed]="noMatch || selectedIndex > 0" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 515.8894 515.8894">
+                        <defs>
+                          <style>
+                            .cls-1-1 {
+                              fill: #0d72b9;
+                            }
+                      
+                            .cls-2-1 {
+                              fill: #fff;
+                            }
+                          </style>
+                        </defs>
+                        <circle class="cls-1-1" cx="257.9447" cy="257.9447" r="257.9447"/>
+                        <g>
+                          <path class="cls-2-1" d="M955.415,684.66309l-.90772-28.62207-25.3955-13.07129L905.291,658.86328l-22.40625-20.33984,13.52539-25.24317-15.45752-24.0166-28.57715,1.85352-9.23291-28.81934,24.334-15.09668-1.37793-28.52929-25.67529-12.68213,6.41309-29.57471,28.62255-.9082,13.07129-25.395L872.63574,426.291l20.3418-22.40625,25.24121,13.5249,24.01807-15.457-1.854-28.57715,28.81836-9.23291,15.09815,24.334,28.52832-1.37793,12.68261-25.67578,29.57471,6.41358.90772,28.62255,25.3955,13.07129,23.8208-15.89453,22.40625,20.3418-13.52539,25.24121,15.458,24.01807,28.57617-1.854,9.2334,28.81836-24.334,15.09815,1.37793,28.5288,25.67578,12.68262-6.41406,29.57422-28.62207.9082-13.07129,25.39551L1137.86328,626.21l-20.34082,22.40527-25.24121-13.52539-24.01807,15.458,1.854,28.57617-28.81836,9.2334-15.09815-24.334-28.52832,1.37793-12.68261,25.67578ZM1005.25,427.25a99,99,0,1,0,99,99A99.112,99.112,0,0,0,1005.25,427.25Z" transform="translate(-774.78115 -234.95155)"/>
+                          <path d="M1025.78583,361.99451l15.02209,3.2576,13.78961,2.99029.88605,27.93833.01862.58813.52325.26932L1072.376,405.454l8.522,4.38629.52319.26926.4895-.3266,23.25165-15.51441,10.91382,9.90833,10.91382,9.90835-13.20172,24.63843-.278.51862.31849.49484,4.864,7.55762,10.27508,15.96551.31849.49481.58722-.03808,27.89373-1.81015,2.80719,8.76181,6.18787,19.31378L1143.01007,504.719l-.50006.31025.02838.5877.67468,13.97058.67469,13.97065.02838.58777.52759.26055,25.0617,12.37934-3.124,14.40582-3.12384,14.40582-27.93842.88611-.58813.01862-.26929.52325-4.99145,9.69751-7.81067,15.17493-.26929.52319.3266.4895,15.51447,23.25171L1126.897,637.54553l-9.48218,10.4444-24.63836-13.20172-.51868-.278-.49481.31849-11.7616,7.56958-11.76153,7.56951-.49481.31849.03808.58722,1.81012,27.89373-8.50494,2.72486-19.57062,6.2702L1026.781,664.01007l-.31025-.50006-.5877.02838-18.93012.91419-9.01111.43518-.58777.02832-.26062.52758-12.37927,25.06177-8.6546-1.87677-20.1571-4.371-.886-27.93842-.01862-.58813-.52325-.26929-12.43622-6.40106-12.43628-6.40106-.52319-.26929-.4895.3266-23.25165,15.51447-7.92328-7.1933-13.90436-12.62336,13.20172-24.63836.278-.51868-.31849-.49481-6.93676-10.77832-8.20233-12.74481-.31849-.49481-.58722.03808-27.89373,1.81006-.91376-2.85193-7.68286-23.98-.39844-1.24359L867.48993,547.781l.50006-.31025-.02838-.5877-.67468-13.97065-.67469-13.97058-.02838-.58777-.52759-.26062-25.0617-12.37927,3.124-14.40588,3.12384-14.40579,27.93842-.88614.58813-.01862.26929-.52325,2.73822-5.32,10.0639-19.55249.26929-.52319-.3266-.4895-15.51447-23.25162,14.053-15.47919,5.76368-6.34854,24.63836,13.20175.51868.27793.49481-.31846,11.7616-7.56955,11.76153-7.56954.49481-.31846-.03808-.58722-1.81012-27.89379,8.50494-2.72486,19.57062-6.27017L983.719,388.4899l.31025.50006.5877-.02841,9.01117-.43515,18.93006-.91419.58777-.02835.26062-.52759,12.37927-25.06176M1005.25,625.75a99.5,99.5,0,1,0-99.5-99.5,99.61267,99.61267,0,0,0,99.5,99.5m19.98492-264.89819L1012.51,386.6134c-12.5387.60556-15.40253.74384-27.94122,1.34934l-15.14814-24.41556c-15.85785,5.08063-13.70434,4.39069-29.56225,9.47131l1.86065,28.67273c-10.556,6.7937-12.9671,8.34543-23.52313,15.1391l-25.32641-13.5704c-11.193,12.32889-9.673,10.65463-20.866,22.98355l15.94769,23.90094c-5.745,11.16156-7.05713,13.71088-12.80206,24.87247l-28.71857.91085c-3.52893,16.27362-3.04974,14.06373-6.57867,30.33735l25.76153,12.725c.60553,12.5387.74384,15.40253,1.34937,27.94122l-24.41559,15.14808c5.08069,15.85791,4.39075,13.7044,9.47137,29.56225l28.67267-1.86059c6.7937,10.556,8.3454,12.967,15.13916,23.52313L882.26,638.63055c12.32886,11.193,10.65466,9.673,22.98352,20.866l23.90094-15.94769,24.8725,12.80206.91082,28.71857c16.27369,3.52893,14.06373,3.04974,30.33735,6.57867l12.725-25.76159c12.5387-.60547,15.40253-.74378,27.94122-1.34931l15.14814,24.41553c15.85785-5.08063,13.70434-4.39069,29.56225-9.47131l-1.86065-28.67267c10.556-6.7937,12.9671-8.34546,23.52313-15.13916l25.32641,13.57043c11.193-12.32892,9.673-10.65466,20.866-22.98352l-15.94769-23.901c5.745-11.16156,7.05713-13.71088,12.80206-24.87244l28.71857-.91089c3.52893-16.27362,3.04974-14.06366,6.57867-30.33728l-25.76153-12.725-1.34937-27.94116,24.41559-15.14814c-5.08069-15.85788-4.39075-13.7044-9.47137-29.56228l-28.67267,1.86068c-6.7937-10.55609-8.3454-12.96707-15.13916-23.52313l13.57043-25.32641-22.98352-20.866-23.90094,15.94766c-11.16156-5.7449-13.71094-7.057-24.8725-12.802l-.91082-28.71851c-16.27369-3.529-14.06373-3.04971-30.33735-6.57873ZM1005.25,624.75a98.5,98.5,0,1,1,98.5-98.5,98.5,98.5,0,0,1-98.5,98.5Z" transform="translate(-774.78115 -234.95155)"/>
+                        </g>
+                        <g>
+                          <path class="cls-2-1" d="M1126.22168,415.0166l-12.47852-2.751-8.23046,9.30762-11.3125-5.87207,2.875-12.08789-9.43165-8.62109-11.78222,3.94531-6.86035-10.74219,8.5332-9.03027-3.85742-12.18262-12.17481-2.47314-.57226-12.7334,11.90527-3.5542,2.752-12.47852-9.30761-8.23046,5.87109-11.31348,12.08789,2.87549,8.6211-9.43164-3.94532-11.78125L1099.65625,291l9.03027,8.53369,12.18262-3.85693,2.47363-12.17578,12.73438-.5708,3.55371,11.90527,12.47754,2.751,8.23047-9.30811,11.31347,5.87256-2.875,12.0874,9.43164,8.62158,11.78125-3.9458,6.86133,10.74219-8.5332,9.03076,3.85644,12.18213,12.17579,2.47315.57226,12.73388-11.90625,3.55371-2.751,12.479,9.30762,8.23047-5.87207,11.313-12.08789-2.87548-8.62109,9.43164,3.94629,11.78173-10.74317,6.86133-9.03027-8.5332-12.18262,3.85644-2.47265,12.17579-12.73438.57129Zm6.73242-103.52392a43.42881,43.42881,0,1,0,41.95313,32.33837A43.56084,43.56084,0,0,0,1132.9541,311.49268Z" transform="translate(-774.78115 -234.95155)"/>
+                          <path d="M1135.70886,283.44684l3.358,11.24966.16834.56388.57458.12667.2251.04963,11.679,2.57461.5747.12665.38977-.44083,7.77674-8.795,6.05127,3.14093,4.56933,2.3717-2.71692,11.42151-.1361.57248.43432.397,4.22351,3.86091,4.77368,4.3638.43433.397.558-.18686,11.13233-3.72836,3.56055,5.57428,2.88073,4.51-8.06347,8.533-.40418.42767.17761.561,1.06775,3.37229,2.6117,8.249.17761.561.57666.11715,11.50513,2.33737.26684,5.94919.26929,6.00476-11.24976,3.358-.56384.16831-.12671.57464-1.47571,6.6944-1.14843,5.20966-.12671.57464.44092.38977,8.79492,7.7768-3.17969,6.126-2.33289,4.49451-11.42138-2.71673-.57251-.13617-.397.43426-8.22473,8.99719-.39709.43427.18689.558,3.72839,11.13245-5.04211,3.22058-5.04224,3.22064-8.53284-8.06347-.42773-.40418-.561.17761-6.95239,2.20117-4.66894,1.47822-.56092.17761-.11718.57666-2.33741,11.50512-4.76721.21387-7.18677.32233-3.35791-11.2497-.16833-.56384-.57459-.12671-7.99023-1.76141-3.91382-.86279-.57471-.12665-.38977.44079-7.77673,8.79511-5.3103-2.75635-5.3103-2.75629,2.71691-11.42151.13611-.5725-.43432-.397-6.52857-5.968-2.46863-2.25665-.43432-.397-.558.18689-11.13232,3.72839-2.75854-4.31872-3.68274-5.76563,8.06347-8.5329.40418-.42767-.17761-.561-1.87073-5.90856-1.80872-5.7128-.17761-.561-.57666-.11716-11.50513-2.33734-.36487-8.13638-.17126-3.8176,11.24963-3.358.56385-.1683.1267-.57465,1.29639-5.8804,1.32788-6.02365.12671-.57465-.44092-.38977-8.79492-7.77673,2.44531-4.71115,3.06726-5.90939,11.42139,2.71676.57251.13614.397-.4343,8.22474-8.9971.39709-.43429-.18689-.558-3.72839-11.13241,3.535-2.258,6.54932-4.18329,8.53283,8.06351.42774.40418.561-.17762,4.2743-1.35327,7.347-2.32611.56092-.17764.11718-.57663,2.3374-11.50516,5.97693-.26806,5.97693-.2681M1132.898,398.859a43.92865,43.92865,0,1,0-42.43665-32.71073A44.05851,44.05851,0,0,0,1132.898,398.859m3.5459-116.44608-13.51343.60611-2.4928,12.27008c-5.21509,1.65116-6.40625,2.02826-11.62134,3.67938l-9.10022-8.59964c-6.11523,3.906-5.28479,3.37562-11.4,7.28168l3.97632,11.87256c-3.6908,4.03748-4.53382,4.95966-8.22473,8.9971l-12.18079-2.8974-6.23181,12.00614,9.37976,8.29379c-1.17761,5.342-1.44666,6.5621-2.62427,11.90405L1060.413,351.408c.32508,7.249.28089,6.26456.60608,13.51352l12.27,2.49274c1.65113,5.21511,2.02832,6.40621,3.67945,11.62136l-8.59961,9.10022c3.906,6.11524,3.37561,5.28479,7.28161,11.4l11.87256-3.97626c4.03748,3.69086,4.9596,4.53387,8.99719,8.22467l-2.89746,12.18091c6.44031,3.34289,5.5658,2.88891,12.00611,6.23181l8.29382-9.37982,11.90405,2.6242L1129.408,427.439c7.249-.32519,6.26465-.281,13.51355-.60614l2.4928-12.27008c5.21508-1.65112,6.40612-2.02826,11.62133-3.67938l9.10022,8.59961c6.11524-3.906,5.28479-3.37561,11.4-7.28162l-3.97632-11.87255c3.6908-4.03748,4.53381-4.95966,8.22473-8.99713l12.18079,2.89739c3.34289-6.44036,2.88891-5.56579,6.23181-12.0061l-9.37976-8.29382c1.17761-5.342,1.44653-6.56211,2.62414-11.90405l11.99768-3.58124c-.32507-7.249-.281-6.26456-.60607-13.51349l-12.27-2.49277c-1.65125-5.21509-2.02832-6.40625-3.67945-11.62131l8.59961-9.10028c-3.906-6.11517-3.37561-5.28476-7.28161-11.4l-11.87256,3.97626c-4.03748-3.69086-4.95972-4.53385-8.99719-8.22467l2.89746-12.18088c-6.44031-3.3429-5.5658-2.889-12.00611-6.23184l-8.29382,9.37982c-5.342-1.17761-6.56213-1.4466-11.90405-2.62424l-3.5813-11.99762ZM1132.898,397.859a42.959,42.959,0,1,1,10.99487-1.43524A42.94036,42.94036,0,0,1,1132.898,397.859Z" transform="translate(-774.78115 -234.95155)"/>
+                        </g>
+                        <g>
+                          <path class="cls-2-1" d="M981.51562,724.418a8.84888,8.84888,0,0,1-4.78808-1.39942l-27.43311-17.58984a8.88529,8.88529,0,0,1-3.92724-5.793,9.48631,9.48631,0,0,1,1.34472-7.0166l113.56348-177.11572c-18.40918-24.84278-19.23047-59.49463-2.01465-86.34473,14.34473-22.37256,38.42481-35.72949,64.41211-35.72949q1.11476,0,2.23242.03369a.50036.50036,0,0,1,.40528.77l-30.26172,47.19531,14.14355,44.80957,46.62207-5.84765,30.26172-47.19532a.49985.49985,0,0,1,.4209-.23l.02734.001a.50037.50037,0,0,1,.4209.27637c11.78028,23.7207,10.00684,52.63525-4.62793,75.46-14.35058,22.38037-38.43164,35.74414-64.40918,35.74414h0a72.4961,72.4961,0,0,1-14.89746-1.543L989.44629,720.01855A9.41186,9.41186,0,0,1,981.51562,724.418Zm-7.70312-35.81055a9.55988,9.55988,0,0,0-9.24121,11.38574,8.77119,8.77119,0,0,0,8.62109,7.12012,9.56082,9.56082,0,0,0,9.24219-11.38574,8.77119,8.77119,0,0,0-8.62207-7.12012Z" transform="translate(-774.78115 -234.95155)"/>
+                          <path d="M1122.67236,393.92923q1.108,0,2.21717.03375l-30.38721,47.39234,14.33838,45.43029,47.2688-5.92855,30.38733-47.3924a77.13055,77.13055,0,0,1-68.58924,110.48193A71.87614,71.87614,0,0,1,1102.776,542.343L989.02557,719.74939a8.95563,8.95563,0,0,1-7.51007,4.16858,8.33522,8.33522,0,0,1-4.51831-1.32074l-27.433-17.5896a8.74311,8.74311,0,0,1-2.43158-12.11945l113.75043-177.40637c-18.02222-24.07757-19.90125-58.448-2.20118-86.05316a76.28711,76.28711,0,0,1,63.99048-35.49942m-149.48,313.68393a9.92158,9.92158,0,0,0,8.31928-4.61768,9.6851,9.6851,0,0,0-2.69361-13.42517,9.23076,9.23076,0,0,0-5.00506-1.463,9.92186,9.92186,0,0,0-8.31922,4.61774,9.68511,9.68511,0,0,0,2.69355,13.42517,9.23169,9.23169,0,0,0,5.00506,1.46295m149.48-314.68393c-26.1582-.00037-50.39465,13.44247-64.83227,35.95966-17.26367,26.92443-16.50464,61.64541,1.82873,86.634L946.29077,692.34845a9.75392,9.75392,0,0,0,2.73364,13.501l27.433,17.5896a9.352,9.352,0,0,0,5.058,1.47888,9.91138,9.91138,0,0,0,8.35187-4.62885L1103.24548,543.4635a73.077,73.077,0,0,0,14.66211,1.483,76.1722,76.1722,0,0,0,36.239-9.28564,79.1097,79.1097,0,0,0,40.975-64.94852,75.96769,75.96769,0,0,0-7.72912-37.69253.99989.99989,0,0,0-.84107-.55368c-.01831-.001-.0365-.0015-.05481-.0015a.99994.99994,0,0,0-.84155.46021l-30.13464,46.99823-45.97693,5.76654-13.94654-44.18875,30.1344-46.99814a1,1,0,0,0-.8114-1.53934c-.74475-.02268-1.501-.03418-2.24756-.03418Zm-149.48,313.684a8.272,8.272,0,0,1-8.13092-6.71893,9.0602,9.0602,0,0,1,8.75159-10.78693,8.272,8.272,0,0,1,8.13092,6.71887,9.06027,9.06027,0,0,1-8.75159,10.787Z" transform="translate(-774.78115 -234.95155)"/>
+                        </g>
+                      </svg>
+                      
+                    <form topmargin40>
+                        <div aflex>
+                            <mat-form-field style="min-width: 350px;" appearance="outline">
+                                <mat-label>Part Or Model</mat-label>
+                                <input matInput name="partNumber" [(ngModel)]="partOrModel">
+                            </mat-form-field>
+                            <div nogrow>
+                                <button mat-button mat-raised-button style="margin-top: 6px;margin-left: -128px;" [disabled]="!canSearch" (click)="search()"
+                                    color="primary">
+                                    <mat-spinner *ngIf="searching"></mat-spinner>
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div *ngIf="applianceParts && applianceParts.length > 0">
+
+                <div aflex>
+                    <div flex1>
+                        <div class="data-label">Order Total</div>
+                        <h1 class="big-data" topmargin10>{{orderTotal | currency}}</h1>
+                    </div>
+                    <div flex1>
+                        <form>
+                            <div aflex>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Part Or Model</mat-label>
+                                    <input matInput name="partNumber" [(ngModel)]="partOrModel">
+                                </mat-form-field>
+                                <div nogrow>
+                                    <button mat-button mat-raised-button  style="margin-top: 6px;margin-left: -106px;"  [disabled]="!canSearch" (click)="search()"
+                                        color="primary">
+                                        <mat-spinner *ngIf="searching"></mat-spinner>
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="noMatch" class="fade-in-up center">
+
+
+                <svg id="Layer_1" data-name="Layer 1" style="height: 200px;" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 581.26713 562.5475">
+                    <defs>
+                        <style>
+                            .cls-1 {
+                                fill: none;
+                                stroke: #000;
+                                stroke-linecap: round;
+                                stroke-miterlimit: 10;
+                                stroke-width: 22px;
+                            }
+
+                            @keyframes fadeInFrown {
+                                0% {
+                                    opacity: 0;
+                                }
+
+                                70% {
+                                    opacity: 0;
+                                }
+
+                                100% {
+                                    opacity: 1;
+                                }
+                            }
+
+                            .frown-fade {
+                                animation: fadeInFrown 2s ease-in-out;
+                            }
+                        </style>
+                    </defs>
+                    <path
+                        d="M813.65527,258a164.00021,164.00021,0,1,1-115.96545,48.03455A162.92576,162.92576,0,0,1,813.65527,258m0-34c-109.35241,0-198,88.64761-198,198s88.64759,198,198,198,198-88.64758,198-198-88.64758-198-198-198Z"
+                        transform="translate(-615.65527 -224)" />
+                    <rect x="956.61276" y="548.24605" width="26" height="66"
+                        transform="translate(-724.00675 697.81761) rotate(-48.47448)" />
+                    <rect x="1053.75114" y="560.61005" width="69" height="250.04956" rx="18.95455"
+                        transform="translate(-762.17186 821.82133) rotate(-48.47448)" />
+                    <g class="frown-fade">
+                        <g>
+                            <circle cx="147.69655" cy="167.79216" r="23.79216" />
+                            <circle cx="248.30342" cy="167.79216" r="23.79216" />
+                        </g>
+                        <path class="cls-1"
+                            d="M734.96577,475.76c23.21542-9.62392,51.89581-15.31049,82.93484-15.31049,27.35559,0,52.87913,4.417,74.44413,12.05351"
+                            transform="translate(-615.65527 -224)" />
+                    </g>
+                </svg>
+                <h1>No Match</h1>
+                <p>Sorry, we couldn't find a part or model that matched your search</p>
+
+                <button mat-button mat-raised-button (click)="addCustom()">Add A Part</button>
+            </div>
+
+            <div *ngIf="applianceParts && applianceParts.length > 0">
+
+
+
+                <ul class="parts-list" topmargin40>
+                    <li *ngFor="let part of applianceParts">
+                        <div aflex>
+                            <div nogrow>
+                                <img [src]="part.imageUrl">
+                            </div>
+                            <div>
+                                <h2>{{part.partNumber}}</h2>
+                                <div>
+                                    {{part.description}}
+                                </div>
+                                <div *ngIf="!part.editMode">
+                                    {{part.unitPrice | currency}} x {{part.quantity}} = {{part.subtotal | currency}}
+                                </div>
+                                <div *ngIf="part.editMode">
+
+                                    <div aflex>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Unit Price</mat-label>
+                                            <input matInput type="number" [(ngModel)]="part.unitPrice">
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Qty</mat-label>
+                                            <mat-select [(ngModel)]="part.quantity">
+                                                <mat-option *ngFor="let qty of quantities" [value]="qty">{{qty}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div nogrow style="padding-top: 12px;padding-bottom: 10px;">
+                                <div class="data-label">
+                                    Who Will Provide
+                                </div>
+                                <div class="slide-toggle-container">
+                                    <span class="toggle-side" [class.selected]="!part.companyProvides"
+                                        (click)="part.companyProvides = false">Contractor</span>
+                                    <!-- <mat-slide-toggle [(ngModel)]="part.companyProvides"></mat-slide-toggle> -->
+                                    <span class="toggle-side" [class.selected]="part.companyProvides"
+                                        (click)="part.companyProvides = true">Elevate</span>
+                                </div>
+                            </div>
+                            <div nogrow>
+                                <button mat-button (click)="deletePart(part)">
+                                    <mat-icon>delete</mat-icon>
+                                </button><br>
+                                <button mat-button class="toggle-button" [class.selected]="part.editMode"
+                                    (click)="part.editMode = !part.editMode">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Second">
+            <ng-container *ngIf="selectedModel">
+
+                <div aflex>
+                    <div>
+                        <h2 class="sub-heading">Matched Model</h2>
+                        {{selectedModel.manufacturer}} {{selectedModel.modelNumber}}
+                    </div>
+
+                </div>
+
+                <div topmargin30></div>
+                <div class="part-categories-container">
+                    <div class="data-label group-label">Part Categories:</div>
+
+                    <button *ngFor="let partCategory of selectedModel.partCategories" mat-button
+                        class="part-category-button toggle-button"
+                        [class.selected]="selectedPartCategory == partCategory" (click)="showCategory(partCategory)">
+                        <img src="{{partCategory.diagramUrl}}"><br>
+                        {{partCategory.name}}</button>
+
+
+                </div>
+                <div *ngIf="selectedPartCategory">
+
+                    <button mat-button (click)="viewDiagram = !viewDiagram">View Diagram</button>
+
+                    <div class=" part-category-parts-container" topmargin40>
+                        <button mat-button class="toggle-button" [class.selected]="part.selected"
+                            (click)="toggleSelectedPart(part)" *ngFor="let part of selectedPartCategory.parts">
+                            <div class="center">
+                                <img [src]="part.imageUrl" class="part-image">
+                                <div>
+                                    <h2>{{part.productNumber}}</h2>
+                                    <p>{{part.description}}</p>
+                                    <div aflex>
+                                        <div flex1>
+                                            <mat-form-field appearance="outline" class="part-qty" *ngIf="part.selected">
+                                                <mat-label>Qty</mat-label>
+                                                <mat-select [(ngModel)]="part.quantity" (click)="cancelEvent($event)">
+                                                    <mat-option *ngFor="let qty of quantities" [value]="qty">{{qty}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div flex1>
+                                            <span *ngIf="part.inStock" class="in-stock">In Stock</span>
+                                            <span *ngIf="!part.inStock" class="out-of-stock">Unavailable</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <h2 class="sub-heading" topmargin40>Part Not Found?</h2>
+                    <button mat-button mat-raised-button (click)="addCustom()">Add A Part</button>
+                </div>
+
+
+                <div class="diagram-viewer" *ngIf="viewDiagram">
+                    <div aflex>
+                        <div nogrow> <button mat-button class="close-detail-button" (click)="viewDiagram = false">
+                                <mat-icon>close</mat-icon>
+                            </button></div>
+                        <div style="overflow-x: hidden;overflow-y: auto;height: calc(100vh - 79px)">
+
+                            <img [src]="selectedPartCategory.diagramUrl" style="max-width: 100%;">
+                        </div>
+                    </div>
+                </div>
+
+            </ng-container>
+        </mat-tab>
+        <mat-tab label="Third">
+            <div class="center" *ngIf="selectedPart">
+                <img [src]="selectedPart.imageUrl" style="max-height: 250px;">
+                <h1>{{selectedPart.productNumber}}</h1>
+                <p>{{selectedPart.description}}</p>
+                <div aflex>
+                    <div>
+                        <div class="data-label">Manufacturer</div>
+                        {{selectedPart.manufacturer}}
+                    </div>
+                    <div>
+                        <div class="data-label">Price</div>
+                        {{selectedPart.price | currency}}
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <div aflex>
+                <div>
+                    <h1>Add New Part</h1>
+                </div>
+            </div>
+
+            <div topmargin40></div>
+            <mat-form-field appearance="outline" style="max-width: 200px;">
+                <mat-label>Manufacturer</mat-label>
+                <mat-select [(ngModel)]="newPart.manufacturer">
+                    <mat-option *ngFor="let mfg of manufacturers" [value]="mfg">{{mfg}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="max-width: 300px;">
+                <mat-label>Part Number</mat-label>
+                <input matInput [(ngModel)]="newPart.partNumber">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" style="max-width: 300px;">
+                <mat-label>Model Number</mat-label>
+                <input matInput [(ngModel)]="newPart.modelNumber">
+            </mat-form-field>
+            
+
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput [(ngModel)]="newPart.description">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="max-width: 150px;">
+                <mat-label>Cost</mat-label>
+                <input matInput type="number" [(ngModel)]="newPart.unitPrice">
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="max-width: 100px;">
+                <mat-label>Qty</mat-label>
+                <mat-select [(ngModel)]="newPart.quantity">
+                    <mat-option *ngFor="let qty of quantities" [value]="qty">{{qty}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>
+
+<div class="order-bar" *ngIf="selectedIndex > 0">
+    <div class="container">
+        <div aflex>
+            <div>
+                <button mat-button *ngIf="selectedIndex > 0" (click)="selectedIndex = 0">
+                    <mat-icon>chevron_left</mat-icon> Back
+                </button>
+            </div>
+            <div nogrow>
+                <button mat-button mat-raised-button color="primary" [disabled]="!partsSelected"
+                    *ngIf="selectedIndex === 1" (click)="addItemsToRepair()">Add To Repair</button>
+
+                <button mat-button mat-raised-button color="primary" *ngIf="selectedIndex === 2"
+                    (click)="addSinglePartToRepair()">Add To Repair</button>
+                <button mat-button mat-raised-button color="primary" [disabled]="!canAddNew" *ngIf="selectedIndex === 3"
+                    (click)="addNewToRepair()">Add To Repair</button>
+            </div>
+        </div>
+    </div>
+</div>

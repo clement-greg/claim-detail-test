@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.component';
 import { AuthoComponent } from './autho/autho.component';
 import { CommunicationHubComponent } from './communication-hub/communication-hub.component';
+import { GearsTestComponent } from './gears-test/gears-test.component';
 import { HomeComponent } from './home/home.component';
 import { NewOrderFrameComponent } from './new-order-frame/new-order-frame.component';
 import { RatingsComponent } from './ratings/ratings.component';
@@ -43,7 +45,16 @@ const routes: Routes = [
   }, {
     path: 'settings',
     component: SettingsComponent,
-  }, {
+  },
+  {
+    path: 'appliance-autho',
+    component: ApplianceAuthoComponent,
+  },
+  {
+    path: 'gears',
+    component: GearsTestComponent,
+  },
+  {
     path: 'ratings',
     component: RatingsComponent
   }, {

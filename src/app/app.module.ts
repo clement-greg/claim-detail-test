@@ -61,6 +61,8 @@ import { QuestionWizardComponent } from './question-wizard/question-wizard.compo
 import { PaymentMethodEntryComponent } from './payment-method-entry/payment-method-entry.component';
 import { HomeComponent } from './home/home.component';
 import { CommunicationHubComponent } from './communication-hub/communication-hub.component';
+import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.component';
+import { GearsTestComponent } from './gears-test/gears-test.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +89,8 @@ import { CommunicationHubComponent } from './communication-hub/communication-hub
     PaymentMethodEntryComponent,
     HomeComponent,
     CommunicationHubComponent,
+    ApplianceAuthoComponent,
+    GearsTestComponent,
   ],
   imports: [
     FormsModule,
