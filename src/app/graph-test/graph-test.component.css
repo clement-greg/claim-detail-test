@@ -1,0 +1,71 @@
+.joint-paper {
+    border: 1px solid gray;
+    width: 800px;
+    user-select: none;
+}
+
+#toolbar {
+    position: fixed;
+    background-color: #eee;
+    right: 20px;
+    top: 20px;
+}
+
+
+
+#paper-container {
+    height: calc(100vh - 30px);
+    overflow: auto;
+}
+
+@keyframes stretch-in {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.tool-bar-button {
+    border-bottom: 1px dotted rgb(200, 200, 200);
+    text-align: center;
+    padding-top: 10px;
+    cursor: move;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.tool-bar-button img {
+    height: 30px;
+}
+
+#object-detail-panel {
+    transition: all;
+    height: calc(100vh - 1px);
+    background-color: #f5f5f5;
+    animation-name: stretch-in;
+    width: 450px;
+    max-width: 100%;
+    transform-origin: 100% 0;
+    animation-duration: .25s;
+    position: fixed;
+    right: 0;
+    padding: 20px;
+    box-shadow: -5px 0 5px 0 rgb(0 0 0 / 35%);
+    top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    z-index: 31;
+}
+
+.close-detail-button {
+    margin-left: -51px;
+    border: 1px solid rgb(200, 200, 200);
+    min-width: unset;
+    background-color: #f5f5f5;
+    padding: 0 3px;
+    border-right: unset;
+    border-radius: 3px 0 0 3px;
+    box-shadow: -3px 0 3px 0 rgba(0, 0, 0, .35);
+}

@@ -63,6 +63,7 @@ import { HomeComponent } from './home/home.component';
 import { CommunicationHubComponent } from './communication-hub/communication-hub.component';
 import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.component';
 import { GearsTestComponent } from './gears-test/gears-test.component';
+import { GraphTestComponent } from './graph-test/graph-test.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { GearsTestComponent } from './gears-test/gears-test.component';
     CommunicationHubComponent,
     ApplianceAuthoComponent,
     GearsTestComponent,
+    GraphTestComponent,
   ],
   imports: [
     FormsModule,

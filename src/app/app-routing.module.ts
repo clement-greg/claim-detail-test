@@ -4,6 +4,7 @@ import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.compo
 import { AuthoComponent } from './autho/autho.component';
 import { CommunicationHubComponent } from './communication-hub/communication-hub.component';
 import { GearsTestComponent } from './gears-test/gears-test.component';
+import { GraphTestComponent } from './graph-test/graph-test.component';
 import { HomeComponent } from './home/home.component';
 import { NewOrderFrameComponent } from './new-order-frame/new-order-frame.component';
 import { RatingsComponent } from './ratings/ratings.component';
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'appliance-autho',
     component: ApplianceAuthoComponent,
+  },
+  {
+    path: 'flow-chart',
+    component: GraphTestComponent,
   },
   {
     path: 'gears',

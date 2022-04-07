@@ -1,0 +1,70 @@
+<div id="paper-container">
+    <div id="paper"></div>
+</div>
+
+
+<!-- <button mat-button (click)="updateSize()">Update Size</button> -->
+
+<div id="toolbar">
+
+    <div mat-button draggable="true" (dragStart)="shapeDrag(shape)" [attr.data-url]="shape.url" class="tool-bar-button" (click)="doShape(shape)" *ngFor="let shape of typeMap">
+        <img draggable="false" src="{{shape.url}}"><br>
+        {{shape.title}}</div>
+
+    <button mat-button (click)="saveGraph()">Save</button>
+    <button mat-button (click)="loadGraph()">Load</button>
+</div>
+
+<div id="object-detail-panel" *ngIf="selectedModel">
+    <div aflex>
+        <div nogrow>
+            <button mat-button (click)="selectedModel = null" class="close-detail-button">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div style="overflow-x: hidden;overflow-y: auto;height: calc(100vh - 21px)">
+
+            <button mat-button (click)="deleteShape()">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <h1>Configure details here</h1>
+
+            <!-- <pre>
+                {{selectedModel | json}}
+            </pre> -->
+
+            <div *ngIf="selectedModel.attributes.type === '/assets/images/get-object-value.png'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Field</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="selectedModel.attributes.type === '/assets/images/send-email.png'">
+                <mat-form-field appearance="outline">
+                    <mat-label>To</mat-label>
+                    <input matInput [(ngModel)]="selectedModel.attributes.custom.to">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>From</mat-label>
+                    <input matInput [(ngModel)]="selectedModel.attributes.custom.from">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <input matInput [(ngModel)]="selectedModel.attributes.custom.subject">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Message</mat-label>
+                    <textarea matInput [(ngModel)]="selectedModel.attributes.custom.message"></textarea>
+                </mat-form-field>
+            </div>
+
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Field</mat-label>
+                <input matInput>
+            </mat-form-field> -->
+
+        </div>
+
+    </div>
+</div>
