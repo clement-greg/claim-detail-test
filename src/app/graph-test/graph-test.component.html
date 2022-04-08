@@ -5,14 +5,56 @@
 
 <!-- <button mat-button (click)="updateSize()">Update Size</button> -->
 
-<div id="toolbar">
+<div id="toolbar" cdkDrag>
 
-    <div mat-button draggable="true" (dragStart)="shapeDrag(shape)" [attr.data-url]="shape.url" class="tool-bar-button" (click)="doShape(shape)" *ngFor="let shape of typeMap">
-        <img draggable="false" src="{{shape.url}}"><br>
-        {{shape.title}}</div>
+    <div aflex cdkDragHandle class="tools-drag">
+        <div>Tools</div>
+        <div nogrow>
+            <div class="example-handle" >
+                <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                    </path>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="outline" style="margin-bottom: -20px;">
+            <mat-label>
+                <mat-icon>search</mat-icon> Filter
 
-    <button mat-button (click)="saveGraph()">Save</button>
-    <button mat-button (click)="loadGraph()">Load</button>
+            </mat-label>
+            <input matInput [(ngModel)]="toolFilter" (ngModelChange)="doToolFilter()">
+        </mat-form-field>
+    </div>
+    <div id="tool-bar-tools">
+        <ng-container *ngFor="let group of filteredGroupTools">
+            <div class="category">
+                <button mat-button (click)="group.expanded = !group.expanded">
+                    <mat-icon class="rotate" [class.rotated]="!group.expanded">expand_more</mat-icon>
+                </button>
+                {{group.category}}</div>
+            <ng-container *ngIf="group.expanded">
+                <div mat-button draggable="true" (dragStart)="shapeDrag(shape)" [attr.data-url]="shape.url"
+                    class="tool-bar-button" (click)="doShape(shape)" *ngFor="let shape of group.items">
+                    <img draggable="false" src="{{shape.url}}"><br>
+                    {{shape.title}}
+                </div>
+            </ng-container>
+        </ng-container>
+
+    </div>
+
+    <button mat-button (click)="saveGraph()">
+        <mat-icon>save</mat-icon>
+        Save
+    </button>
+    <button mat-button (click)="loadGraph()">
+        <mat-icon>folder_open</mat-icon>
+        Open
+    </button>
 </div>
 
 <div id="object-detail-panel" *ngIf="selectedModel">
@@ -57,6 +99,29 @@
                     <mat-label>Message</mat-label>
                     <textarea matInput [(ngModel)]="selectedModel.attributes.custom.message"></textarea>
                 </mat-form-field>
+            </div>
+            <div *ngIf="selectedModel.attributes.type === '/assets/images/switch.png'">
+
+                <div aflex>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Value</mat-label>
+                        <input matInput [(ngModel)]="switchValue">
+                    </mat-form-field>
+                    <div nogrow>
+                        <button mat-raised-button mat-button [disabled]="!switchValue"
+                            (click)="addSwitchOutput()">Add</button>
+                    </div>
+                </div>
+
+                <ul>
+                    <li *ngFor="let port of transmissionOutPorts">
+                        <span *ngIf="port.attrs && port.attrs.label">{{port.attrs.label.text}}</span>
+                        <button mat-button (click)="removePort(port)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </li>
+                </ul>
+
             </div>
 
             <!-- <mat-form-field appearance="outline">

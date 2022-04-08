@@ -9,6 +9,36 @@
     background-color: #eee;
     right: 20px;
     top: 20px;
+    min-width: 217px;
+}
+
+#tool-bar-tools {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.rotate {
+    transition: all .5s ease-in-out;
+}
+
+.rotate.rotated {
+    transform: rotate(-90deg);
+}
+
+.tools-drag {
+    background-color: #999;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 5px;
+    cursor: move;
+}
+
+.category {
+    font-weight: bold;
+    background-color: #ddd;
+    padding-right: 20px;
+    width: 200px;
 }
 
 
@@ -34,6 +64,8 @@
     cursor: move;
     padding-left: 10px;
     padding-right: 10px;
+    width: 200px;
+    text-transform: none;
 }
 
 .tool-bar-button img {

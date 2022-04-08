@@ -64,6 +64,7 @@ import { CommunicationHubComponent } from './communication-hub/communication-hub
 import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.component';
 import { GearsTestComponent } from './gears-test/gears-test.component';
 import { GraphTestComponent } from './graph-test/graph-test.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -133,6 +134,7 @@ import { GraphTestComponent } from './graph-test/graph-test.component';
     MatPaginatorModule,
     MatTreeModule,
     MatNativeDateModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

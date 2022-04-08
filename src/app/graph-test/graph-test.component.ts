@@ -17,9 +17,13 @@ export class GraphTestComponent implements OnInit {
     'joint',
     //'rappid'
   ];
+  groupedTools: any[] = [];
+  filteredGroupTools: any[] = [];
   paper: any;
   graph: any;
   selectedModel: any;
+  switchValue: string;
+  toolFilter: string;
 
   typeMap: any[] = [{
     url: '/assets/images/start.png',
@@ -75,6 +79,108 @@ export class GraphTestComponent implements OnInit {
     title: 'Get Object value',
     category: 'Control Flow'
   },
+  {
+    url: '/assets/images/loop.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Array'],
+    transmissionOutPortLabels: ['Loop', 'Completion'],
+    title: 'Loop',
+    category: 'Control Flow'
+  },
+  {
+    url: '/assets/images/first.png',
+    hasTransmissionLineIn: false,
+    hasOutputPort: true,
+    inputPortLabels: ['Array'],
+    transmissionOutPortLabels: [],
+    title: 'First',
+    category: 'Control Flow'
+  },
+  {
+    url: '/assets/images/switch.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Value'],
+    transmissionOutPortLabels: [],
+    title: 'switch',
+    category: 'Control Flow'
+  },
+  {
+    url: '/assets/images/auto-call.png',
+    hasTransmissionLineIn: false,
+    hasOutputPort: false,
+    inputPortLabels: ['Phone'],
+    transmissionOutPortLabels: [''],
+    title: 'Auto Phone Call',
+    category: 'Communication'
+  },
+  {
+    url: '/assets/images/broadcast.png',
+    hasTransmissionLineIn: false,
+    hasOutputPort: false,
+    inputPortLabels: ['Application Key', 'Message'],
+    transmissionOutPortLabels: [''],
+    title: 'Broadcast Application Message',
+    category: 'Communication'
+  },
+  {
+    url: '/assets/images/phone.png',
+    hasTransmissionLineIn: false,
+    hasOutputPort: false,
+    inputPortLabels: ['Phone #'],
+    transmissionOutPortLabels: [''],
+    title: 'Dial Number',
+    category: 'Communication'
+  },
+  {
+    url: '/assets/images/process.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Workflow Id', 'Object Type', 'Object Id'],
+    transmissionOutPortLabels: [''],
+    title: 'Run Workflow',
+    category: 'Communication'
+  },
+  {
+    url: '/assets/images/app-notification.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Message Recipients', 'Title', 'Message', 'Endpoint URL'],
+    transmissionOutPortLabels: [''],
+    title: 'Send App Notification',
+    category: 'Communication'
+  },
+  {
+    url: '/assets/images/cogent-notification.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Employees', 'Title', 'Message', 'Endpoint URL'],
+    transmissionOutPortLabels: [''],
+    title: 'Send Cogent Notification',
+    category: 'Communication'
+  },
+  {
+    url: '/assets/images/sms.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Recipients', 'Message'],
+    transmissionOutPortLabels: [''],
+    title: 'Send SMS Notification',
+    category: 'Communication'
+  },
+  {
+    url: '/assets/images/sly-dial.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Phone #', 'Message Id'],
+    transmissionOutPortLabels: [''],
+    title: 'Sly Dial',
+    category: 'Communication'
+  },
+
+    //
+
   ];
 
 
@@ -88,8 +194,33 @@ export class GraphTestComponent implements OnInit {
     return constructedShape;
   }
 
+  addSwitchOutput() {
+    this.selectedModel.addPort({
+      group: 'transmissionOut',
+      attrs: {
+        label: {
+          text: this.switchValue
+        }
+      }
+    });
+
+    this.switchValue = null;
+  }
+
   shapeDrag(shape) {
     console.log('dragging shape')
+  }
+
+  removePort(port) {
+    this.selectedModel.removePort(port);
+  }
+
+  get transmissionOutPorts() {
+    if (!this.selectedModel) {
+      return null;
+    }
+
+    return this.selectedModel.attributes.ports.items.filter(i => i.group === 'transmissionOut');
   }
 
 
@@ -260,6 +391,10 @@ export class GraphTestComponent implements OnInit {
 
 
 
+this.setGroupedTools(this.typeMap);
+
+
+
 
 
     document.addEventListener("drop", (event: any) => {
@@ -281,6 +416,23 @@ export class GraphTestComponent implements OnInit {
     }, false);
   }
 
+  setGroupedTools(tools) {
+    const results = [];
+    this.filteredGroupTools = [];
+    for (const tool of tools) {
+      let group = results.find(i => i.category === tool.category);
+      if (!group) {
+        group = { category: tool.category, items: [], expanded: true }
+        results.push(group);
+      }
+      group.items.push(tool);
+
+
+    }
+
+    this.filteredGroupTools = results;
+  }
+
   ngOnInit(): void {
     this.loadScripts();
   }
@@ -288,6 +440,16 @@ export class GraphTestComponent implements OnInit {
   deleteShape() {
     this.selectedModel.remove();
     this.selectedModel = null;
+  }
+
+  doToolFilter() {
+    if (!this.toolFilter) {
+      this.setGroupedTools(this.typeMap);
+    } else {
+      const lowerFilter = this.toolFilter.toLocaleLowerCase();
+      const filteredItems = this.typeMap.filter(i => i.category.toLocaleLowerCase().indexOf(lowerFilter) > -1 || i.title.toLocaleLowerCase().indexOf(lowerFilter) > -1 && i.url.toLocaleLowerCase().indexOf(lowerFilter) > -1);
+      this.setGroupedTools(filteredItems);
+    }
   }
 
   saveGraph() {
@@ -397,7 +559,14 @@ export class GraphTestComponent implements OnInit {
       gridSize: 1,
       linkPinning: false,
       snapLinks: true,
-      defaultLink: new joint.shapes.standard.Link({ z: - 1 }),
+      defaultLink: new joint.shapes.standard.Link({
+        z: - 1, attrs: {
+          line: {
+            stroke: '#ccc',
+            strokeWidth: 1
+          },
+        }
+      }),
       defaultConnector: { name: 'smooth' },
       defaultConnectionPoint: { name: 'boundary' },
       markAvailable: true,
@@ -417,29 +586,10 @@ export class GraphTestComponent implements OnInit {
         }
 
         if (mT.getAttribute('port-group') !== 'in') return false;
-        // if (vT.model instanceof Shape) {
-        //   var portId = mT.getAttribute('port');
-        //   var usedInPorts = vT.model.getUsedInPorts();
-        //   if (usedInPorts.find(function (port) { return port.id === portId; })) return false;
-        // }
         return false;
       }
     });
     this.paper = paper;
-
-    // var paperScroller = new joint.ui.PaperScroller({
-    //   paper: paper,
-    //   cursor: 'grab',
-    //   autoResizePaper: true,
-    //   baseWidth: 400,
-    //   baseHeight: 400,
-    //   width: 400,
-    //   height: 400
-    // });
-
-    // $('#paper').append(paperScroller.render().el);
-    // paper.on('blank:pointerdown', paperScroller.startPanning);
-    // // paperScroller.setCursor('crosshair');
 
 
     paper.options.highlighting.magnetAvailability = magnetAvailabilityHighlighter;
