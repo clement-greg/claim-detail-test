@@ -8,17 +8,7 @@
 <div id="toolbar" cdkDrag>
 
     <div aflex cdkDragHandle class="tools-drag">
-        <div>Tools</div>
-        <div nogrow>
-            <div class="example-handle" >
-                <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
-                    </path>
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                </svg>
-            </div>
-        </div>
+        Tools
     </div>
     <div>
         <mat-form-field appearance="outline" style="margin-bottom: -20px;">
@@ -55,6 +45,8 @@
         <mat-icon>folder_open</mat-icon>
         Open
     </button>
+
+
 </div>
 
 <div id="object-detail-panel" *ngIf="selectedModel">
@@ -67,13 +59,9 @@
         <div style="overflow-x: hidden;overflow-y: auto;height: calc(100vh - 21px)">
 
             <button mat-button (click)="deleteShape()">
-                <mat-icon>delete</mat-icon>
+                <mat-icon>delete</mat-icon> Delete Step
             </button>
-            <h1>Configure details here</h1>
 
-            <!-- <pre>
-                {{selectedModel | json}}
-            </pre> -->
 
             <div *ngIf="selectedModel.attributes.type === '/assets/images/get-object-value.png'">
                 <mat-form-field appearance="outline">
@@ -82,7 +70,7 @@
                 </mat-form-field>
             </div>
 
-            <div *ngIf="selectedModel.attributes.type === '/assets/images/send-email.png'">
+            <!-- <div *ngIf="selectedModel.attributes.type === '/assets/images/send-email.png'">
                 <mat-form-field appearance="outline">
                     <mat-label>To</mat-label>
                     <input matInput [(ngModel)]="selectedModel.attributes.custom.to">
@@ -99,8 +87,8 @@
                     <mat-label>Message</mat-label>
                     <textarea matInput [(ngModel)]="selectedModel.attributes.custom.message"></textarea>
                 </mat-form-field>
-            </div>
-            <div *ngIf="selectedModel.attributes.type === '/assets/images/switch.png'">
+            </div> -->
+            <!-- <div *ngIf="selectedModel.attributes.type === '/assets/images/switch.png'" >
 
                 <div aflex>
                     <mat-form-field appearance="outline">
@@ -122,7 +110,63 @@
                     </li>
                 </ul>
 
+            </div> -->
+
+            <mat-form-field appearance="outline">
+                <mat-label>Text</mat-label>
+                <input matInput (ngModelChange)="updateShapeTitle($event)" [(ngModel)]="selectedModel.attributes.custom.text">
+            </mat-form-field>
+
+            <div *ngIf="selectedModel.attributes.type === '/assets/images/single-select.png' || selectedModel.attributes.type === '/assets/images/switch.png'">
+                <div aflex>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Answer</mat-label>
+                        <input matInput [(ngModel)]="switchValue">
+                    </mat-form-field>
+                    <div nogrow>
+                        <button mat-raised-button mat-button [disabled]="!switchValue"
+                            (click)="addSwitchOutput()">Add</button>
+                    </div>
+                </div>
+
+                <ul cdkDropList class="drag-list" (cdkDropListDropped)="handleFormItemResort($event)">
+                    <li cdkDrag class="drag-box" *ngFor="let port of transmissionOutPorts">
+                        <mat-icon cdkDragHandle>more_vert</mat-icon>
+                        <span *ngIf="port.attrs && port.attrs.label">{{port.attrs.label.text}}</span>
+                        <button mat-button (click)="removePort(port)" *ngIf="port.attrs.label.text !== '_Default'">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </li>
+                </ul>
             </div>
+
+            <div *ngIf="selectedModel.attributes.type === '/assets/images/check-list.png'">
+                <div aflex>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Answer</mat-label>
+                        <input matInput [(ngModel)]="switchValue">
+                    </mat-form-field>
+                    <div nogrow>
+                        <button mat-raised-button mat-button [disabled]="!switchValue"
+                            (click)="addChecklistOutput()">Add</button>
+                    </div>
+                </div>
+
+                <ul cdkDropList class="drag-list" (cdkDropListDropped)="handleAnswersSort($event)">
+                    <li cdkDrag class="drag-box" *ngFor="let answer of answers">
+                        <mat-icon cdkDragHandle>more_vert</mat-icon>
+                        {{answer}}
+                        <button mat-button (click)="removeAnswer(answer)" >
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <mat-form-field appearance="outline" *ngFor="let customInput of selectedModel.attributes.custom.inputs">
+                <mat-label>{{customInput.label}}</mat-label>
+                <input matInput [(ngModel)]="customInput.value" [disabled]="customInput.portConnected">
+            </mat-form-field>
 
             <!-- <mat-form-field appearance="outline">
                 <mat-label>Field</mat-label>

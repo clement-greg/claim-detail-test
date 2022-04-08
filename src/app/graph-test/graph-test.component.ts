@@ -1,8 +1,10 @@
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 declare var joint: any;
 declare var $: any;
 declare var _: any;
+declare var V: any;
 
 @Component({
   selector: 'app-graph-test',
@@ -44,6 +46,15 @@ export class GraphTestComponent implements OnInit {
     category: 'Control Flow'
   },
   {
+    url: '/assets/images/is-null.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Expression'],
+    transmissionOutPortLabels: ['True', 'False'],
+    title: 'Is Null',
+    category: 'Control Flow'
+  },
+  {
     url: '/assets/images/send-email.png',
     hasTransmissionLineIn: true,
     hasOutputPort: false,
@@ -82,7 +93,7 @@ export class GraphTestComponent implements OnInit {
   {
     url: '/assets/images/loop.png',
     hasTransmissionLineIn: true,
-    hasOutputPort: false,
+    hasOutputPort: true,
     inputPortLabels: ['Array'],
     transmissionOutPortLabels: ['Loop', 'Completion'],
     title: 'Loop',
@@ -98,26 +109,35 @@ export class GraphTestComponent implements OnInit {
     category: 'Control Flow'
   },
   {
+    url: '/assets/images/wait.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Seconds'],
+    transmissionOutPortLabels: [''],
+    title: 'Wait',
+    category: 'Control Flow'
+  },
+  {
     url: '/assets/images/switch.png',
     hasTransmissionLineIn: true,
     hasOutputPort: true,
     inputPortLabels: ['Value'],
-    transmissionOutPortLabels: [],
+    transmissionOutPortLabels: ['_Default'],
     title: 'switch',
     category: 'Control Flow'
   },
   {
     url: '/assets/images/auto-call.png',
-    hasTransmissionLineIn: false,
+    hasTransmissionLineIn: true,
     hasOutputPort: false,
-    inputPortLabels: ['Phone'],
+    inputPortLabels: ['Phone', 'Message To Read'],
     transmissionOutPortLabels: [''],
     title: 'Auto Phone Call',
     category: 'Communication'
   },
   {
     url: '/assets/images/broadcast.png',
-    hasTransmissionLineIn: false,
+    hasTransmissionLineIn: true,
     hasOutputPort: false,
     inputPortLabels: ['Application Key', 'Message'],
     transmissionOutPortLabels: [''],
@@ -126,7 +146,7 @@ export class GraphTestComponent implements OnInit {
   },
   {
     url: '/assets/images/phone.png',
-    hasTransmissionLineIn: false,
+    hasTransmissionLineIn: true,
     hasOutputPort: false,
     inputPortLabels: ['Phone #'],
     transmissionOutPortLabels: [''],
@@ -178,6 +198,288 @@ export class GraphTestComponent implements OnInit {
     title: 'Sly Dial',
     category: 'Communication'
   },
+  {
+    url: '/assets/images/form.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Form Id'],
+    transmissionOutPortLabels: [''],
+    title: 'Show Form',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/questionnaire.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Questionnaire Id'],
+    transmissionOutPortLabels: [''],
+    title: 'Show Questionnaire',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/questionnaire-answer.png',
+    hasTransmissionLineIn: false,
+    hasOutputPort: true,
+    inputPortLabels: ['Questionnaire'],
+    transmissionOutPortLabels: [],
+    title: 'Get Questionnaire Answer',
+    category: 'Output'
+  },
+  {
+    url: '/assets/images/end-process.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [],
+    title: 'End Process',
+    category: 'Control Flow'
+  },
+  {
+    url: '/assets/images/transfer.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Process Id'],
+    transmissionOutPortLabels: ['Resume'],
+    title: 'Transfer',
+    category: 'Control Flow'
+  },
+  {
+    url: '/assets/images/save-env-variable.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Key', 'Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Save Environment Variable',
+    category: 'Control Flow'
+  },
+  {
+    url: '/assets/images/read-env-variable.png',
+    hasTransmissionLineIn: false,
+    hasOutputPort: true,
+    inputPortLabels: ['Key'],
+    transmissionOutPortLabels: [],
+    title: 'Read Environment Variable',
+    category: 'Control Flow'
+  },
+  {
+    url: '/assets/images/stop-flow.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [],
+    title: 'Stop Flow',
+    category: 'Control Flow'
+  },
+  {
+    url: '/assets/images/single-select.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: [],
+    transmissionOutPortLabels: ['_Default'],
+    title: 'Single Item Select',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/check-list.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Check List',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/multi-line-textbox.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Default Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Multi-line textbox',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/text-box.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Default Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Text Box',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/number-box.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Default Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Number Box',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/repair-item.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Repair Item',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/brand.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Brand',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/has-repair-item.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Repair Item Id', 'Policy Id'],
+    transmissionOutPortLabels: ['True', 'False'],
+    title: 'Has Repair Item',
+    category: 'Control Flow'
+  },
+  {
+    url: '/assets/images/date-box.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Default Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Date Box',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/upload-image.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Upload Image',
+    category: 'Input'
+  },
+  {
+    url: '/assets/images/weather.png',
+    hasTransmissionLineIn: false,
+    hasOutputPort: true,
+    inputPortLabels: ['Postal Code'],
+    transmissionOutPortLabels: [],
+    title: 'Weather Forecast',
+    category: 'Data'
+  },
+  {
+    url: '/assets/images/show-activity-indicator.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Message'],
+    transmissionOutPortLabels: [''],
+    title: 'Show Activity Indicator',
+    category: 'Output'
+  },
+  {
+    url: '/assets/images/hide-activity-indicator.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Hide Activity Indicator',
+    category: 'Output'
+  },
+  {
+    url: '/assets/images/change-lane.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Change Lane',
+    category: 'Data'
+  },
+  {
+    url: '/assets/images/navigate-to-url.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['URL', 'Target'],
+    transmissionOutPortLabels: [''],
+    title: 'Navigate To Url',
+    category: 'Output'
+  },
+  {
+    url: '/assets/images/refresh-all.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Refresh All',
+    category: 'Data'
+  },
+  {
+    url: '/assets/images/refresh.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Refresh',
+    category: 'Data'
+  },
+  {
+    url: '/assets/images/remove-from-queue.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Remove From Queue',
+    category: 'Data'
+  },
+  {
+    url: '/assets/images/alert-dialog.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Subject', 'Message'],
+    transmissionOutPortLabels: [''],
+    title: 'Alert Dialog',
+    category: 'Output'
+  },
+  {
+    url: '/assets/images/confirm-dialog.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Subject', 'Message'],
+    transmissionOutPortLabels: ['True', 'False'],
+    title: 'Confirm Dialog',
+    category: 'Output'
+  },
+  {
+    url: '/assets/images/toast-message.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Message'],
+    transmissionOutPortLabels: [''],
+    title: 'Toast Message',
+    category: 'Output'
+  },
+  {
+    url: '/assets/images/toast-success.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Message'],
+    transmissionOutPortLabels: [''],
+    title: 'Toast Success Message',
+    category: 'Output'
+  },
+  {
+    url: '/assets/images/undo.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Message'],
+    transmissionOutPortLabels: ['Undo', 'Default'],
+    title: 'Show Undo',
+    category: 'Output'
+  },
+
+
+
 
     //
 
@@ -204,15 +506,35 @@ export class GraphTestComponent implements OnInit {
       }
     });
 
+    const outputPortCount = this.selectedModel.attributes.ports.items.filter(i => i.group === 'transmissionOut').length;
+    let height = outputPortCount * 22;
+    if (height < 100) {
+      height = 100;
+    }
+
+    this.selectedModel.resize(150, height);
+
     this.switchValue = null;
   }
 
   shapeDrag(shape) {
-    console.log('dragging shape')
+
   }
 
   removePort(port) {
     this.selectedModel.removePort(port);
+  }
+
+  handleFormItemResort($event) {
+    const outputPorts = this.selectedModel.attributes.ports.items.filter(i => i.group === 'transmissionOut');
+    moveItemInArray(outputPorts, $event.previousIndex, $event.currentIndex);
+
+    for (const port of outputPorts) {
+      this.selectedModel.removePort(port);
+    }
+    for (const port of outputPorts) {
+      this.selectedModel.addPort(port);
+    }
   }
 
   get transmissionOutPorts() {
@@ -221,6 +543,36 @@ export class GraphTestComponent implements OnInit {
     }
 
     return this.selectedModel.attributes.ports.items.filter(i => i.group === 'transmissionOut');
+  }
+
+  removeAnswer(answer: string) {
+    this.selectedModel?.attributes?.custom?.answers.splice(this.selectedModel?.attributes?.custom?.answers.indexOf(answer), 1);
+  }
+
+  handleAnswersSort($event) {
+    moveItemInArray(this.selectedModel?.attributes?.custom?.answers, $event.previousIndex, $event.currentIndex);
+  }
+
+
+  addChecklistOutput() {
+    if (!this.selectedModel.attributes.custom.answers) {
+      this.selectedModel.attributes.custom.answers = [];
+    }
+    this.selectedModel?.attributes?.custom?.answers.push(this.switchValue);
+    this.switchValue = '';
+  }
+
+
+  get answers() {
+    return this.selectedModel?.attributes?.custom?.answers;
+  }
+
+  updateShapeTitle(title: string) {
+    this.selectedModel.attr({
+      label: {
+        text: title,
+      }
+    });
   }
 
 
@@ -263,7 +615,7 @@ export class GraphTestComponent implements OnInit {
                 r: 7,
                 cy: 0,
                 cx: -7,
-                fill: 'darkblue',
+                fill: '#669984',
               }
             },
             z: 1
@@ -275,7 +627,7 @@ export class GraphTestComponent implements OnInit {
                 magnet: 'active',
                 r: 7,
                 cy: 4,
-                fill: 'lightblue',
+                fill: '#6B6699',
               }
             },
             z: 1
@@ -287,7 +639,7 @@ export class GraphTestComponent implements OnInit {
                 magnet: 'passive',
                 r: 7,
                 cy: -4,
-                fill: 'yellow',
+                fill: '#99667B',
               }
             },
             z: 0
@@ -309,7 +661,7 @@ export class GraphTestComponent implements OnInit {
                 r: 7,
                 cy: 0,
                 cx: 7,
-                fill: 'pink',
+                fill: '#949966',
               },
               label: {
                 text: 'True'
@@ -391,24 +743,14 @@ export class GraphTestComponent implements OnInit {
 
 
 
-this.setGroupedTools(this.typeMap);
+    this.setGroupedTools(this.typeMap);
 
 
 
 
 
     document.addEventListener("drop", (event: any) => {
-      console.log('drop')
-      console.log(event);
-      console.log(this.dragged);
-      // prevent default action (open as link for some elements)
       event.preventDefault();
-      // // move dragged elem to the selected drop target
-      // if (event.target.className == "dropzone") {
-      //   event.target.style.background = "";
-      //   this.dragged.parentNode.removeChild(this.dragged);
-      //   event.target.appendChild(this.dragged);
-      // }
       const shape = this.typeMap.find(i => i.url === this.dragged.getAttribute('data-url'));
       const constructedShape = this.doShape(shape);
       constructedShape.position(event.layerX, event.layerY);
@@ -426,15 +768,17 @@ this.setGroupedTools(this.typeMap);
         results.push(group);
       }
       group.items.push(tool);
-
-
     }
 
     this.filteredGroupTools = results;
   }
 
   ngOnInit(): void {
-    this.loadScripts();
+    if (typeof joint === 'undefined') {
+      this.loadScripts();
+    } else {
+      this.doJointStuff();
+    }
   }
 
   deleteShape() {
@@ -454,7 +798,6 @@ this.setGroupedTools(this.typeMap);
 
   saveGraph() {
     const json = this.graph.toJSON();
-    console.log(json);
     localStorage.setItem('graph', JSON.stringify(json));
     this.snackbar.open('Graph Saved', null, { duration: 3000 });
   }
@@ -468,10 +811,8 @@ this.setGroupedTools(this.typeMap);
       this.constructImageShape(shape.url, shape.hasTransmissionLineIn, shape.hasOutputPort, shape.inputPortLabels, shape.transmissionOutPortLabels, shape.title, shape.height, shape.width);
     }
 
-    //const shape = this.constructImageShape('/assets/images/start.png', false, false, [], [''], 'Start');
 
     this.graph.fromJSON(jsonObject);
-    console.log(this.graph);
     for (const model of this.graph.attributes.cells.models) {
       model.on('change:position', e => this.doElementMove(e));
     }
@@ -481,7 +822,6 @@ this.setGroupedTools(this.typeMap);
   private doElementMove(e) {
     this.fitContent();
 
-    // console.log(e);
     clearTimeout(this.dragTimeout);
     this.dragTimeout = setTimeout(() => {
       if (e.attributes.position.x < 0) {
@@ -559,29 +899,57 @@ this.setGroupedTools(this.typeMap);
       gridSize: 1,
       linkPinning: false,
       snapLinks: true,
-      defaultLink: new joint.shapes.standard.Link({
-        z: - 1, attrs: {
-          line: {
-            stroke: '#ccc',
-            strokeWidth: 1
+      defaultLink: function (cellView, magnet) {
+        return new joint.shapes.standard.Link({
+          z: -1,
+          attrs: {
+            line: {
+              stroke: V(magnet).attr('port-group') === "transmissionOut" ? "red" : "#ccc",
+              strokeWidth: V(magnet).attr('port-group') === "transmissionOut" ? 2 : 1,
+              strokeDashArray: V(magnet).attr('port-group') === "transmissionOut" ? '4 1' : 'none',
+            }
           },
-        }
-      }),
+          // router: {
+          //   name: 'metro'
+          // },
+          // connector: {
+          //   name: 'rounded'
+          // }
+        })
+      },
       defaultConnector: { name: 'smooth' },
       defaultConnectionPoint: { name: 'boundary' },
       markAvailable: true,
+      validateMagnet: function (cellView, magnet) {
+        const magnetPortId = magnet.getAttribute('port');
+        const usedPorts = graph.getConnectedLinks(cellView.model).map(i => i.attributes.source.port);
+        const portDef = cellView.model.attributes.ports.items.find(i => i.id === magnetPortId);
+        console.log(portDef);
+
+        if (portDef.group === 'in' || portDef.group === 'transmissionIn') {
+          return false;
+        }
+
+        if (portDef.group === 'transmissionOut' && usedPorts.indexOf(magnetPortId) > -1) {
+          return false;
+        }
+        return true;
+      },
       validateConnection: function (vS, mS, vT, mT, end, lV) {
-        // console.log({ vS, mS, vT, mT, end, lV });
         if (!mT) return false;
         if (vS === vT) return false;
         const outPortGroup = mS.getAttribute('port-group');
         const inPortGroup = mT.getAttribute('port-group');
         if (outPortGroup === 'transmissionOut' && inPortGroup === 'transmissionIn') {
-          console.log('is true')
           return true;
         }
 
-        if (outPortGroup === 'out' && inPortGroup === 'in') {
+        if (outPortGroup === 'out' && inPortGroup === 'in' && vT) {
+          const targetPortId = mT.getAttribute('port');
+          const usedPorts = graph.getConnectedLinks(vT.model).map(i => i.attributes.target.port);
+          if (usedPorts.indexOf(targetPortId) > -1) {
+            return false;
+          }
           return true;
         }
 
@@ -608,23 +976,56 @@ this.setGroupedTools(this.typeMap);
       linkView.removeTools();
     });
 
+    paper.on('link:pointerdblclick', (link) => {
+      this.graph.removeCells(link.model);
+    });
+
+    paper.on('element:pointerdblclick', (elementView) => {
+      elementView.model.remove();
+      this.selectedModel = null;
+    });
+
     paper.on('element:pointerclick', (elementView) => {
 
       this.zone.run(() => {
-        //this.lastUpdateDate = new Date();
         this.selectedModel = elementView.model;
-        console.log(this.selectedModel);
         if (!this.selectedModel.attributes.custom) {
-          this.selectedModel.prop('custom', {});
+          this.selectedModel.prop('custom', { inputs: [] });
+        } if (!this.selectedModel.attributes.custom.inputs) {
+          this.selectedModel.attributes.custom.inputs = [];
         }
+
+
+        const inputPorts = this.selectedModel.attributes.ports.items.filter(i => i.group === 'in');
+        const usedPorts = this.graph.getConnectedLinks(this.selectedModel).map(i => i.attributes.target.port);
+
+        for (const inputPort of inputPorts) {
+          let customInput = this.selectedModel.attributes.custom.inputs.find(i => i.id === inputPort.id);
+          if (!customInput) {
+            customInput = {
+              id: inputPort.id,
+              value: '',
+              portConnected: false,
+              label: inputPort.attrs?.label?.text,
+            };
+            this.selectedModel.attributes.custom.inputs.push(customInput);
+          }
+
+        }
+        for (const customInput of this.selectedModel.attributes.custom.inputs) {
+          customInput.portConnected = false;
+        }
+
+        for (const portId of usedPorts) {
+          const foundInput = this.selectedModel.attributes.custom.inputs.find(i => i.id === portId);
+          if (foundInput) {
+            foundInput.portConnected = true;
+          }
+        }
+
       });
     });
-
-
     setTimeout(() => window.scrollTo(0, 0), 2000);
     window.scrollTo(0, 0);
-
   }
-
-
 }
