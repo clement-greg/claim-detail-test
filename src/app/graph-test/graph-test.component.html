@@ -163,6 +163,29 @@
                 </ul>
             </div>
 
+            <div *ngIf="selectedModel.attributes.type === '/assets/images/create-binding-object.png'">
+                <div aflex>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Key</mat-label>
+                        <input matInput [(ngModel)]="switchValue">
+                    </mat-form-field>
+                    <div nogrow>
+                        <button mat-raised-button mat-button [disabled]="!switchValue"
+                            (click)="addBindingInput()">Add</button>
+                    </div>
+                </div>
+                <ul cdkDropList class="drag-list" (cdkDropListDropped)="handleFormItemResort($event, 'in')">
+                    <li cdkDrag class="drag-box" *ngFor="let port of inPorts">
+                        <mat-icon cdkDragHandle>more_vert</mat-icon>
+                        <span *ngIf="port.attrs && port.attrs.label">{{port.attrs.label.text}}</span>
+                        <button mat-button (click)="removePort(port)" *ngIf="port.attrs.label.text !== '_Default'">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+
             <mat-form-field appearance="outline" *ngFor="let customInput of selectedModel.attributes.custom.inputs">
                 <mat-label>{{customInput.label}}</mat-label>
                 <input matInput [(ngModel)]="customInput.value" [disabled]="customInput.portConnected">

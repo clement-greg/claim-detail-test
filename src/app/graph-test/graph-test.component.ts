@@ -16,7 +16,7 @@ export class GraphTestComponent implements OnInit {
     'jquery',
     'lodash',
     'backbone',
-    'joint',
+    'joint.min',
     //'rappid'
   ];
   groupedTools: any[] = [];
@@ -85,7 +85,7 @@ export class GraphTestComponent implements OnInit {
     url: '/assets/images/get-object-value.png',
     hasTransmissionLineIn: false,
     hasOutputPort: true,
-    inputPortLabels: ['Object'],
+    inputPortLabels: ['Object', 'Field'],
     transmissionOutPortLabels: [],
     title: 'Get Object value',
     category: 'Control Flow'
@@ -478,6 +478,177 @@ export class GraphTestComponent implements OnInit {
     category: 'Output'
   },
 
+  {
+    url: '/assets/images/begin-form.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Begin Form',
+    category: 'Input'
+  },
+
+  {
+    url: '/assets/images/rich-text.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Label', 'Default Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Rich Text',
+    category: 'Input'
+  },
+
+  {
+    url: '/assets/images/slider.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Label', 'Default Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Slider',
+    category: 'Input'
+  },
+
+  {
+    url: '/assets/images/email-box.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Label', 'Default Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Email Box',
+    category: 'Input'
+  },
+
+  {
+    url: '/assets/images/phone-box.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Label', 'Default Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Phone Box',
+    category: 'Input'
+  },
+
+  {
+    url: '/assets/images/slide-toggle.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Label', 'Default Value'],
+    transmissionOutPortLabels: [''],
+    title: 'Check box', 
+    category: 'Input'
+  },
+
+  {
+    url: '/assets/images/end-form.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'End Form',
+    category: 'Input'
+  },
+
+  {
+    url: '/assets/images/message.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Message'],
+    transmissionOutPortLabels: [''],
+    title: 'Message',
+    category: 'Output'
+  },
+
+  {
+    url: '/assets/images/heading.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Message'],
+    transmissionOutPortLabels: [''],
+    title: 'Heading',
+    category: 'Output'
+  },
+
+  {
+    url: '/assets/images/separator.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Separator',
+    category: 'Output'
+  },
+
+  {
+    url: '/assets/images/tag-entry.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Tag Entry',
+    category: 'Input'
+  },
+
+  {
+    url: '/assets/images/preferred-time-slots.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [''],
+    title: 'Preferred Time Slots',
+    category: 'Input'
+  },
+
+  {
+    url: '/assets/images/create-task.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['Employees', 'Task Queue Id', 'Message'],
+    transmissionOutPortLabels: [''],
+    title: 'Create Task',
+    category: 'Data'
+  },
+
+  {
+    url: '/assets/images/create-binding-object.png',
+    hasTransmissionLineIn: false,
+    hasOutputPort: true,
+    inputPortLabels: [],
+    transmissionOutPortLabels: [],
+    title: 'Create Binding Object',
+    category: 'Data'
+  },
+
+  {
+    url: '/assets/images/template-binding.png',
+    hasTransmissionLineIn: false,
+    hasOutputPort: true,
+    inputPortLabels: ['Template', 'Object'],
+    transmissionOutPortLabels: [],
+    title: 'Bind Template',
+    category: 'Data'
+  },
+
+  {
+    url: '/assets/images/rest.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: true,
+    inputPortLabels: ['URL', 'Method', 'Body'],
+    transmissionOutPortLabels: [''],
+    title: 'REST',
+    category: 'Data'
+  },
+
+  {
+    url: '/assets/images/connect-task.png',
+    hasTransmissionLineIn: true,
+    hasOutputPort: false,
+    inputPortLabels: ['Contact Flow Id', 'Task Name', 'Description', 'URL'],
+    transmissionOutPortLabels: [''],
+    title: 'Connect Task',
+    category: 'Communication'
+  },
+  
+  
 
 
 
@@ -517,6 +688,27 @@ export class GraphTestComponent implements OnInit {
     this.switchValue = null;
   }
 
+  addBindingInput() {
+    this.selectedModel.addPort({
+      group: 'in',
+      attrs: {
+        label: {
+          text: this.switchValue
+        }
+      }
+    });
+
+    const inputPortCount = this.selectedModel.attributes.ports.items.filter(i => i.group === 'in').length;
+    let height = inputPortCount * 22;
+    if (height < 100) {
+      height = 100;
+    }
+
+    this.selectedModel.resize(150, height);
+
+    this.switchValue = null;
+  }
+
   shapeDrag(shape) {
 
   }
@@ -525,8 +717,8 @@ export class GraphTestComponent implements OnInit {
     this.selectedModel.removePort(port);
   }
 
-  handleFormItemResort($event) {
-    const outputPorts = this.selectedModel.attributes.ports.items.filter(i => i.group === 'transmissionOut');
+  handleFormItemResort($event, group = 'transmissionOut') {
+    const outputPorts = this.selectedModel.attributes.ports.items.filter(i => i.group ===  group);
     moveItemInArray(outputPorts, $event.previousIndex, $event.currentIndex);
 
     for (const port of outputPorts) {
@@ -537,12 +729,22 @@ export class GraphTestComponent implements OnInit {
     }
   }
 
+
+
   get transmissionOutPorts() {
     if (!this.selectedModel) {
       return null;
     }
 
     return this.selectedModel.attributes.ports.items.filter(i => i.group === 'transmissionOut');
+  }
+
+  get inPorts() {
+    if (!this.selectedModel) {
+      return null;
+    }
+
+    return this.selectedModel.attributes.ports.items.filter(i => i.group === 'in');
   }
 
   removeAnswer(answer: string) {
@@ -591,7 +793,8 @@ export class GraphTestComponent implements OnInit {
         },
         // label: {
         //   text: 'Image'
-        // },
+        // },,
+
         image: {
           xlinkHref: url,
         }
@@ -612,9 +815,9 @@ export class GraphTestComponent implements OnInit {
             attrs: {
               portBody: {
                 magnet: 'passive',
-                r: 7,
+                r: 5,
                 cy: 0,
-                cx: -7,
+                cx: 0,
                 fill: '#669984',
               }
             },
@@ -626,7 +829,7 @@ export class GraphTestComponent implements OnInit {
               portBody: {
                 magnet: 'active',
                 r: 7,
-                cy: 4,
+                cy: 0,
                 fill: '#6B6699',
               }
             },
@@ -637,8 +840,8 @@ export class GraphTestComponent implements OnInit {
             attrs: {
               portBody: {
                 magnet: 'passive',
-                r: 7,
-                cy: -4,
+                r: 5,
+                cy: 0,
                 fill: '#99667B',
               }
             },
@@ -660,7 +863,7 @@ export class GraphTestComponent implements OnInit {
                 magnet: 'active',
                 r: 7,
                 cy: 0,
-                cx: 7,
+                cx: 0,
                 fill: '#949966',
               },
               label: {
@@ -791,7 +994,7 @@ export class GraphTestComponent implements OnInit {
       this.setGroupedTools(this.typeMap);
     } else {
       const lowerFilter = this.toolFilter.toLocaleLowerCase();
-      const filteredItems = this.typeMap.filter(i => i.category.toLocaleLowerCase().indexOf(lowerFilter) > -1 || i.title.toLocaleLowerCase().indexOf(lowerFilter) > -1 && i.url.toLocaleLowerCase().indexOf(lowerFilter) > -1);
+      const filteredItems = this.typeMap.filter(i => i.category.toLocaleLowerCase().indexOf(lowerFilter) > -1 || i.title.toLocaleLowerCase().indexOf(lowerFilter) > -1 || i.url.toLocaleLowerCase().indexOf(lowerFilter) > -1);
       this.setGroupedTools(filteredItems);
     }
   }
@@ -843,7 +1046,7 @@ export class GraphTestComponent implements OnInit {
     const css = document.createElement('link');
     css.rel = 'stylesheet';
     css.type = 'text/css';
-    css.href = '/assets/css/rappid.css';
+    css.href = '/assets/css/joint.min.css';
 
     document.body.appendChild(css);
 
@@ -905,12 +1108,12 @@ export class GraphTestComponent implements OnInit {
           attrs: {
             line: {
               stroke: V(magnet).attr('port-group') === "transmissionOut" ? "red" : "#ccc",
-              strokeWidth: V(magnet).attr('port-group') === "transmissionOut" ? 2 : 1,
+              strokeWidth: V(magnet).attr('port-group') === "transmissionOut" ? 1 : 1,
               strokeDashArray: V(magnet).attr('port-group') === "transmissionOut" ? '4 1' : 'none',
             }
           },
           // router: {
-          //   name: 'metro'
+          //   name: 'normal'
           // },
           // connector: {
           //   name: 'rounded'

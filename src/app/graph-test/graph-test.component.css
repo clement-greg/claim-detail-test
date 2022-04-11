@@ -10,7 +10,7 @@
     right: 20px;
     top: 20px;
     min-width: 217px;
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.21);
+    box-shadow: 3px 3px 10px 5px rgb(0 0 0 / 11%);
 }
 
 #tool-bar-tools {
@@ -67,6 +67,8 @@
     transform: rotate(-90deg);
 }
 
+
+
 .tools-drag {
     background-color: #999;
     color: #fff;
@@ -89,7 +91,7 @@
 
 
 #paper-container {
-    height: calc(100vh - 30px);
+    height: calc(100vh - 0px);
     overflow: auto;
 }
 
