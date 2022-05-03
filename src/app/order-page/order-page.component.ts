@@ -13,6 +13,7 @@ export class OrderPageComponent implements OnInit {
   plans: any[];
   hasScrollers = false;
   id = UtilitiesService.newid();
+  isYearly = false;
   constructor(private http: HttpClient,
     private sanitization: DomSanitizer) { }
 
