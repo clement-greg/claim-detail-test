@@ -1,10 +1,12 @@
 :host ::ng-deep body {
     height: unset !important;
 }
+
 .plan-selection-outer-container {
     display: table;
     margin: 0 auto;
 }
+
 .plan-selection-container {
     white-space: nowrap;
     overflow-y: hidden;
@@ -18,6 +20,32 @@
     scroll-snap-stop: always;
 }
 
+.toggle-label {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.toggle-label::after {
+    content: '';
+    transform-origin: 50% 50%;
+    transform: scaleX(0);
+    opacity: 0;
+    transition: all .5s ease-in-out;
+    bottom: -2px;
+    height: 3px;
+    left: 0;
+    width: 100%;
+    background-color: orange;
+    position: absolute;
+    border-radius: 2px;
+}
+
+.toggle-label.selected::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
 .scrollers-container {
     position: relative;
 }
@@ -27,7 +55,7 @@
     z-index: 1;
     top: calc(50% - 30px);
     opacity: .5;
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, .3);
     color: #fff;
     min-width: unset;
     height: 89px;
@@ -44,10 +72,6 @@
     right: 0;
 }
 
-.selected {
-    text-decoration: underline;
-}
-
 .plan {
     box-shadow: 1px 1px 24px 1px rgb(0 0 0 / 10%);
     min-height: 499px;
@@ -57,8 +81,8 @@
     background-color: #fff !important;
     scroll-snap-align: center;
     display: inline-block;
-    margin-left: 8px !important;
-    margin-right: 8px;
+    margin-left: 13px !important;
+    margin-right: 13px;
 }
 
 .front>div {
@@ -75,6 +99,8 @@
 .best-value {
     transform: scale(1.13);
     z-index: 11;
+    margin-left: 25px !important;
+    margin-right: 25px !important;
 }
 
 .plan>div>div:first-child {
@@ -99,7 +125,7 @@ h3 {
     font-size: 64px;
     line-height: 64px;
     margin-top: 39px !important;
-    color: rgb(100,100,100);
+    color: rgb(100, 100, 100);
 }
 
 .plan-footer {
@@ -111,6 +137,7 @@ h3 {
     padding: 20px;
     text-align: center;
     white-space: normal;
+    backdrop-filter: blur(3px);
 }
 
 
@@ -124,7 +151,9 @@ h3 {
     transform: rotateY(180deg);
 }
 
-.flip-container, .front, .back {
+.flip-container,
+.front,
+.back {
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -149,7 +178,8 @@ h3 {
     font-size: 22px;
 }
 
-.front, .back {
+.front,
+.back {
     backface-visibility: hidden;
     position: absolute;
     top: 0;
@@ -185,7 +215,7 @@ h1 {
 }
 
 .scroller {
-    scroll-snap-type:  x mandatory;
+    scroll-snap-type: x mandatory;
     scroll-snap-points-x: repeat(300px);
 }
 
@@ -255,7 +285,7 @@ h1 {
     z-index: 10;
     transition: background-color .5s ease-out;
     padding-bottom: 5px;
-    border-bottom: 1px solid rgba(0,0,0,0);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
     height: 60px;
     display: block;
     top: 0;
@@ -263,7 +293,7 @@ h1 {
     border-bottom: 1px solid #ddd;
 }
 
-#companyLogo  {
+#companyLogo {
     max-height: 40px;
     margin-top: 11px;
 }

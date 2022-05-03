@@ -2,7 +2,7 @@
         class="mat-focus-indicator mat-button mat-button-base"><span class="mat-button-wrapper"><i
                 _ngcontent-tsr-c216="" class="material-icons">menu</i></span><span matripple=""
             class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></button>
-    <!----><a _ngcontent-tsr-c216="" href="https://www.elevatehw.com/"><img _ngcontent-tsr-c216="" id="companyLogo"
+    <!----><a _ngcontent-tsr-c216="" href="/"><img _ngcontent-tsr-c216="" id="companyLogo"
             src="https://api.elevatehw.com/api/entity/company/logo"></a>
 
 </div>
@@ -10,8 +10,8 @@
 <div style="padding-left: 20px;">
     <div style="margin-top: 80px;"></div>
     <h1 style="margin-bottom: 40px !important;">Select the plan that's right for you</h1>
-    <span [class.selected]="!isYearly" (click)="isYearly = false">Monthly </span>&nbsp;
-    <mat-slide-toggle [(ngModel)]="isYearly"></mat-slide-toggle>&nbsp; <span [class.selected]="isYearly"
+    <span class="toggle-label" [class.selected]="!isYearly" (click)="isYearly = false">Monthly </span>&nbsp;
+    <mat-slide-toggle [(ngModel)]="isYearly"></mat-slide-toggle>&nbsp; <span class="toggle-label" [class.selected]="isYearly"
         (click)="isYearly = true">Yearly </span>
 </div>
 <div class="scrollers-container">
