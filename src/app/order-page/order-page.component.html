@@ -1,0 +1,101 @@
+<div _ngcontent-tsr-c216="" id="appHeader"><button _ngcontent-tsr-c216="" mat-button=""
+        class="mat-focus-indicator mat-button mat-button-base"><span class="mat-button-wrapper"><i
+                _ngcontent-tsr-c216="" class="material-icons">menu</i></span><span matripple=""
+            class="mat-ripple mat-button-ripple"></span><span class="mat-button-focus-overlay"></span></button>
+    <!----><a _ngcontent-tsr-c216="" href="https://www.elevatehw.com/"><img _ngcontent-tsr-c216="" id="companyLogo"
+            src="https://api.elevatehw.com/api/entity/company/logo"></a>
+
+</div>
+
+<div style="padding-left: 20px;">
+    <div style="margin-top: 80px;"></div>
+    <h1 style="margin-bottom: 40px !important;">Select the plan that's right for you</h1>
+    <span [class.selected]="!isYearly" (click)="isYearly = false">Monthly </span>&nbsp;
+    <mat-slide-toggle [(ngModel)]="isYearly"></mat-slide-toggle>&nbsp; <span [class.selected]="isYearly"
+        (click)="isYearly = true">Yearly </span>
+</div>
+<div class="scrollers-container">
+    <button [disabled]="isLeftScrolled" (click)="scrollLeft()" mat-button class="scroller-btn left" *ngIf="hasScrollers">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-button class="scroller-btn right" [disabled]="isRightScrolled" (click)="scrollRight()" *ngIf="hasScrollers">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+    <div class="plan-selection-outer-container">
+        <div class="plan-selection-container" (scroll)="updateScrollStatus()" [id]="id">
+
+            <div *ngFor="let plan of plans" [id]="plan.id" [class.best-value]="plan.bestValue" class="plan">
+                <div class="flip-container" [class.flip-it]="plan.itemsExpanded">
+                    <div class="flipper">
+                        <div class="front" [style.background]="getCardFronBackground(plan)">
+                            <div *ngIf="!plan.itemsExpanded">
+                                <div style="flex: 1;padding: 20px">
+                                    <h1 [style.color]="plan.planColor">
+                                        {{plan.name}}
+                                    </h1>
+                                    <div class="center">
+                                        <h2 class="price" *ngIf="!isYearly">
+                                            {{plan.priceRecurring | currency}}
+                                        </h2>
+                                        <h2 class="price" *ngIf="isYearly">
+                                            {{plan.price | currency}}
+                                        </h2>
+                                        <h3 *ngIf="!isYearly">Month</h3>
+                                        <h3 *ngIf="isYearly">Year</h3>
+
+                                        <div>
+                                            {{plan.serviceFee | currency}} service fee
+                                        </div>
+
+                                        <button [style.background-color]="plan.planColor" class="select-button"
+                                            mat-button mat-raised-button>Select</button>
+                                        <br>
+                                        <button mat-button mat-raised-button class="details-button"
+                                            (click)="plan.itemsExpanded = true">Details</button>
+                                    </div>
+                                </div>
+                                <div class="plan-footer">
+                                    {{plan.summary}}
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="items-container">
+
+
+                                <button mat-button class="close-detail-button" (click)="plan.itemsExpanded = false">
+                                    <mat-icon>close</mat-icon>
+                                    <br>
+                                    Close
+                                </button>
+
+                                <h3>{{plan.name}} Standard Items</h3>
+                                <ul>
+                                    <li *ngFor="let item of plan.standardItems">
+                                        {{item.name}}
+                                    </li>
+                                </ul>
+
+                                <a target="_blank" style="text-align: center" block mat-button
+                                    [href]="getSampleContractUrl(plan)">
+                                    <mat-icon>description</mat-icon>
+                                    Sample Contract
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="selector-container">
+
+    <div (click)="selectPlan(plan)" *ngFor="let plan of plans" class="selector">
+
+    </div>
+</div> -->

@@ -20,3 +20,44 @@
 .backward {
     animation-direction: reverse;
 }
+
+/* @keyframes bouncer {
+    0% {
+        transform: translateY(0);
+    }
+    10% {
+        transform: translateY(-4px);
+
+    }
+    12% {
+        transform: translateY(-6px);
+    }
+    14% {
+        transform: translateY(-4px);
+    }
+    20% {
+        transform: translateY(0);
+    }
+    80% {
+        transform: translateY(0);
+    }
+    90% {
+        transform: translateY(4px);
+    }
+    92% {
+        transform: translateY(6px);
+    }
+    94% {
+        transform: translateY(4px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#bounce {
+    animation-name: bouncer;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+} */

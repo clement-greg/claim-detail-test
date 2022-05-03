@@ -1,6 +1,7 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Clipboard } from '@angular/cdk/clipboard';
 declare var joint: any;
 declare var $: any;
 declare var _: any;
@@ -175,7 +176,7 @@ export class GraphTestComponent implements OnInit {
     url: '/assets/images/cogent-notification.png',
     hasTransmissionLineIn: true,
     hasOutputPort: false,
-    inputPortLabels: ['Employees', 'Title', 'Message', 'Endpoint URL'],
+    inputPortLabels: ['Employees', 'Message', 'Endpoint URL'],
     transmissionOutPortLabels: [''],
     title: 'Send Cogent Notification',
     category: 'Communication'
@@ -198,38 +199,38 @@ export class GraphTestComponent implements OnInit {
     title: 'Sly Dial',
     category: 'Communication'
   },
-  {
-    url: '/assets/images/form.png',
-    hasTransmissionLineIn: true,
-    hasOutputPort: true,
-    inputPortLabels: ['Form Id'],
-    transmissionOutPortLabels: [''],
-    title: 'Show Form',
-    category: 'Input'
-  },
-  {
-    url: '/assets/images/questionnaire.png',
-    hasTransmissionLineIn: true,
-    hasOutputPort: true,
-    inputPortLabels: ['Questionnaire Id'],
-    transmissionOutPortLabels: [''],
-    title: 'Show Questionnaire',
-    category: 'Input'
-  },
-  {
-    url: '/assets/images/questionnaire-answer.png',
-    hasTransmissionLineIn: false,
-    hasOutputPort: true,
-    inputPortLabels: ['Questionnaire'],
-    transmissionOutPortLabels: [],
-    title: 'Get Questionnaire Answer',
-    category: 'Output'
-  },
+  // {
+  //   url: '/assets/images/form.png',
+  //   hasTransmissionLineIn: true,
+  //   hasOutputPort: true,
+  //   inputPortLabels: ['Form Id'],
+  //   transmissionOutPortLabels: [''],
+  //   title: 'Show Form',
+  //   category: 'Input'
+  // },
+  // {
+  //   url: '/assets/images/questionnaire.png',
+  //   hasTransmissionLineIn: true,
+  //   hasOutputPort: true,
+  //   inputPortLabels: ['Questionnaire Id'],
+  //   transmissionOutPortLabels: [''],
+  //   title: 'Show Questionnaire',
+  //   category: 'Input'
+  // },
+  // {
+  //   url: '/assets/images/questionnaire-answer.png',
+  //   hasTransmissionLineIn: false,
+  //   hasOutputPort: true,
+  //   inputPortLabels: ['Questionnaire'],
+  //   transmissionOutPortLabels: [],
+  //   title: 'Get Questionnaire Answer',
+  //   category: 'Output'
+  // },
   {
     url: '/assets/images/end-process.png',
     hasTransmissionLineIn: true,
     hasOutputPort: false,
-    inputPortLabels: [],
+    inputPortLabels: ['Result'],
     transmissionOutPortLabels: [],
     title: 'End Process',
     category: 'Control Flow'
@@ -237,30 +238,30 @@ export class GraphTestComponent implements OnInit {
   {
     url: '/assets/images/transfer.png',
     hasTransmissionLineIn: true,
-    hasOutputPort: false,
-    inputPortLabels: ['Process Id'],
+    hasOutputPort: true,
+    inputPortLabels: ['Process JSON', 'Object In Scope'],
     transmissionOutPortLabels: ['Resume'],
     title: 'Transfer',
     category: 'Control Flow'
   },
-  {
-    url: '/assets/images/save-env-variable.png',
-    hasTransmissionLineIn: true,
-    hasOutputPort: false,
-    inputPortLabels: ['Key', 'Value'],
-    transmissionOutPortLabels: [''],
-    title: 'Save Environment Variable',
-    category: 'Control Flow'
-  },
-  {
-    url: '/assets/images/read-env-variable.png',
-    hasTransmissionLineIn: false,
-    hasOutputPort: true,
-    inputPortLabels: ['Key'],
-    transmissionOutPortLabels: [],
-    title: 'Read Environment Variable',
-    category: 'Control Flow'
-  },
+  // {
+  //   url: '/assets/images/save-env-variable.png',
+  //   hasTransmissionLineIn: true,
+  //   hasOutputPort: false,
+  //   inputPortLabels: ['Key', 'Value'],
+  //   transmissionOutPortLabels: [''],
+  //   title: 'Save Environment Variable',
+  //   category: 'Control Flow'
+  // },
+  // {
+  //   url: '/assets/images/read-env-variable.png',
+  //   hasTransmissionLineIn: false,
+  //   hasOutputPort: true,
+  //   inputPortLabels: ['Key'],
+  //   transmissionOutPortLabels: [],
+  //   title: 'Read Environment Variable',
+  //   category: 'Control Flow'
+  // },
   {
     url: '/assets/images/stop-flow.png',
     hasTransmissionLineIn: true,
@@ -482,7 +483,7 @@ export class GraphTestComponent implements OnInit {
     url: '/assets/images/begin-form.png',
     hasTransmissionLineIn: true,
     hasOutputPort: false,
-    inputPortLabels: [],
+    inputPortLabels: ['Form Container Id'],
     transmissionOutPortLabels: [''],
     title: 'Begin Form',
     category: 'Input'
@@ -918,7 +919,7 @@ export class GraphTestComponent implements OnInit {
   }
 
   dragged;
-  constructor(private zone: NgZone, private snackbar: MatSnackBar) {
+  constructor(private zone: NgZone, private snackbar: MatSnackBar, private clipboard: Clipboard) {
 
     /* events fired on the draggable target */
     document.addEventListener("drag", function (event) {
@@ -1003,6 +1004,12 @@ export class GraphTestComponent implements OnInit {
     const json = this.graph.toJSON();
     localStorage.setItem('graph', JSON.stringify(json));
     this.snackbar.open('Graph Saved', null, { duration: 3000 });
+  }
+
+  async copy() {
+    const json = this.graph.toJSON();
+    //await this.clipboard.writeText(json);
+    this.clipboard.copy(JSON.stringify(json));
   }
 
   private dragTimeout;

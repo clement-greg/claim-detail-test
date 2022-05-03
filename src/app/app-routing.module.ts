@@ -7,6 +7,7 @@ import { GearsTestComponent } from './gears-test/gears-test.component';
 import { GraphTestComponent } from './graph-test/graph-test.component';
 import { HomeComponent } from './home/home.component';
 import { NewOrderFrameComponent } from './new-order-frame/new-order-frame.component';
+import { OrderPageComponent } from './order-page/order-page.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { RecordComponent } from './record/record.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -65,6 +66,10 @@ const routes: Routes = [
   }, {
     path: 'request-service',
     component: TestRequestServiceComponent,
+  },
+  {
+    path: 'order',
+    component: OrderPageComponent
   }
 ];
 

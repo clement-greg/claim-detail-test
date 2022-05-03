@@ -65,6 +65,7 @@ import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.compo
 import { GearsTestComponent } from './gears-test/gears-test.component';
 import { GraphTestComponent } from './graph-test/graph-test.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { OrderPageComponent } from './order-page/order-page.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     ApplianceAuthoComponent,
     GearsTestComponent,
     GraphTestComponent,
+    OrderPageComponent,
   ],
   imports: [
     FormsModule,
