@@ -21,7 +21,10 @@ export class OrderPageComponent implements OnInit {
     this.http.get(`/assets/json/plan-selection.json`).subscribe((results: any) => {
       console.log(results);
       this.plans = results;
-      setTimeout(() => this.setScrollers(), 100);
+      setTimeout(() => {
+        this.setScrollers();
+        this.setBestvalueScroll();
+      }, 100);
     });
   }
 
@@ -48,6 +51,10 @@ export class OrderPageComponent implements OnInit {
 
     this.hasScrollers = container.clientWidth < container.scrollWidth;
 
+
+  }
+
+  private setBestvalueScroll() {
     const bestValuePlan = this.plans.find(i => i.bestValue);
 
     const bestValueIndex = this.plans.indexOf(bestValuePlan);
