@@ -66,6 +66,9 @@ import { GearsTestComponent } from './gears-test/gears-test.component';
 import { GraphTestComponent } from './graph-test/graph-test.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { OrderPageComponent } from './order-page/order-page.component';
+import { SpecialCurrencyPipe } from './pipes/special-currency.pipe';
+import { TimeSlotPickerComponent } from './time-slot-picker/time-slot-picker.component';
+import { MaintServicesOrderComponent } from './maint-services-order/maint-services-order.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +99,9 @@ import { OrderPageComponent } from './order-page/order-page.component';
     GearsTestComponent,
     GraphTestComponent,
     OrderPageComponent,
+    SpecialCurrencyPipe,
+    TimeSlotPickerComponent,
+    MaintServicesOrderComponent,
   ],
   imports: [
     FormsModule,

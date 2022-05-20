@@ -29,11 +29,16 @@ export class GroupedWorkOrderItemModel {
 
   summarizedWorkOrderItems: WorkOrderItemModel[];
   hasMoreItems: boolean;
+  color: string;
 
 
 
   get iconUrl(): string {
       return UtilitiesService.getCategoryUrl(this.category);
+  }
+
+  get getBgUrl(): string {
+      return UtilitiesService.getCategoryBgUrl(this.category);
   }
 
   get sampleList() {
@@ -44,15 +49,29 @@ export class GroupedWorkOrderItemModel {
 
   public static fromWorkOrderItems(workOrderItems: WorkOrderItemModel[]): GroupedWorkOrderItemModel[] {
       const results: GroupedWorkOrderItemModel[] = [];
+      const colorArray = [
+          '#32a852',
+          '#32a8a2',
+          '#325fa8',
+          '#6819a8',
+          '#9a19a8',
+          '#a8193d',
+          '#a85e19'
+      ]
 
       workOrderItems = workOrderItems.sort((a, b) => a.categorySort - b.categorySort);
+      let index = 0;
       workOrderItems.forEach(workOrderItem => {
           let result = results.filter(i => i.category === workOrderItem.category)[0];
           if (!result) {
+              console.log('here')
               result = new GroupedWorkOrderItemModel(workOrderItem.category,
                   workOrderItems.filter(i => i.category === workOrderItem.category).sort((a, b) => a.itemSort - b.itemSort));
 
+                  result.color = colorArray[index];
               results.push(result);
+              index++;
+              console.log(index);
           }
       });
 
@@ -164,6 +183,10 @@ export class ItemSelectionComponent implements OnChanges, AfterViewInit {
                 headerElement.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
             }, 200);
         }
+    }
+
+    getBackgroundImage(groupedItem) {
+        return `url(${groupedItem.getBgUrl})`;
     }
 
     groupSelected = false;
@@ -295,6 +318,7 @@ export class ItemSelectionComponent implements OnChanges, AfterViewInit {
             this.groupedItems = GroupedWorkOrderItemModel.fromWorkOrderItems(this.workOrderItems);
 
 
+            console.log(this.groupedItems)
             if (this.groupedItems.length === 1) {
                 this.detailShown = false;
                 console.log('one group');

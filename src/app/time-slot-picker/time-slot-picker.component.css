@@ -1,0 +1,22 @@
+/* .day-selector {
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    text-transform: none;
+    line-height: 9px;
+    height: 64px;
+    width: 64px;
+    margin-right: 12px;
+    padding-top: 7px;
+}
+.day-selector h2 {
+    margin: 0;
+    font-weight: bold !important;
+}
+
+.day-selector.selected h2 {
+    color: #fff;
+}
+
+.toggle-button::before {
+    border-radius: 50%;
+} */

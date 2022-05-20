@@ -1,0 +1,151 @@
+<div class="mobile-container">
+
+    <div>
+
+        <header>
+            <img src="../../assets/images/scheduled-maintenance/new-co-logo.svg">
+        </header>
+        <div style="margin-top: 60px"></div>
+        <mat-tab-group  class="hide-tabs full-height-tabs" [(selectedIndex)]="selectedIndex">
+            <mat-tab label="First">
+
+                <div class="center">
+
+
+                    <img style="height: 150px" src="../../assets/images/scheduled-maintenance/relaxed-header.png"><br>
+                </div>
+
+                <div class="category-container">
+                    <button mat-button class="" (click)="selectedIndex = 1" *ngFor="let service of services">
+
+                        <div class="service-container">
+                            <div><h2 class="category-name-h2" [style.color]="service.color">{{service.name}}</h2>
+                                <div  class="data-label">Starting At</div>
+                                <h2 class="price">{{service.startPrice}}</h2>
+                            </div>
+                            <div class="{{service.className}}">
+                                <div>
+                                {{service.details}}
+                            </div>
+
+                            </div>
+                        </div>
+                        
+                        
+                    </button>
+                </div>
+               <!-- <div class="horizontal-scroll-container">
+
+                     <div *ngFor="let service of services" class="category-box">
+                        <div class="flip-container" [class.flip-it]="service.flipped">
+                            <div class="flipper">
+                                <div class="front {{service.className}}">
+                                    <div>
+                                        <h1 [style.color]="service.color">{{service.name}}</h1>
+
+                                        <div topmargin40 class="data-label">Starting At</div>
+                                        <h2 class="price">{{service.startPrice}}</h2>
+                                        <p>Per Service Visit</p>
+                                        <button class="pill-button" (click)="selectedIndex = 1" [style.background]="service.color" large mat-button mat-raised-button color="primary">
+                                            Order
+                                        </button>
+                                        <div></div>
+                                        <button class="pill-button" mat-button mat-raised-button
+                                            (click)="service.flipped = !service.flipped">Details</button>
+
+                                        <div class="details">
+                                            {{service.details}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div>
+
+                                        <button topmargin20 mat-button class="close-detail-button"
+                                            (click)="service.flipped = !service.flipped">
+                                            <mat-icon>close</mat-icon><br>
+                                            Close
+                                        </button>
+                                        <div>
+                                            <h2>Basic Services</h2>
+                                            <ul>
+                                                <li *ngFor="let serviceItem of service.basicServices">{{serviceItem}}</li>
+                                            </ul>
+
+                                            <h2>Additional Services</h2>
+                                            <ul>
+                                                <li *ngFor="let serviceItem of service.optionalServices">{{serviceItem}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> -->
+
+            </mat-tab>
+            <mat-tab label="Second">
+
+
+                <div class="landscape-order-details-container">
+                    <h1>Select A Package To Fit Your Landscape</h1>
+
+                    <div class="horizontal-scroll-container">
+
+                        <div *ngFor="let service of packages" class="category-box">
+                            <div class="flip-container" [class.flip-it]="service.flipped">
+                                <div class="flipper">
+                                    <div class="front {{service.className}}">
+                                        <div>
+                                            <h1 [style.color]="service.color">{{service.name}}</h1>
+    
+                                            <div topmargin40 class="data-label">Starting At</div>
+                                            <h2 class="price">{{service.startPrice}}</h2>
+                                            <p>Per Service Visit</p>
+                                            <button class="pill-button" (click)="selectedIndex = 1" [style.background]="service.color" large mat-button mat-raised-button color="primary">
+                                                Order
+                                            </button>
+                                            <div></div>
+                                            <button class="pill-button" mat-button mat-raised-button
+                                                (click)="service.flipped = !service.flipped">Details</button>
+    
+                                            <div class="details">
+                                                {{service.details}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="back">
+                                        <div>
+    
+                                            <button topmargin20 mat-button class="close-detail-button"
+                                                (click)="service.flipped = !service.flipped">
+                                                <mat-icon>close</mat-icon><br>
+                                                Close
+                                            </button>
+                                            <div>
+                                                <h2>Services</h2>
+                                                <ul>
+                                                    <li *ngFor="let serviceItem of service.basicServices">{{serviceItem}}</li>
+                                                </ul>
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Third"> Content 3 </mat-tab>
+        </mat-tab-group>
+
+        <!-- <div class="tool-bar">
+
+            <button mat-button mat-raised-button color="primary">Next</button>
+        </div> -->
+    </div>
+</div>

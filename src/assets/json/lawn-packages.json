@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Whole Yard",
+        "startPrice": 59,
+        "details": "Lawn maintenance, tree and shrub trimming and more",
+        "bgImage": "grass.jpeg",
+        "className": "landscape",
+        "color": "rgb(65, 165, 113)",
+        "basicServices": [
+            "Mowing",
+            "Mulching",
+            "Blowing",
+            "Triming",
+            "Pavement Edging",
+            "Bush and shrub trimming",
+            "Weeding flowebeds"
+        ]
+    }, 
+    {
+        "name": "Lawn Only",
+        "startPrice": 39,
+        "details": "Kills your bugs and good",
+        "bgImage": "pest-control.png",
+        "className": "pest-control",
+        "color": "rgb(160, 134, 208)"
+    },
+    {
+        "name": "Tree and Shrub Only",
+        "startPrice": 200,
+        "details": "Clean your gross house you filthy pig",
+        "bgImage": "house-cleaning.jpeg",
+        "className": "house-cleaning",
+        "color": "rgb(239, 123, 0)"
+    }
+]

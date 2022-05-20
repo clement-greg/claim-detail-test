@@ -35,16 +35,16 @@
                                     </h1>
                                     <div class="center">
                                         <h2 class="price" *ngIf="!isYearly">
-                                            {{plan.priceRecurring | currency}}
+                                            {{plan.priceRecurring | specialCurrency}}
                                         </h2>
                                         <h2 class="price" *ngIf="isYearly">
-                                            {{plan.price | currency}}
+                                            {{plan.price | specialCurrency}}
                                         </h2>
                                         <h3 *ngIf="!isYearly">Month</h3>
                                         <h3 *ngIf="isYearly">Year</h3>
 
                                         <div>
-                                            {{plan.serviceFee | currency}} service fee
+                                            {{plan.serviceFee | specialCurrency}} service fee
                                         </div>
 
                                         <button [style.background-color]="plan.planColor" class="select-button"

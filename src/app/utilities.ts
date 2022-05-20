@@ -834,6 +834,29 @@ export class UtilitiesService {
         return null;
     }
 
+    public static getCategoryBgUrl(category: string) {
+        if (category === 'Plumbing') {
+            return 'assets/images/category-bg/plumbing.png';
+        }
+        if (category === 'A/C & Heating') {
+            return 'assets/images/category-bg/ac.png';
+        }
+        if (category === 'Appliance') {
+            return 'assets/images/category-bg/appliance.png';
+        }
+        if (category === 'Electrical') {
+            return 'assets/images/category-bg/electrical.png';
+        }
+        if (category === 'Outdoor') {
+            return 'assets/images/category-bg/outdoor.png';
+        }
+        if (category === 'Services') {
+            return 'assets/images/category-bg/services.png';
+        }
+
+        return null;
+    }
+
     public static replaceValuesInStringFromObject(source: string, values: any, prefix = '', escapeDoubleQuotes = false): string {
         let result = String(source);
         const datePipe = new DatePipe('en-US');

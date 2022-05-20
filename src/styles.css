@@ -40,6 +40,14 @@ body {
     overflow-x: hidden;
 }
 
+.full-height-tabs {
+    height: 100%;
+}
+
+.full-height-tabs .mat-tab-body-wrapper {
+    height: 100%;
+}
+
 h1,
 h2,
 h3,

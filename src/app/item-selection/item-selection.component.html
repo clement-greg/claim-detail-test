@@ -79,7 +79,67 @@
             </mat-tab-group>
 
             <div id="grouped-items-container-desktop" *ngIf="!detailShown">
-                <mat-accordion>
+
+                <div *ngFor="let groupedItem of groupedItems" class="desktop-group">
+                    <div class="flip-container" [class.flip-it]="groupedItem.itemsExpanded">
+                        <div class="flipper">
+                            <div class="front" [style.background-image]="getBackgroundImage(groupedItem)">
+                                <div *ngIf="!groupedItem.itemsExpanded" (click)="groupedItem.itemsExpanded = true">
+                                    <div style="flex: 1;padding: 20px">
+                                        <h1 class="desktop-group-header" [style.color]="groupedItem.color">
+                                            {{groupedItem.category}}
+                                        </h1>
+                                        <div class="center">
+                           
+                                            <h2 class="group-count">
+                                                {{groupedItem.workOrderItems.length}}
+                                            </h2>
+                                            <div style="color: rgb(100, 100, 100);">Covered Items</div>
+    
+                                            <!-- <button mat-button mat-raised-button [style.background-color]="groupedItem.color" topmargin40 class="details-button"
+                                                >Details</button> -->
+                                        </div>
+                                    </div>
+                                    <div class="group-footer">
+                                        {{groupedItem.sampleList}}
+                                        <br>
+    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="items-container">
+    
+    
+                                    <button mat-button class="close-detail-button" (click)="groupedItem.itemsExpanded = false">
+                                        <mat-icon>close</mat-icon>
+                                        <br>
+                                        Close
+                                    </button>
+    
+                                    <h3 style="color: rgb(150,150,150);">{{groupedItem.category}} Items</h3>
+             
+                                    <div class="desktop-items-container">
+                                        <button mat-button *ngFor="let item of groupedItem.workOrderItems"  (click)="selectWorkOrderItem(item)">
+                                            <img class="desktop-item-image" [src]="getItemUrl(item)"><br>
+                                            {{item.name}}
+                                        </button>
+                                    </div>
+                                    <!-- <ul>
+                                        <li *ngFor="let item of groupedItem.workOrderItems">
+                                            <img [src]="getItemUrl(item)">
+                                            {{item.name}}
+                                        </li>
+                                    </ul> -->
+    
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+                <!-- <mat-accordion>
                     <mat-expansion-panel *ngFor="let groupedItem of groupedItems">
                         <mat-expansion-panel-header collapsedHeight="90px" expandedHeight="90px">
                             <mat-panel-description>
@@ -115,7 +175,7 @@
                         </ul>
                     </mat-expansion-panel>
 
-                </mat-accordion>
+                </mat-accordion> -->
             </div>
         </div>
 
