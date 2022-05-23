@@ -41,5 +41,13 @@
         "bgImage": "window-washing.jpeg",
         "className": "window-washing",
         "color": "rgb(239, 123, 0)"
+    },
+    {
+        "name": "Pool Maintenance",
+        "startPrice": 75,
+        "details": "Keep your pool crystal clear",
+        "bgImage": "window-washing.jpeg",
+        "className": "pool",
+        "color": "rgb(239, 123, 0)"
     }
 ]

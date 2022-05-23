@@ -5,7 +5,7 @@
 .mobile-container {
     width: 100%;
     height: calc(100vh);
-    background-color: #eee;
+    background-color: #fff;
     padding-top: 30px;
 }
 
@@ -19,7 +19,6 @@
     max-width: 393px;
     width: 100%;
     border: 1px solid #aaa;
-    height: 851px;
     position: relative;
 }
 
@@ -40,7 +39,7 @@ h1 {
     overflow-x: auto;
     max-width: 393px;
     scroll-snap-type: x mandatory;
-    padding: 54px 20px 53px;
+    padding: 54px 20px 10px;
     scroll-snap-stop: always;
     margin-top: -20px;
 }
@@ -221,14 +220,14 @@ h1 {
 .landscape-order-details-container {
     height: calc(100% - 60px);
     width: 100%;
-    background: url(../../assets/images/scheduled-maintenance/grass.png);
+    /* background: url(../../assets/images/scheduled-maintenance/grass.png);
     background-position-x: right;
     background-position-y: bottom;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 header {
-    position: absolute;
+    position: fixed;
     top: 0;
     height: 60px;
     background-color: #fcf5fc;
@@ -281,9 +280,76 @@ header img {
 .price {
     font-family: Roboto, sans-serif !important;
     font-weight: 900 !important;
-    font-size: 64px;
+    font-size: 48px;
     line-height: 64px;
     color: #646464;
+}
+
+@keyframes hor-ver-expand-in {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.shopping-cart-detail {
+    position: absolute;
+    background-color: #fff;
+    width: 300px;
+    height: calc(100vh - 45px);
+    right: -10px;
+    box-shadow: 5px 12px 4px 13px rgb(0 0 0 / 14%);
+    padding: 10px;
+    border-radius: 5px;
+    animation: hor-ver-expand-in .4s ease-in-out;
+    transform-origin: 100% 0%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.upgrade-item mat-icon, .service-item mat-icon {
+    position: absolute;
+    background-color: green;
+    color: #fff;
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    font-size: 96px;
+    left: calc(50% - 48px);
+    margin-top: -26px;
+    z-index: -1;
+    opacity: .1;
+    animation: hor-ver-expand-in .4s ease-in-out;
+}
+
+.upgrade-item {
+    position: relative;
+}
+
+.backdrop {
+    background-color: rgba(0,0,0,.01);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cart-item {
+    border-bottom: 1px dotted #aaa;
+    padding: 10px;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.shopping-cart-container {
+    position: relative;
 }
 
 @media(max-width: 600px) {
@@ -294,5 +360,6 @@ header img {
 
     .mobile-container {
         padding: 0;
+        overflow-x: hidden;
     }
 }

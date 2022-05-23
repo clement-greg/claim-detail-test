@@ -13,6 +13,11 @@ export class MaintServicesOrderComponent implements OnInit {
   packages: any[];
   landscapeFlipped = false;
   selectedIndex = 0;
+  shoppingCartOpen = false;
+  upgrades: any[];
+  bundles: any[];
+
+  cartItems: CartItem[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -29,7 +34,49 @@ export class MaintServicesOrderComponent implements OnInit {
       this.packages = results;
     });
 
+    this.http.get('/assets/json/additional-services.json').subscribe((results: any) => this.upgrades = results);
+    this.http.get('/assets/json/bundles.json').subscribe((results: any) => this.bundles = results);
+
   }
 
+  toggleUpgrade(upgrade) {
+    if (upgrade.selected) {
+      const cartItem = this.cartItems.find(i => i.description === upgrade.name);
+      if (cartItem) {
+        this.cartItems.splice(this.cartItems.indexOf(cartItem), 1);
+      }
+    } else {
+      const cartItem = new CartItem();
+      cartItem.amount = upgrade.startPrice;
+      cartItem.description = upgrade.name;
+      this.cartItems.push(cartItem);
+    }
 
+    upgrade.selected = !upgrade.selected;
+  }
+
+  addLandscapingPackage(packageItem) {
+    this.selectedIndex = 3;
+    const cartItem = new CartItem();
+    cartItem.description = packageItem.name;
+    cartItem.amount = packageItem.startPrice;
+    this.cartItems.push(cartItem);
+  }
+
+  toggleShoppingCart() {
+    this.shoppingCartOpen = !this.shoppingCartOpen;
+  }
+
+  deleteCartItem(cartItem: CartItem) {
+    this.cartItems.splice(this.cartItems.indexOf(cartItem), 1);
+    if (this.cartItems.length === 0) {
+      this.shoppingCartOpen = false;
+      this.selectedIndex = 0;
+    }
+  }
+}
+
+export class CartItem {
+  description: string;
+  amount: number;
 }
