@@ -69,6 +69,9 @@ import { OrderPageComponent } from './order-page/order-page.component';
 import { SpecialCurrencyPipe } from './pipes/special-currency.pipe';
 import { TimeSlotPickerComponent } from './time-slot-picker/time-slot-picker.component';
 import { MaintServicesOrderComponent } from './maint-services-order/maint-services-order.component';
+import { ContractorPortalMaintComponent } from './contractor-portal-maint/contractor-portal-maint.component';
+import { CompleteAppointmentDialogComponent } from './complete-appointment-dialog/complete-appointment-dialog.component';
+import { CheckCircleAnimatedComponent } from './check-circle-animated/check-circle-animated.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +105,9 @@ import { MaintServicesOrderComponent } from './maint-services-order/maint-servic
     SpecialCurrencyPipe,
     TimeSlotPickerComponent,
     MaintServicesOrderComponent,
+    ContractorPortalMaintComponent,
+    CompleteAppointmentDialogComponent,
+    CheckCircleAnimatedComponent,
   ],
   imports: [
     FormsModule,

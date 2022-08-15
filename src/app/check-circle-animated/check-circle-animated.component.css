@@ -1,0 +1,85 @@
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-last {
+    from {
+      opacity: 0;
+    }
+    90% {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-check {
+    from {
+      opacity: 0;
+      transform: scale(.5);
+    }
+    50% {
+      opacity: 0;
+      transform: scale(.5);
+    }
+    95% {
+      
+      transform: scale(1.3);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .circle-outline {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: dash 2s linear forwards;
+    stroke: #32ba7c;
+    stroke-width: 20px;
+    fill: transparent;
+  }
+  #circle-outline .cls-1, #circle .cls-1 {
+    fill: #32ba7c;
+  }
+
+
+  #shadow .cls-2-1 {
+    fill: #0aa06e;
+  }
+
+  #check .cls-3 {
+    fill: #fff;
+  }
+  #circle {
+    animation: fade-in 2s ease-out;
+  }
+  #circle>circle.circle-fill {
+    fill: #32ba7c;
+  }
+  #shadow {
+    
+    animation: fade-in-last 2s ease-out;
+  }
+
+  #check {
+    
+    animation:  fade-in-check  2s ease-out;
+    transform-origin: 50% 50%;
+  }

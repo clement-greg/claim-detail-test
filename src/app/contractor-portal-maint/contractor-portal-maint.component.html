@@ -1,0 +1,197 @@
+<div class="container fancy-container">
+    <mat-tab-group class="hide-tabs" [(selectedIndex)]="selectedIndex">
+        <mat-tab>
+            <div class="center" bottommargin30>
+                <h1>Pending Offers</h1>
+                <button mat-button>
+                    <mat-icon>save_alt</mat-icon> Download
+                </button>
+            </div>
+
+            <button mat-button class="list-button" *ngFor="let customer of pending">
+                <h3>{{customer.name}}</h3>
+                <div *ngIf="customer.email">{{customer.email}}</div>
+                <div>
+                    {{customer.address1}}<br>
+                    {{customer.city}} {{customer.state}} {{customer.postalCode}}
+                </div>
+            </button>
+        </mat-tab>
+        <mat-tab label="First">
+
+            <div class="center" bottommargin30>
+                <h1>My Customers</h1>
+                <button mat-button>
+                    <mat-icon>save_alt</mat-icon> Download
+                </button>
+            </div>
+
+            <button mat-button class="list-button" *ngFor="let customer of customers">
+                <h3>{{customer.name}}</h3>
+                <div *ngIf="customer.email">{{customer.email}}</div>
+                <div>
+                    {{customer.address1}}<br>
+                    {{customer.city}} {{customer.state}} {{customer.postalCode}}
+                </div>
+            </button>
+
+
+
+        </mat-tab>
+        <mat-tab label="Second">
+
+            <div class="center">
+                <img style="height: 90px;" src="../../assets/images/generic4-house.png">
+            </div>
+
+
+
+            <div flex class="overview-boxes">
+
+                <mat-card flex1 class="center">
+                    <h2 class="sub-heading">Pending Offers</h2>
+                    <h1 class="big-data">3</h1>
+
+                    <div aflex>
+                        <div></div>
+                        <div nogrow>
+                            <button mat-button (click)="selectedIndex = 0">More</button>
+                        </div>
+                    </div>
+                </mat-card>
+
+                <mat-card flex1 class="center">
+                    <h2 class="sub-heading">Total Customers</h2>
+                    <h1 class="big-data">14</h1>
+
+                    <div aflex>
+                        <div></div>
+                        <div nogrow>
+                            <button mat-button (click)="selectedIndex = 1">More</button>
+                        </div>
+                    </div>
+                </mat-card>
+
+                <mat-card flex1 class="center">
+
+                    <h2 class="sub-heading">Next Appointment</h2>
+
+
+                </mat-card>
+            </div>
+
+            <div flex class="overview-boxes">
+
+
+                <mat-card flex1 class="center">
+
+                    <h2 class="sub-heading">Paid Jobs</h2>
+
+
+
+                </mat-card>
+                <div flex1></div>
+                <div flex1></div>
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Third"> 
+            <h2 class="sub-heading">Recent Jobs</h2>
+
+            <button mat-button *ngFor="let job of completedJobs" (click)="showCompleteDialog(job)" class="list-button">
+
+                <div aflex>
+                    <div>
+                        {{job.address1}}<br>
+                        {{job.city}} {{job.state}} {{job.postalCode}}<br>
+                        {{job.createdDate | date: 'shortDate'}}
+                    </div>
+                    <div nogrow *ngIf="job.completed">
+
+                        <mat-icon class="complete-check">check</mat-icon>
+                    </div>
+                </div>
+
+            </button>
+            <h2 class="sub-heading" topmargin40>Upcomming Jobs</h2>    
+
+            <button mat-button (click)="showCompleteDialog(job)" *ngFor="let job of upcommingJobs" class="list-button">
+
+                <div aflex>
+                    <div>
+                        {{job.address1}}<br>
+                        {{job.city}} {{job.state}} {{job.postalCode}}<br>
+                        {{job.createdDate | date: 'shortDate'}}
+                    </div>
+                    <div nogrow *ngIf="job.completed">
+
+                        <mat-icon class="complete-check">check</mat-icon>
+                    </div>
+                </div>
+            </button>
+
+        </mat-tab>
+        <mat-tab label="Third"> Content 4 </mat-tab>
+    </mat-tab-group>
+
+
+    <div class="main-tool">
+        <div aflex>
+            <div></div>
+            <div nogrow style="margin-left: 0;">
+                <button mat-button class="toggle-button" [class.selected]="selectedIndex === 0"
+                    (click)="selectedIndex = 0">
+
+                    <mat-icon>schedule</mat-icon><br>
+                    Pending
+                    <span class="badge pending-badge">3</span>
+                </button>
+                <button mat-button class="toggle-button" [class.selected]="selectedIndex === 1"
+                    (click)="selectedIndex = 1">
+                    <mat-icon>account_circle</mat-icon><br>
+                    Customers
+                </button>
+                <button mat-button class="toggle-button" [class.selected]="selectedIndex === 2"
+                    (click)="selectedIndex = 2">
+                    <mat-icon>home</mat-icon><br>
+                    Home
+                </button>
+                <button mat-button class="toggle-button" [class.selected]="selectedIndex === 3"
+                    (click)="selectedIndex = 3">
+                    <mat-icon>today</mat-icon><br>
+                    Calendar
+                </button>
+
+                <button mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_horiz</mat-icon><br>
+                    More
+                </button>
+
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>paid</mat-icon>
+                        Billing
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>find_in_page</mat-icon>
+                        Reports
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>event_busy</mat-icon>
+                        Recent Cancellations
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>settings</mat-icon>
+                        Settings
+                    </button>
+                </mat-menu>
+            </div>
+            <div style="margin-left: 0;">
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
