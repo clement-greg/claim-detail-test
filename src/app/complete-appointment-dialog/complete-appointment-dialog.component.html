@@ -1,61 +1,66 @@
-<mat-tab-group class="hide-tabs" [(selectedIndex)]="selectedIndex">
-    <mat-tab label="First">
-        <div aflex>
+
+    <mat-tab-group class="hide-tabs" [(selectedIndex)]="selectedIndex">
+        <mat-tab label="First">
+            <div aflex>
+                <div>
+
+                    <h2 class="sub-heading">Complete</h2>
+                </div>
+                <div nogrow>
+                    <button mat-button mat-dialog-close>
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+
+
+
+
+
+
+            </div>
             <div>
 
-                <h2 class="sub-heading">Complete</h2>
+
+                <a mat-button style="text-align: left;text-transform: none;line-height: 20px;display: block;">
+                    1965 N 1475 E<br>
+                    North Logan UT 84341<br>
+                    1/15/2021
+                </a>
             </div>
-            <div nogrow>
-                <button mat-button mat-dialog-close>
-                    <mat-icon>close</mat-icon>
+            <div topmargin40>
+                <mat-form-field appearance="outline">
+                    <mat-label>Notes</mat-label>
+                    <textarea matInput rows="3"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <div class="data-label">Photo(s)</div>
+
+                <button mat-button class="add-btn">
+                    <mat-icon>add</mat-icon><br>
+                    Add Photo
                 </button>
             </div>
 
-
-
-
-
-
-        </div>
-        <div>
-
-
-            <a mat-button style="text-align: left;text-transform: none;line-height: 20px;display: block;">
-                1965 N 1475 E<br>
-                North Logan UT 84341<br>
-                1/15/2021
-            </a>
-        </div>
-        <div topmargin40>
-            <mat-form-field appearance="outline">
-                <mat-label>Notes</mat-label>
-                <textarea matInput rows="3"></textarea>
-            </mat-form-field>
-        </div>
-
-        <div>
-            <div class="data-label">Photo(s)</div>
-
-            <button mat-button class="add-btn">
-                <mat-icon>add</mat-icon><br>
-                Add Photo
-            </button>
-        </div>
-
-        <div aflex topmargin40>
-            <div></div>
-            <div nogrow>
-                <button mat-button mat-raised-button color="primary" (click)="doComplete()" [disabled]="saving">
-                    <mat-spinner *ngIf="saving" class="thirty"></mat-spinner>
-                    Complete Appointment</button>
+            <div aflex topmargin40>
+                <div></div>
+                <div nogrow>
+                    <button mat-button mat-raised-button color="primary" (click)="doComplete()" [disabled]="saving">
+                        <mat-spinner *ngIf="saving" class="thirty"></mat-spinner>
+                        Complete Appointment
+                    </button>
+                </div>
             </div>
-        </div>
-    </mat-tab>
-    <mat-tab label="Second"> 
-        <div class="center">
-            <app-check-circle-animated height="100px"></app-check-circle-animated>
-            <br>
-            <h1>Appointment Completed</h1>
-        </div>    
-    </mat-tab>
-</mat-tab-group>
+        </mat-tab>
+        <mat-tab label="Second">
+            <div class="center">
+                <app-check-circle-animated height="100px"></app-check-circle-animated>
+                <br>
+                <h1>Appointment Completed</h1>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+
+

@@ -14,6 +14,7 @@ export class CompleteAppointmentDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<CompleteAppointmentDialogComponent>) { }
 
   ngOnInit(): void {
+    this.dialogRef.updateSize('95%');
   }
 
   doComplete()  {

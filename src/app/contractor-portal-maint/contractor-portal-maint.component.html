@@ -55,7 +55,7 @@
                     <div aflex>
                         <div></div>
                         <div nogrow>
-                            <button mat-button (click)="selectedIndex = 0">More</button>
+                            <button mat-button (click)="selectedIndex = 0">More <mat-icon>chevron_right</mat-icon></button>
                         </div>
                     </div>
                 </mat-card>
@@ -67,16 +67,36 @@
                     <div aflex>
                         <div></div>
                         <div nogrow>
-                            <button mat-button (click)="selectedIndex = 1">More</button>
+                            <button mat-button (click)="selectedIndex = 1">More
+                                <mat-icon>chevron_right</mat-icon>
+                            </button>
                         </div>
                     </div>
                 </mat-card>
 
                 <mat-card flex1 class="center">
 
-                    <h2 class="sub-heading">Next Appointment</h2>
+                    <h2 class="sub-heading" bottommargin30>Next Appointment</h2>
+
+                    <a mat-button class="upcomming-job-link">
+                        <div class="upcomming-job">
+                            <h2>18</h2>
+                            <div>Aug</div>
+                        </div>
+
+                        <div style="padding: 5px">
+                            <div>6343 West Garfield Street</div>
+                            <div>8:00 AM - 1:00 PM</div>
+                        </div>
+                    </a>
 
 
+                    <div aflex>
+                        <div></div>
+                        <div nogrow>
+                            <button mat-button (click)="selectedIndex = 3">More <mat-icon>chevron_right</mat-icon></button>
+                        </div>
+                    </div>
                 </mat-card>
             </div>
 
@@ -95,7 +115,7 @@
             </div>
 
         </mat-tab>
-        <mat-tab label="Third"> 
+        <mat-tab label="Third">
             <h2 class="sub-heading">Recent Jobs</h2>
 
             <button mat-button *ngFor="let job of completedJobs" (click)="showCompleteDialog(job)" class="list-button">
@@ -113,7 +133,7 @@
                 </div>
 
             </button>
-            <h2 class="sub-heading" topmargin40>Upcomming Jobs</h2>    
+            <h2 class="sub-heading" topmargin40>Upcomming Jobs</h2>
 
             <button mat-button (click)="showCompleteDialog(job)" *ngFor="let job of upcommingJobs" class="list-button">
 

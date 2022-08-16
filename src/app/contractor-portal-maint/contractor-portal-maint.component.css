@@ -46,6 +46,36 @@
     transform-origin: 50% 100%;
 }
 
+.upcomming-job-link  {
+    display: inline-block;
+    text-align: left;
+    text-transform: none;
+    line-height: 17px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 2px -1px rgb(0 0 0 / 38%);
+    padding-left: 0;
+    padding-right: 0;
+}
+.upcomming-job  {
+    display: flex;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.upcomming-job  {
+    text-align: center;
+    color: #fff;
+    background-color: rgb(40,61,78);
+    padding: 10px;
+    display: block;
+}
+
+.upcomming-job  h2 {
+    color: #fff;
+    font-size: 24px;
+}
+
 .main-tool button mat-icon {
     height: 30px;
     width: 30px;
