@@ -1,0 +1,17 @@
+.wrapper {
+    container-type: size;
+    container-name: card;
+}
+
+.card {
+    background-color: yellow;
+    display: inline-block;
+    width: 200px;
+    height: 200px;;
+}
+
+@container  (min-width: 400px) {
+    .card {
+        background-color: orange;
+    }
+}

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.component';
 import { AuthoComponent } from './autho/autho.component';
 import { CommunicationHubComponent } from './communication-hub/communication-hub.component';
+import { ContainerTestComponent } from './container-test/container-test.component';
 import { ContractorPortalMaintComponent } from './contractor-portal-maint/contractor-portal-maint.component';
 import { GearsTestComponent } from './gears-test/gears-test.component';
 import { GraphTestComponent } from './graph-test/graph-test.component';
@@ -16,6 +17,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { TestCustomerPortalComponent } from './test-customer-portal/test-customer-portal.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { TestRequestServiceComponent } from './test-request-service/test-request-service.component';
+import { ThrobTestComponent } from './throb-test/throb-test.component';
 import { TimeSlotPickerComponent } from './time-slot-picker/time-slot-picker.component';
 import { ViewPolicyComponent } from './view-policy/view-policy.component';
 import { WorkOrderDetailComponent } from './work-order-detail/work-order-detail.component';
@@ -83,6 +85,14 @@ const routes: Routes = [
   {
     path: 'contractor-portal-maint',
     component: ContractorPortalMaintComponent,
+  },
+  {
+    path: 'container',
+    component: ContainerTestComponent,
+  },
+  {
+    path: 'throb-test',
+    component: ThrobTestComponent,
   }
 ];
 

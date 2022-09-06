@@ -72,6 +72,8 @@ import { MaintServicesOrderComponent } from './maint-services-order/maint-servic
 import { ContractorPortalMaintComponent } from './contractor-portal-maint/contractor-portal-maint.component';
 import { CompleteAppointmentDialogComponent } from './complete-appointment-dialog/complete-appointment-dialog.component';
 import { CheckCircleAnimatedComponent } from './check-circle-animated/check-circle-animated.component';
+import { ThrobTestComponent } from './throb-test/throb-test.component';
+import { ContainerTestComponent } from './container-test/container-test.component';
 
 @NgModule({
   declarations: [
@@ -108,6 +110,8 @@ import { CheckCircleAnimatedComponent } from './check-circle-animated/check-circ
     ContractorPortalMaintComponent,
     CompleteAppointmentDialogComponent,
     CheckCircleAnimatedComponent,
+    ThrobTestComponent,
+    ContainerTestComponent,
   ],
   imports: [
     FormsModule,

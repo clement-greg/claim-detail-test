@@ -1,0 +1,72 @@
+@keyframes throb {
+    from {
+        box-shadow: 0 0 0 0px #347deb;
+    }
+
+    to {
+        box-shadow: 0 0 31px 0px #347deb;
+    }
+}
+
+@keyframes throb-after {
+    from {
+        transform: scale(1);
+        opacity: .5;
+    }
+
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes throb-after-2 {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.throbber {
+    background-color: #347deb;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 31px 33px #347deb;
+    animation: throb 3s linear;
+    animation-iteration-count: infinite;
+    position: relative;
+}
+
+.throbber::after {
+    content: ' ';
+    border: 1px solid #347deb;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    transform-origin: center;
+    animation: throb-after 3s linear;
+    animation-iteration-count: infinite;
+}
+
+.throbber::before {
+    content: ' ';
+    border: 1px solid #347deb;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    transform-origin: center;
+    animation: throb-after-2 3s linear;
+    animation-iteration-count: infinite;
+    position: absolute;
+    left: calc(50% - 8px);
+    top: calc(50% - 8px);
+}
