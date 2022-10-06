@@ -1,12 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-wallpaper',
   templateUrl: './wallpaper.component.html',
   styleUrls: ['./wallpaper.component.css']
 })
-export class WallpaperComponent implements OnInit, OnDestroy {
+export class WallpaperComponent implements OnInit, OnDestroy, AfterViewInit {
   scrolled = false;
+  loaded = false;
 
   constructor() { }
 
@@ -16,11 +17,21 @@ export class WallpaperComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     document.body.classList.remove('body-no-scroll');
-    
+
+  }
+
+  ngAfterViewInit(): void {
+    //this.loaded = true;
+    //setTimeout(() => window.scrollTo(0, 0), 1000);
+    window.scrollTo(0, 0);
+    setTimeout(()=> {
+      this.loaded = true;
+      window.scrollTo(0, 0);
+    }, 200);
   }
 
   getStarted() {
-    console.log('got started');
+    console.log('got '); 
     this.scrolled = true;
   }
 

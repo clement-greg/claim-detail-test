@@ -38,6 +38,8 @@ body {
     overflow-x: hidden !important;
     background-color: #fafafa;
     overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%;
 }
 
 .full-height-tabs {
