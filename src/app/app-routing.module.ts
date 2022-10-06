@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.component';
+import { AptTestComponent } from './apt-test/apt-test.component';
 import { AuthoComponent } from './autho/autho.component';
 import { CommunicationHubComponent } from './communication-hub/communication-hub.component';
 import { ContainerTestComponent } from './container-test/container-test.component';
@@ -20,6 +21,7 @@ import { TestRequestServiceComponent } from './test-request-service/test-request
 import { ThrobTestComponent } from './throb-test/throb-test.component';
 import { TimeSlotPickerComponent } from './time-slot-picker/time-slot-picker.component';
 import { ViewPolicyComponent } from './view-policy/view-policy.component';
+import { WallpaperComponent } from './wallpaper/wallpaper.component';
 import { WorkOrderDetailComponent } from './work-order-detail/work-order-detail.component';
 
 const routes: Routes = [
@@ -93,6 +95,14 @@ const routes: Routes = [
   {
     path: 'throb-test',
     component: ThrobTestComponent,
+  },
+  {
+    path: 'parts-api',
+    component: AptTestComponent
+  },
+  {
+    path: 'wallpaper',
+    component: WallpaperComponent
   }
 ];
 

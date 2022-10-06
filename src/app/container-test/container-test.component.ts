@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerTestComponent implements OnInit {
 
+  width = 200;
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  get containerWidth() {
+    return `${this.width}px`;
+  }
+
 
 }

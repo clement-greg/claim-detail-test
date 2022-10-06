@@ -1,5 +1,10 @@
 <p>container-test works!</p>
 
-<div class="wrapper">
-    <div class="card"></div>
+<mat-form-field appearance="outline">
+    <mat-label>Width</mat-label>
+    <input matInput [(ngModel)]="width" type="number">
+</mat-form-field>
+
+<div class="ctt-wrapper"  [style.width]="containerWidth">
+    <div class="ctt-card"></div>
 </div>

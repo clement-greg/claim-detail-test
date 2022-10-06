@@ -74,6 +74,8 @@ import { CompleteAppointmentDialogComponent } from './complete-appointment-dialo
 import { CheckCircleAnimatedComponent } from './check-circle-animated/check-circle-animated.component';
 import { ThrobTestComponent } from './throb-test/throb-test.component';
 import { ContainerTestComponent } from './container-test/container-test.component';
+import { AptTestComponent } from './apt-test/apt-test.component';
+import { WallpaperComponent } from './wallpaper/wallpaper.component';
 
 @NgModule({
   declarations: [
@@ -112,6 +114,8 @@ import { ContainerTestComponent } from './container-test/container-test.componen
     CheckCircleAnimatedComponent,
     ThrobTestComponent,
     ContainerTestComponent,
+    AptTestComponent,
+    WallpaperComponent,
   ],
   imports: [
     FormsModule,

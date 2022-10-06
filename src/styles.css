@@ -1599,3 +1599,31 @@ mat-checkbox.wrap .mat-checkbox-label {
     fill: rgb(63, 168, 245);
     font-size: 18px;
 }
+
+
+
+
+.ctt-wrapper {
+    container-type: size;
+    container-name: card;
+    background-color: green;
+    height: 200px;
+    overflow: hidden;
+}
+
+.ctt-card {
+    background-color: yellow;
+    display: inline-block;
+    width: 200px;
+    height: 200px;;
+}
+
+@container  (min-width: 400px) {
+    .ctt-card {
+        background-color: orange;
+    }
+}
+
+.body-no-scroll {
+    overflow: hidden;
+}
