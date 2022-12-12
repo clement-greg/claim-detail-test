@@ -76,6 +76,9 @@ import { ThrobTestComponent } from './throb-test/throb-test.component';
 import { ContainerTestComponent } from './container-test/container-test.component';
 import { AptTestComponent } from './apt-test/apt-test.component';
 import { WallpaperComponent } from './wallpaper/wallpaper.component';
+import { EmailTestComponent } from './email-test/email-test.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CirclesLoginComponent } from './circles-login/circles-login.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +119,9 @@ import { WallpaperComponent } from './wallpaper/wallpaper.component';
     ContainerTestComponent,
     AptTestComponent,
     WallpaperComponent,
+    EmailTestComponent,
+    DashboardComponent,
+    CirclesLoginComponent,
   ],
   imports: [
     FormsModule,

@@ -2,8 +2,29 @@
     from {
         transform: rotate(0deg);
     }
+    60% {
+        transform: rotate(0deg);
+    }
+    65% {
+        transform: rotate(-5deg);
+    }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes rotating-backward {
+    from {
+        transform: rotate(360deg) translateX(2px);
+    }
+    60% {
+        transform: rotate(360deg) translateX(2px);
+    }
+    65% {
+        transform: rotate(365deg) translateX(2px);
+    }
+    to {
+        transform: rotate(0deg) translateX(2px);
     }
 }
 
@@ -11,14 +32,26 @@
     fill: url(#linear-gradient);
     transform-box: fill-box;
     transform-origin: center;
-    animation-duration: 3s;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     animation-name: rotating;
+    fill: #fff;
+    stroke: #ccc;
+    stroke-width: 4px;
+}
+
+.wrench {
+    fill: #fff;
+    stroke: #ccc;
+    stroke-width: 4px;
+    transform: translateX(138px);
 }
 
 .backward {
-    animation-direction: reverse;
+    /* animation-direction: reverse; */
+    transform: rotate(360deg) translateX(2px);
+    animation-name: rotating-backward;
 }
 
 /* @keyframes bouncer {
@@ -61,3 +94,13 @@
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
 } */
+
+.elevate-a {
+    fill: #eb7c24;
+    stroke: #eb7c24;
+    stroke-miterlimit: 10;
+    stroke-width: 4px;
+    transform: scale(.9) translate(40px, -29px);
+}
+
+.cls-1,.cls-2{fill:#fff;}.cls-2,.cls-3{stroke:#ccc;stroke-miterlimit:10;stroke-width:6px;}.cls-4{fill:#ccc;}.cls-3{fill:none;}

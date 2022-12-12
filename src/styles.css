@@ -38,8 +38,6 @@ body {
     overflow-x: hidden !important;
     background-color: #fafafa;
     overflow-x: hidden;
-    overflow-y: hidden;
-    height: 100%;
 }
 
 .full-height-tabs {
@@ -48,6 +46,14 @@ body {
 
 .full-height-tabs .mat-tab-body-wrapper {
     height: 100%;
+}
+
+.orange-text .mat-form-field-outline-start, .orange-text .mat-form-field-outline-gap, .orange-text .mat-form-field-outline-end {
+    background-color: #fff;
+}
+
+.orange-text label.mat-form-field-label {
+    color: orange;
 }
 
 h1,

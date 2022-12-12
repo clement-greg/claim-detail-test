@@ -3,9 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.component';
 import { AptTestComponent } from './apt-test/apt-test.component';
 import { AuthoComponent } from './autho/autho.component';
+import { CirclesLoginComponent } from './circles-login/circles-login.component';
 import { CommunicationHubComponent } from './communication-hub/communication-hub.component';
 import { ContainerTestComponent } from './container-test/container-test.component';
 import { ContractorPortalMaintComponent } from './contractor-portal-maint/contractor-portal-maint.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmailTestComponent } from './email-test/email-test.component';
 import { GearsTestComponent } from './gears-test/gears-test.component';
 import { GraphTestComponent } from './graph-test/graph-test.component';
 import { HomeComponent } from './home/home.component';
@@ -101,8 +104,20 @@ const routes: Routes = [
     component: AptTestComponent
   },
   {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+  {
+    path: 'email-test',
+    component: EmailTestComponent,
+  },
+  {
     path: 'wallpaper',
     component: WallpaperComponent
+  },
+  {
+    path: 'circle-login',
+    component: CirclesLoginComponent,
   }
 ];
 
