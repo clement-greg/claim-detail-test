@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ApplianceAuthoTwoComponent } from './appliance-autho-two/appliance-autho-two.component';
 import { ApplianceAuthoComponent } from './appliance-autho/appliance-autho.component';
 import { AptTestComponent } from './apt-test/apt-test.component';
 import { AuthoComponent } from './autho/autho.component';
@@ -18,6 +19,7 @@ import { OrderPageComponent } from './order-page/order-page.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { RecordComponent } from './record/record.component';
 import { SettingsComponent } from './settings/settings.component';
+import { TestCameraComponent } from './test-camera/test-camera.component';
 import { TestCustomerPortalComponent } from './test-customer-portal/test-customer-portal.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { TestRequestServiceComponent } from './test-request-service/test-request-service.component';
@@ -61,6 +63,10 @@ const routes: Routes = [
   {
     path: 'appliance-autho',
     component: ApplianceAuthoComponent,
+  },
+  {
+    path: 'appliance-autho-2',
+    component: ApplianceAuthoTwoComponent,
   },
   {
     path: 'flow-chart',
@@ -118,6 +124,10 @@ const routes: Routes = [
   {
     path: 'circle-login',
     component: CirclesLoginComponent,
+  },
+  {
+    path:'test-camera',
+    component: TestCameraComponent
   }
 ];
 

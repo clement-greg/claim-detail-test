@@ -79,6 +79,8 @@ import { WallpaperComponent } from './wallpaper/wallpaper.component';
 import { EmailTestComponent } from './email-test/email-test.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CirclesLoginComponent } from './circles-login/circles-login.component';
+import { ApplianceAuthoTwoComponent } from './appliance-autho-two/appliance-autho-two.component';
+import { TestCameraComponent } from './test-camera/test-camera.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +124,8 @@ import { CirclesLoginComponent } from './circles-login/circles-login.component';
     EmailTestComponent,
     DashboardComponent,
     CirclesLoginComponent,
+    ApplianceAuthoTwoComponent,
+    TestCameraComponent,
   ],
   imports: [
     FormsModule,
