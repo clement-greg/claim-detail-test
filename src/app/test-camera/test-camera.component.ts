@@ -41,29 +41,29 @@ export class TestCameraComponent implements OnInit, ControlValueAccessor {
 
   async startCamera() {
     this.cameraRunning = true;
-    setTimeout(()=> {
+    setTimeout(() => {
 
       this.startStream();
     });
   }
 
   async startStream() {
-
-    
-    const constraints = {
-      video: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-        facingMode: 'environment'
-      }
-    };
-    const stream = await navigator.mediaDevices.getUserMedia(constraints);
-    this.handleStream(stream);
-
     const video = document.querySelector('.camera-container');
     if (video.requestFullscreen) {
       video.requestFullscreen();
-    } 
+    }
+
+    setTimeout(async () => {
+      const constraints = {
+        video: {
+          width: window.innerWidth,
+          height: window.innerHeight,
+          facingMode: 'environment'
+        }
+      };
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      this.handleStream(stream);
+    }, 500);
   }
 
   async handleStream(stream) {
@@ -86,12 +86,12 @@ export class TestCameraComponent implements OnInit, ControlValueAccessor {
 
     //(document.getElementById('screenshot') as any).src = canvas.toDataURL('image/webp');
     video.pause();
-    setTimeout(()=> this.cameraRunning = false, 500);
+    setTimeout(() => this.cameraRunning = false, 500);
     //this.cameraRunning = false;
   }
 
   closeCamera() {
-    
+
     const video = document.querySelector('video');
     video.pause();
     this.cameraRunning = false;
