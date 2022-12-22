@@ -1,18 +1,24 @@
-<p>test-camera works!</p>
+<div *ngIf="cameraRunning" class="camera-container">
+    <div>
+        <video autoplay></video>
+        <button mat-button id="take-picture-btn" (click)="doScreenshot()">
+            <mat-icon>photo_camera</mat-icon>
+        </button>
 
-<video autoplay></video>
-<canvas class="d-none"></canvas>
+        <button mat-button id="close-camera" (click)="closeCamera()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
 
-<div class="video-options">
+<!-- <div class="video-options">
     <select name="" id="" class="custom-select">
         <option value="">Select camera</option>
     </select>
-</div>
+</div> -->
 
-<img id="screenshot" class="screenshot-image d-none" alt="">
+<!-- <img id="screenshot" class="screenshot-image d-none" alt=""> -->
 
-<div class="controls">
-    <button (click)="test()" mat-button mat-raised-button  title="Play">Play</button>
-    <button class="btn btn-info pause d-none" title="Pause"><i data-feather="pause"></i></button>
-    <button mat-button mat-raised-button (click)="doScreenshot()" title="ScreenShot">Screenshot</button>
-</div>
+<button  (click)="startCamera()" mat-button mat-raised-button>
+    <mat-icon>photo_camera</mat-icon>
+</button>
