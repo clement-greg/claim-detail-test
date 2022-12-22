@@ -51,8 +51,8 @@ export class TestCameraComponent implements OnInit, ControlValueAccessor {
     console.log({width: window.innerWidth, height: window.innerHeight})
     const constraints = {
       video: {
-        width: screen.width,
-        height: screen.height,
+        width: window.innerWidth,
+        height: window.innerHeight,
         facingMode: 'environment'
       }
     };
