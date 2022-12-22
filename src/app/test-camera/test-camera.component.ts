@@ -48,7 +48,8 @@ export class TestCameraComponent implements OnInit, ControlValueAccessor {
   }
 
   async startStream() {
-    console.log({width: window.innerWidth, height: window.innerHeight})
+
+    
     const constraints = {
       video: {
         width: window.innerWidth,
@@ -58,6 +59,11 @@ export class TestCameraComponent implements OnInit, ControlValueAccessor {
     };
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     this.handleStream(stream);
+
+    const video = document.querySelector('.camera-container');
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } 
   }
 
   async handleStream(stream) {
